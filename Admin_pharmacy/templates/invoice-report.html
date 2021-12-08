@@ -1,0 +1,192 @@
+
+{% extends 'basics.html' %}
+{% block body %}
+{% load static %}
+   <div class="page-wrapper">
+    <div class="content container-fluid">
+     <div class="page-header">
+      <div class="row">
+       <div class="col-sm-12">
+        <h3 class="page-title">
+         Invoice Report
+        </h3>
+        <ul class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="{% url 'indexs' %}">
+           Dashboard
+          </a>
+         </li>
+         <li class="breadcrumb-item active">
+          Invoice Report
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-sm-12">
+       <div class="card">
+        <div class="card-body">
+         <div class="table-responsive">
+          <table class="datatable table table-hover table-center mb-0">
+           <thead>
+            <tr>
+             <th>
+              Invoice Number
+             </th>
+             <th>
+              Medicine Name
+             </th>
+             <th>
+              Total Amount
+             </th>
+             <th>
+              Created Date
+             </th>
+             <th class="text-center">
+              Status
+             </th>
+             <th class="text-right">
+              Actions
+             </th>
+            </tr>
+           </thead>
+           <tbody>{% for i in product %}
+            <tr>
+             <td class="sorting_1">
+              <a href="{% url 'invoice_views' %}?invoice_no={{i.id}}">
+               #IN0-{{i.id}}
+              </a>
+             </td>
+             <td>
+              <h2 class="table-avatar">
+               <span class="avatar avatar-sm mr-2">
+                <img alt="Product Image" class="avatar-img" src="/media/{{i.product_id.img}}"/>
+               </span>
+               {{i.product_name}}
+              </h2>
+             </td>
+             <td>
+              ${{i.total}}.00
+             </td>
+             <td>
+              {{i.time|date:'d/m/Y'}}
+             </td>
+             <td class="text-center">{% if i.payment_status == 'Unpaid' %}
+              <span class="badge badge-pill  bg-warning inv-badge">
+              Unpaid
+              </span>
+              {% elif i.payment_status == 'Pending' %}
+               <span class="badge badge-pill bg-danger inv-badge">
+              Pending
+              </span>{% else %}
+               <span class="badge badge-pill  bg-success  inv-badge">
+              Paid
+              </span>
+            {% endif %} </td>
+             <td class="text-right">
+              <div class="actions">
+               <a class="btn btn-sm bg-success-light mr-2"
+   onclick="$('#orderid').val('{{i.id}}');" data-toggle="modal" href="#edit_invoice_report">
+                <i class="fe fe-pencil">
+                </i>
+                Edit
+               </a>
+               <a class="btn btn-sm bg-danger-light" onclick="$('#ordersid').val('{{i.id}}');" data-toggle="modal" href="#delete_modal">
+                <i class="fe fe-trash">
+                </i>
+                Delete
+               </a>
+              </div>
+             </td>
+            </tr>
+           {% endfor %}
+           </tbody>
+          </table>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div aria-hidden="true" class="modal fade" id="edit_invoice_report" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+      <div class="modal-header">
+       <h5 class="modal-title">
+        Edit Invoice Report
+       </h5>
+       <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+        <span aria-hidden="true">
+         ×
+        </span>
+       </button>
+      </div>
+      <div class="modal-body">
+       <form method="get">
+        <div class="row form-row">
+         <div class="col-12 col-sm-6">
+          <div class="form-group">
+
+    <input value="" name="orderid" type="hidden" id="orderid">
+           <label>
+            Invoice Number
+           </label>
+           <input class="form-control" name="In_no" type="text"/>
+          </div>
+         </div>
+
+         <div class="col-12 col-sm-6">
+          <div class="form-group">
+           <label>
+            Status
+            <span class="text-danger">
+             *
+            </span>
+           </label>
+           <select class="form-control select" name="status" required="">
+            <option selected="selected"  value="Paid">
+             Paid
+            </option>
+            <option   value="Unpaid">
+             Unpaid
+            </option>
+            <option   value="Pending">
+             Pending
+            </option>
+           </select>
+          </div>
+         </div>
+        <button class="btn btn-primary btn-block" type="submit">
+         Save Changes
+        </button>
+        </div> </form>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div aria-hidden="true" class="modal fade" id="delete_modal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+      <div class="modal-body">
+       <form method="get">
+       <div class="form-content p-2">
+        <h4 class="modal-title">
+         Delete
+        </h4><input name="oderids" id="ordersid" value="{{i.id}}">
+        <p class="mb-4">
+         Are you sure want to delete?
+        </p>
+        <button class="btn btn-primary" type="submit">
+         Save
+        </button>
+        <button class="btn btn-danger" data-dismiss="modal" type="button">
+         Close
+        </button>
+       </div></form>
+      </div>
+     </div>
+    </div>
+   </div>
+ {% endblock  %}

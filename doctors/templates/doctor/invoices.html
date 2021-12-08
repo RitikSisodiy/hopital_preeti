@@ -1,0 +1,254 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Invoices
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Invoices
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+       <div class="profile-sidebar">
+        <div class="widget-profile pro-widget-content">
+         <div class="profile-info-widget">
+          <a class="booking-doc-img" href="{%url 'Doctor_profile' request.user.Dr.id %}">
+           <img alt="User Image" src="/media/{{request.user.Dr.img}}"/>
+          </a>
+          <div class="profile-det-info">
+           <h3>
+            {{request.user.Dr.name}}
+           </h3>
+           <div class="patient-details">
+            <h5 class="mb-0">
+              {{request.user.Dr.qulification}}
+            </h5>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="dashboard-widget">
+         <nav class="dashboard-menu">
+          <ul>
+           <li>
+            <a href="{%url 'doctor_dashboard'%}?id={{request.user.Dr.id}}">
+             <span>
+              Dashboard
+             </span>
+             <i class="feather-airplay">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'appointments'%}?doctor={{request.user.Dr.id}}">
+             <span>
+              Appointments
+             </span>
+             <i class="feather-calendar">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'my_patient'%}">
+             <span>
+              My Patients
+             </span>
+             <i class="fas fa-user-injured">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'schedule'%}">
+             <span>
+              Schedule Timings
+             </span>
+             <i class="far fa-hourglass">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="available-timings.html">
+             <span>
+              Available Timings
+             </span>
+             <i class="feather-clock">
+             </i>
+            </a>
+           </li>
+           <li class="active">
+            <a href="{%url 'invoices'%}?invoice={{request.user.Dr.id}}">
+             <span>
+              Invoices
+             </span>
+             <i class="feather-file-text">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="accounts.html">
+             <span>
+              Accounts
+             </span>
+             <i class="fas fa-file-invoice-dollar">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'reviews'%}">
+             <span>
+              Reviews
+             </span>
+             <i class="feather-star">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="chat-doctor.html">
+             <span>
+              Message
+             </span>
+             <i class="feather-message-circle">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'doctor_profile_setting'%}?profile={{request.user.id}}">
+             <span>
+              Profile Settings
+             </span>
+             <i class="feather-user">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="social-media.html">
+             <span>
+              Social Media
+             </span>
+             <i class="feather-share-2">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="doctor-change-password.html">
+             <span>
+              Change Password
+             </span>
+             <i class="feather-lock">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'dlogout'%}">
+             <span>
+              Logout
+             </span>
+             <i class="feather-log-out">
+             </i>
+            </a>
+           </li>
+          </ul>
+         </nav>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-7 col-lg-8 col-xl-9">
+       <div class="card card-table">
+        <div class="card-body">
+         <div class="table-responsive">
+          <table class="table table-hover table-center mb-0">
+           <thead>
+            <tr>
+             <th>
+              Invoice No
+             </th>
+             <th>
+              Patient
+             </th>
+             <th>
+              Paid On
+             </th>
+             <th>
+              Amount
+             </th>
+             <th>
+              Actions
+             </th>
+            </tr>
+           </thead>
+           <tbody>{%for i in invoice%}
+            <tr>
+             <td>
+              <a href="{%url 'invoice_view'%}?Pid={{i.patient.id}}&Did={{i.doctor.id}}&Oid={{i.id}}">
+               #INV-00{{i.id}}
+              </a>
+             </td>
+             <td>
+              <h2 class="table-avatar">
+               <a class="avatar avatar-sm mr-2" href="/patient-profile?@//@/={{i.patient.id}}">
+                <img alt="User Image" class="avatar-img rounded-circle" src="/media/{{i.patient.img}}"/>
+               </a>
+               <a href="/patient-profile?@//@/={{i.patient.id}}">
+                {{i.patient.name}}
+                <span>
+                 #PT00{{i.patient.id}}
+                </span>
+               </a>
+              </h2>
+             </td>
+             <td>
+             {{i.date}}
+             </td>
+             <td>
+              ${{i.amount}}
+             </td>
+             <td class="text-left">
+              <div class="table-action">
+               <a class="btn btn-sm bg-info-light" href="{%url 'invoice_view'%}?Pid={{i.patient.id}}&Did={{i.doctor.id}}&Oid={{i.id}}">
+<!--               {%url 'invoice_view'%}?Pid={{i.patient.id}}&Did={{request.user.Dr.id}}&Oid={{i.id}}-->
+                <i class="feather-eye">
+                </i>
+               </a>
+               <a class="btn btn-sm bg-success-light" href="javascript:void(0);">
+                <i class="feather-check-circle">
+                </i>
+               </a>
+               <a class="btn btn-sm bg-danger-light" href="{%url 'invoices'%}?pid={{i.patient.id}}&Oid={{i.id}}&invoice={{i.doctor.id}}">
+                <i class="feather-x-circle">
+                </i>
+               </a>
+
+              </div>
+             </td>
+          </tr> {%endfor%}
+
+           </tbody>
+          </table>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+{%endblock%}

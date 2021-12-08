@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Doccure
+  </title>
+  <meta content="width=device-width, initial-scale=1.0, user-scalable=0" name="viewport"/>
+  <link href=" {% static 'assets/img/favicon.png' %} " rel="icon"/>
+  <link href=" {% static 'assets/css/bootstrap.min.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/plugins/fontawesome/css/all.min.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/css/feather.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/css/style.css' %} " rel="stylesheet"/>
+  <!--[if lt IE 9]>
+
+			<script src=" {% static 'assets/js/html5shiv.min.js' %} "></script>
+
+			<script src=" {% static 'assets/js/respond.min.js' %} "></script>
+
+		<![endif]-->
+ </head>
+ <body>
+  <div class="main-wrapper">
+   <header class="header">
+    <nav class="navbar navbar-expand-lg header-nav">
+     <div class="navbar-header">
+      <a href=" {% static 'javascript:void(0);' %} " id="mobile_btn">
+       <span class="bar-icon">
+        <span>
+        </span>
+        <span>
+        </span>
+        <span>
+        </span>
+       </span>
+      </a>
+      <a class="navbar-brand logo" href=" {% static 'index.html' %} ">
+       <img alt="Logo" class="img-fluid" src=" {% static 'assets/img/logo.png' %} "/>
+      </a>
+     </div>
+     <div class="main-menu-wrapper">
+      <div class="menu-header">
+       <a class="menu-logo" href=" {% static 'index.html' %} ">
+        <img alt="Logo" class="img-fluid" src=" {% static 'assets/img/logo.png' %} "/>
+       </a>
+       <a class="menu-close" href=" {% static 'javascript:void(0);' %} " id="menu_close">
+        <i class="fas fa-times">
+        </i>
+       </a>
+      </div>
+      <ul class="main-nav">
+       <li>
+        <a href=" {% static 'index.html' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Home
+        </a>
+       </li>
+       <li class="has-submenu active">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Doctors
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'doctor-dashboard.html' %} ">
+           Doctor Dashboard
+          </a>
+         </li>
+         <li class="active">
+          <a href=" {% static 'appointments.html' %} ">
+           Appointments
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'schedule-timings.html' %} ">
+           Schedule Timing
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'my-patients.html' %} ">
+           Patients List
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'patient-profile.html' %} ">
+           Patients Profile
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'chat-doctor.html' %} ">
+           Chat
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'invoices.html' %} ">
+           Invoices
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'doctor-profile-settings.html' %} ">
+           Profile Settings
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'reviews.html' %} ">
+           Reviews
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'doctor-register.html' %} ">
+           Doctor Register
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Patients
+        </a>
+        <ul class="submenu">
+         <li class="has-submenu">
+          <a href="#">
+           Doctors
+          </a>
+          <ul class="submenu">
+           <li>
+            <a href=" {% static 'map-grid.html' %} ">
+             Map Grid
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'map-list.html' %} ">
+             Map List
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href=" {% static 'search.html' %} ">
+           Search Doctor
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'doctor-profile.html' %} ">
+           Doctor Profile
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'booking.html' %} ">
+           Booking
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'checkout.html' %} ">
+           Checkout
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'booking-success.html' %} ">
+           Booking Success
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'patient-dashboard.html' %} ">
+           Patient Dashboard
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'favourites.html' %} ">
+           Favourites
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'chat.html' %} ">
+           Chat
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'profile-settings.html' %} ">
+           Profile Settings
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'change-password.html' %} ">
+           Change Password
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Pharmacy
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'pharmacy-details.html' %} ">
+           Pharmacy Details
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'pharmacy-search.html' %} ">
+           Pharmacy Search
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'product-all.html' %} ">
+           Product
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'product-description.html' %} ">
+           Product Description
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'cart.html' %} ">
+           Cart
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'product-checkout.html' %} ">
+           Product Checkout
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'payment-success.html' %} ">
+           Payment Success
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'pharmacy-register.html' %} ">
+           Pharmacy Register
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Pages
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'voice-call.html' %} ">
+           Voice Call
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'video-call.html' %} ">
+           Video Call
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'search.html' %} ">
+           Search Doctors
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'calendar.html' %} ">
+           Calendar
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'components.html' %} ">
+           Components
+          </a>
+         </li>
+         <li class="has-submenu">
+          <a href=" {% static 'invoices.html' %} ">
+           Invoices
+          </a>
+          <ul class="submenu">
+           <li>
+            <a href=" {% static 'invoices.html' %} ">
+             Invoices
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'invoice-view.html' %} ">
+             Invoice View
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href=" {% static 'blank-page.html' %} ">
+           Starter Page
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'login.html' %} ">
+           Login
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'register.html' %} ">
+           Register
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'forgot-password.html' %} ">
+           Forgot Password
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Blog
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'blog-list.html' %} ">
+           Blog List
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'blog-grid.html' %} ">
+           Blog Grid
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'blog-details.html' %} ">
+           Blog Details
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu">
+        <a href="#" target="_blank">
+         <i class="fas fa-plus">
+         </i>
+         Admin
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'admin/index.html' %} " target="_blank">
+           Admin
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'pharmacy/index.html' %} " target="_blank">
+           Pharmacy Admin
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="login-link">
+        <a href=" {% static 'login.html' %} ">
+         Login / Signup
+        </a>
+       </li>
+      </ul>
+     </div>
+     <ul class="nav header-navbar-rht">
+      <li class="nav-item dropdown has-arrow logged-item">
+       <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">
+        <span class="user-img">
+         <img alt="Fred Ortego" class="rounded-circle" src=" {% static 'assets/img/doctors/doctor-thumb-02.jpg' %} " width="31"/>
+        </span>
+       </a>
+       <div class="dropdown-menu dropdown-menu-right">
+        <div class="user-header">
+         <div class="avatar avatar-sm">
+          <img alt="User Image" class="avatar-img rounded-circle" src=" {% static 'assets/img/doctors/doctor-thumb-02.jpg' %} "/>
+         </div>
+         <div class="user-text">
+          <h6>
+           Darren Elder
+          </h6>
+          <p class="text-muted mb-0">
+           Doctor
+          </p>
+         </div>
+        </div>
+        <a class="dropdown-item" href=" {% static 'doctor-dashboard.html' %} ">
+         Dashboard
+        </a>
+        <a class="dropdown-item" href=" {% static 'doctor-profile-settings.html' %} ">
+         Profile Settings
+        </a>
+        <a class="dropdown-item" href=" {% static 'login.html' %} ">
+         Logout
+        </a>
+       </div>
+      </li>
+     </ul>
+    </nav>
+   </header>
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Appointments
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href=" {% static 'index.html' %} ">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Appointments
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+       <div class="profile-sidebar">
+        <div class="widget-profile pro-widget-content">
+         <div class="profile-info-widget">
+          <a class="booking-doc-img" href=" {% static 'doctor-profile.html' %} ">
+           <img alt="User Image" src=" {% static 'assets/img/doctors/doctor-thumb-02.jpg' %} "/>
+          </a>
+          <div class="profile-det-info">
+           <h3>
+            Dr. Darren Elder
+           </h3>
+           <div class="patient-details">
+            <h5 class="mb-0">
+             BDS, MDS - Oral &amp; Maxillofacial Surgery
+            </h5>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="dashboard-widget">
+         <nav class="dashboard-menu">
+          <ul>
+           <li>
+            <a href=" {% static 'doctor-dashboard.html' %} ">
+             <span>
+              Dashboard
+             </span>
+             <i class="feather-airplay">
+             </i>
+            </a>
+           </li>
+           <li class="active">
+            <a href=" {% static 'appointments.html' %} ">
+             <span>
+              Appointments
+             </span>
+             <i class="feather-calendar">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'my-patients.html' %} ">
+             <span>
+              My Patients
+             </span>
+             <i class="fas fa-user-injured">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'schedule-timings.html' %} ">
+             <span>
+              Schedule Timings
+             </span>
+             <i class="far fa-hourglass">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'available-timings.html' %} ">
+             <span>
+              Available Timings
+             </span>
+             <i class="feather-clock">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'invoices.html' %} ">
+             <span>
+              Invoices
+             </span>
+             <i class="feather-file-text">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'accounts.html' %} ">
+             <span>
+              Accounts
+             </span>
+             <i class="fas fa-file-invoice-dollar">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'reviews.html' %} ">
+             <span>
+              Reviews
+             </span>
+             <i class="feather-star">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'chat-doctor.html' %} ">
+             <span>
+              Message
+             </span>
+             <i class="feather-message-circle">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'doctor-profile-settings.html' %} ">
+             <span>
+              Profile Settings
+             </span>
+             <i class="feather-user">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'social-media.html' %} ">
+             <span>
+              Social Media
+             </span>
+             <i class="feather-share-2">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'doctor-change-password.html' %} ">
+             <span>
+              Change Password
+             </span>
+             <i class="feather-lock">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'index.html' %} ">
+             <span>
+              Logout
+             </span>
+             <i class="feather-log-out">
+             </i>
+            </a>
+           </li>
+          </ul>
+         </nav>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-7 col-lg-8 col-xl-9">
+       <div class="appointments-detail">
+        <div class="row">
+         <div class="col-md-12 col-sm-6 col-lg-4">
+          <div class="card widget-profile pat-widget-profile">
+           <div class="card-body">
+            <div class="pro-widget-content">
+             <div class="profile-info-widget">
+              <a class="booking-doc-img" href=" {% static 'patient-profile.html' %} ">
+               <img alt="User Image" src=" {% static 'assets/img/patients/patient.jpg' %} "/>
+              </a>
+              <div class="profile-det-info">
+               <h3>
+                <a href=" {% static 'patient-profile.html' %} ">
+                 Richard Wilson
+                </a>
+               </h3>
+               <div class="appointment-action">
+                <a class="btn btn-sm bg-info-light" data-target="#appt_details" data-toggle="modal" href="#">
+                 <i class="feather-eye">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-success-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-check-circle">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-danger-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-x-circle">
+                 </i>
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <div class="patient-info">
+             <div class="patient-details">
+              <h5>
+               <i class="fas fa-user-clock">
+               </i>
+               14 Nov 2021, 10.00 AM
+              </h5>
+              <h5>
+               <i class="fas fa-map-marker-alt">
+               </i>
+               Newyork, United States
+              </h5>
+              <h5>
+               <i class="fas fa-envelope">
+               </i>
+               <a class="__cf_email__" data-cfemail="27554e444f46554367425f464a574b420944484a" href=" {% static '/cdn-cgi/l/email-protection' %} ">
+                [email protected]
+               </a>
+              </h5>
+              <h5 class="mb-0">
+               <i class="fas fa-phone">
+               </i>
+               +1 923 782 4575
+              </h5>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="col-md-12 col-sm-6 col-lg-4">
+          <div class="card widget-profile pat-widget-profile">
+           <div class="card-body">
+            <div class="pro-widget-content">
+             <div class="profile-info-widget">
+              <a class="booking-doc-img" href=" {% static 'patient-profile.html' %} ">
+               <img alt="User Image" src=" {% static 'assets/img/patients/patient1.jpg' %} "/>
+              </a>
+              <div class="profile-det-info">
+               <h3>
+                <a href=" {% static 'patient-profile.html' %} ">
+                 Charlene Reed
+                </a>
+               </h3>
+               <div class="appointment-action">
+                <a class="btn btn-sm bg-info-light" data-target="#appt_details" data-toggle="modal" href="#">
+                 <i class="feather-eye">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-success-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-check-circle">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-danger-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-x-circle">
+                 </i>
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <div class="patient-info">
+             <div class="patient-details">
+              <h5>
+               <i class="fas fa-user-clock">
+               </i>
+               12 Nov 2021, 5.00 PM
+              </h5>
+              <h5>
+               <i class="fas fa-map-marker-alt">
+               </i>
+               North Carolina, United States
+              </h5>
+              <h5>
+               <i class="fas fa-envelope">
+               </i>
+               <a class="__cf_email__" data-cfemail="a9cac1c8dbc5ccc7ccdbcccccde9ccd1c8c4d9c5cc87cac6c4" href=" {% static '/cdn-cgi/l/email-protection' %} ">
+                [email protected]
+               </a>
+              </h5>
+              <h5 class="mb-0">
+               <i class="fas fa-phone">
+               </i>
+               +1 828 632 9170
+              </h5>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="col-md-12 col-sm-6 col-lg-4">
+          <div class="card widget-profile pat-widget-profile">
+           <div class="card-body">
+            <div class="pro-widget-content">
+             <div class="profile-info-widget">
+              <a class="booking-doc-img" href=" {% static 'patient-profile.html' %} ">
+               <img alt="User Image" src=" {% static 'assets/img/patients/patient2.jpg' %} "/>
+              </a>
+              <div class="profile-det-info">
+               <h3>
+                <a href=" {% static 'patient-profile.html' %} ">
+                 Travis Trimble
+                </a>
+               </h3>
+               <div class="appointment-action">
+                <a class="btn btn-sm bg-info-light" data-target="#appt_details" data-toggle="modal" href="#">
+                 <i class="feather-eye">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-success-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-check-circle">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-danger-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-x-circle">
+                 </i>
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <div class="patient-info">
+             <div class="patient-details">
+              <h5>
+               <i class="fas fa-user-clock">
+               </i>
+               11 Nov 2021, 8.00 PM
+              </h5>
+              <h5>
+               <i class="fas fa-map-marker-alt">
+               </i>
+               Maine, United States
+              </h5>
+              <h5>
+               <i class="fas fa-envelope">
+               </i>
+               <a class="__cf_email__" data-cfemail="4e3a3c2f38273d3a3c27232c222b0e2b362f233e222b602d2123" href=" {% static '/cdn-cgi/l/email-protection' %} ">
+                [email protected]
+               </a>
+              </h5>
+              <h5 class="mb-0">
+               <i class="fas fa-phone">
+               </i>
+               +1 207 729 9974
+              </h5>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="col-md-12 col-sm-6 col-lg-4">
+          <div class="card widget-profile pat-widget-profile">
+           <div class="card-body">
+            <div class="pro-widget-content">
+             <div class="profile-info-widget">
+              <a class="booking-doc-img" href=" {% static 'patient-profile.html' %} ">
+               <img alt="User Image" src=" {% static 'assets/img/patients/patient3.jpg' %} "/>
+              </a>
+              <div class="profile-det-info">
+               <h3>
+                <a href=" {% static 'patient-profile.html' %} ">
+                 Carl Kelly
+                </a>
+               </h3>
+               <div class="appointment-action">
+                <a class="btn btn-sm bg-info-light" data-target="#appt_details" data-toggle="modal" href="#">
+                 <i class="feather-eye">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-success-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-check-circle">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-danger-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-x-circle">
+                 </i>
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <div class="patient-info">
+             <div class="patient-details">
+              <h5>
+               <i class="fas fa-user-clock">
+               </i>
+               9 Nov 2021, 9.00 AM
+              </h5>
+              <h5>
+               <i class="fas fa-map-marker-alt">
+               </i>
+               Newyork, United States
+              </h5>
+              <h5>
+               <i class="fas fa-envelope">
+               </i>
+               <a class="__cf_email__" data-cfemail="4b282a3927202e2727320b2e332a263b272e65282426" href=" {% static '/cdn-cgi/l/email-protection' %} ">
+                [email protected]
+               </a>
+              </h5>
+              <h5 class="mb-0">
+               <i class="fas fa-phone">
+               </i>
+               +1 260 724 7769
+              </h5>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="col-md-12 col-sm-6 col-lg-4">
+          <div class="card widget-profile pat-widget-profile">
+           <div class="card-body">
+            <div class="pro-widget-content">
+             <div class="profile-info-widget">
+              <a class="booking-doc-img" href=" {% static 'patient-profile.html' %} ">
+               <img alt="User Image" src=" {% static 'assets/img/patients/patient4.jpg' %} "/>
+              </a>
+              <div class="profile-det-info">
+               <h3>
+                <a href=" {% static 'patient-profile.html' %} ">
+                 Michelle Fairfax
+                </a>
+               </h3>
+               <div class="appointment-action">
+                <a class="btn btn-sm bg-info-light" data-target="#appt_details" data-toggle="modal" href="#">
+                 <i class="feather-eye">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-success-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-check-circle">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-danger-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-x-circle">
+                 </i>
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <div class="patient-info">
+             <div class="patient-details">
+              <h5>
+               <i class="fas fa-user-clock">
+               </i>
+               9 Nov 2021, 1.00 PM
+              </h5>
+              <h5>
+               <i class="fas fa-map-marker-alt">
+               </i>
+               Indiana, United States
+              </h5>
+              <h5>
+               <i class="fas fa-envelope">
+               </i>
+               <a class="__cf_email__" data-cfemail="375a5e545f525b5b5251565e4551564f77524f565a475b521954585a" href=" {% static '/cdn-cgi/l/email-protection' %} ">
+                [email protected]
+               </a>
+              </h5>
+              <h5 class="mb-0">
+               <i class="fas fa-phone">
+               </i>
+               +1 504 368 6874
+              </h5>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="col-md-12 col-sm-6 col-lg-4">
+          <div class="card widget-profile pat-widget-profile">
+           <div class="card-body">
+            <div class="pro-widget-content">
+             <div class="profile-info-widget">
+              <a class="booking-doc-img" href=" {% static 'patient-profile.html' %} ">
+               <img alt="User Image" src=" {% static 'assets/img/patients/patient5.jpg' %} "/>
+              </a>
+              <div class="profile-det-info">
+               <h3>
+                <a href=" {% static 'patient-profile.html' %} ">
+                 Gina Moore
+                </a>
+               </h3>
+               <div class="appointment-action">
+                <a class="btn btn-sm bg-info-light" data-target="#appt_details" data-toggle="modal" href="#">
+                 <i class="feather-eye">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-success-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-check-circle">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-danger-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-x-circle">
+                 </i>
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <div class="patient-info">
+             <div class="patient-details">
+              <h5>
+               <i class="fas fa-user-clock">
+               </i>
+               8 Nov 2021, 3.00 PM
+              </h5>
+              <h5>
+               <i class="fas fa-map-marker-alt">
+               </i>
+               Florida, United States
+              </h5>
+              <h5>
+               <i class="fas fa-envelope">
+               </i>
+               <a class="__cf_email__" data-cfemail="e98e8087888486869b8ca98c91888499858cc78a8684" href=" {% static '/cdn-cgi/l/email-protection' %} ">
+                [email protected]
+               </a>
+              </h5>
+              <h5 class="mb-0">
+               <i class="fas fa-phone">
+               </i>
+               +1 954 820 7887
+              </h5>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="col-md-12 col-sm-6 col-lg-4">
+          <div class="card widget-profile pat-widget-profile">
+           <div class="card-body">
+            <div class="pro-widget-content">
+             <div class="profile-info-widget">
+              <a class="booking-doc-img" href=" {% static 'patient-profile.html' %} ">
+               <img alt="User Image" src=" {% static 'assets/img/patients/patient6.jpg' %} "/>
+              </a>
+              <div class="profile-det-info">
+               <h3>
+                <a href=" {% static 'patient-profile.html' %} ">
+                 Elsie Gilley
+                </a>
+               </h3>
+               <div class="appointment-action">
+                <a class="btn btn-sm bg-info-light" data-target="#appt_details" data-toggle="modal" href="#">
+                 <i class="feather-eye">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-success-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-check-circle">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-danger-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-x-circle">
+                 </i>
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <div class="patient-info">
+             <div class="patient-details">
+              <h5>
+               <i class="fas fa-user-clock">
+               </i>
+               6 Nov 2021, 9.00 AM
+              </h5>
+              <h5>
+               <i class="fas fa-map-marker-alt">
+               </i>
+               Kentucky, United States
+              </h5>
+              <h5>
+               <i class="fas fa-envelope">
+               </i>
+               <a class="__cf_email__" data-cfemail="31545d42585456585d5d5448715449505c415d541f525e5c" href=" {% static '/cdn-cgi/l/email-protection' %} ">
+                [email protected]
+               </a>
+              </h5>
+              <h5 class="mb-0">
+               <i class="fas fa-phone">
+               </i>
+               +1 315 384 4562
+              </h5>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="col-md-12 col-sm-6 col-lg-4">
+          <div class="card widget-profile pat-widget-profile">
+           <div class="card-body">
+            <div class="pro-widget-content">
+             <div class="profile-info-widget">
+              <a class="booking-doc-img" href=" {% static 'patient-profile.html' %} ">
+               <img alt="User Image" src=" {% static 'assets/img/patients/patient7.jpg' %} "/>
+              </a>
+              <div class="profile-det-info">
+               <h3>
+                <a href=" {% static 'patient-profile.html' %} ">
+                 Joan Gardner
+                </a>
+               </h3>
+               <div class="appointment-action">
+                <a class="btn btn-sm bg-info-light" data-target="#appt_details" data-toggle="modal" href="#">
+                 <i class="feather-eye">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-success-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-check-circle">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-danger-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-x-circle">
+                 </i>
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <div class="patient-info">
+             <div class="patient-details">
+              <h5>
+               <i class="fas fa-user-clock">
+               </i>
+               5 Nov 2021, 12.00 PM
+              </h5>
+              <h5>
+               <i class="fas fa-map-marker-alt">
+               </i>
+               California, United States
+              </h5>
+              <h5>
+               <i class="fas fa-envelope">
+               </i>
+               <a class="__cf_email__" data-cfemail="0c66636d626b6d7e6862697e4c69746d617c6069226f6361" href=" {% static '/cdn-cgi/l/email-protection' %} ">
+                [email protected]
+               </a>
+              </h5>
+              <h5 class="mb-0">
+               <i class="fas fa-phone">
+               </i>
+               +1 707 2202 603
+              </h5>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="col-md-12 col-sm-6 col-lg-4">
+          <div class="card widget-profile pat-widget-profile">
+           <div class="card-body">
+            <div class="pro-widget-content">
+             <div class="profile-info-widget">
+              <a class="booking-doc-img" href=" {% static 'patient-profile.html' %} ">
+               <img alt="User Image" src=" {% static 'assets/img/patients/patient8.jpg' %} "/>
+              </a>
+              <div class="profile-det-info">
+               <h3>
+                <a href=" {% static 'patient-profile.html' %} ">
+                 Daniel Griffing
+                </a>
+               </h3>
+               <div class="appointment-action">
+                <a class="btn btn-sm bg-info-light" data-target="#appt_details" data-toggle="modal" href="#">
+                 <i class="feather-eye">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-success-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-check-circle">
+                 </i>
+                </a>
+                <a class="btn btn-sm bg-danger-light" href=" {% static 'javascript:void(0);' %} ">
+                 <i class="feather-x-circle">
+                 </i>
+                </a>
+               </div>
+              </div>
+             </div>
+            </div>
+            <div class="patient-info">
+             <div class="patient-details">
+              <h5>
+               <i class="fas fa-user-clock">
+               </i>
+               5 Nov 2021, 7.00 PM
+              </h5>
+              <h5>
+               <i class="fas fa-map-marker-alt">
+               </i>
+               New Jersey, United States
+              </h5>
+              <h5>
+               <i class="fas fa-envelope">
+               </i>
+               <a class="__cf_email__" data-cfemail="690d0807000c050e1b000f0f00070e290c11080419050c470a0604" href=" {% static '/cdn-cgi/l/email-protection' %} ">
+                [email protected]
+               </a>
+              </h5>
+              <h5 class="mb-0">
+               <i class="fas fa-phone">
+               </i>
+               +1 973 773 9497
+              </h5>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <footer class="footer">
+    <div class="footer-top">
+     <div class="container">
+      <div class="row">
+       <div class="col-lg-3 col-md-6">
+        <div class="footer-widget footer-about">
+         <div class="footer-logo">
+          <img alt="logo" src=" {% static 'assets/img/logo.png' %} "/>
+         </div>
+         <div class="footer-about-content">
+          <p>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <div class="social-icon">
+           <ul>
+            <li>
+             <a href="#" target="_blank">
+              <i class="feather-facebook">
+              </i>
+             </a>
+            </li>
+            <li>
+             <a href="#" target="_blank">
+              <i class="feather-instagram">
+              </i>
+             </a>
+            </li>
+            <li>
+             <a href="#" target="_blank">
+              <i class="feather-linkedin">
+              </i>
+             </a>
+            </li>
+            <li>
+             <a href="#" target="_blank">
+              <i class="feather-twitter">
+              </i>
+             </a>
+            </li>
+           </ul>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6">
+        <div class="footer-widget footer-menu">
+         <h2 class="footer-title">
+          For Patients
+         </h2>
+         <ul>
+          <li>
+           <a href=" {% static 'search.html' %} ">
+            Search for Doctors
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'login.html' %} ">
+            Login
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'register.html' %} ">
+            Register
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'booking.html' %} ">
+            Booking
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'patient-dashboard.html' %} ">
+            Patient Dashboard
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6">
+        <div class="footer-widget footer-menu">
+         <h2 class="footer-title">
+          For Doctors
+         </h2>
+         <ul>
+          <li>
+           <a href=" {% static 'appointments.html' %} ">
+            Appointments
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'chat.html' %} ">
+            Chat
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'login.html' %} ">
+            Login
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'doctor-register.html' %} ">
+            Register
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'doctor-dashboard.html' %} ">
+            Doctor Dashboard
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6">
+        <div class="footer-widget footer-contact">
+         <h2 class="footer-title">
+          Contact Us
+         </h2>
+         <div class="footer-contact-info">
+          <div class="footer-address">
+           <span>
+            <i class="feather-map-pin">
+            </i>
+           </span>
+           <p>
+            3556 Beech Street, San Francisco,
+            <br/>
+            California, CA 94108
+           </p>
+          </div>
+          <p>
+           <i class="feather-phone">
+           </i>
+           +1 315 369 5943
+          </p>
+          <p class="mb-0">
+           <i class="feather-mail">
+           </i>
+           <a class="__cf_email__" data-cfemail="fe9a919d9d8b8c9bbe9b869f938e929bd09d9193" href=" {% static '/cdn-cgi/l/email-protection' %} ">
+            [email protected]
+           </a>
+          </p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <div class="container">
+      <div class="copyright">
+       <div class="row">
+        <div class="col-md-6 col-lg-6">
+         <div class="copyright-text">
+          <p class="mb-0">
+           © 2021 Doccure. All rights reserved.
+          </p>
+         </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+         <div class="copyright-menu">
+          <ul class="policy-menu">
+           <li>
+            <a href=" {% static 'term-condition.html' %} ">
+             Terms and Conditions
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'privacy-policy.html' %} ">
+             Policy
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <div class="modal fade custom-modal" id="appt_details">
+   <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h5 class="modal-title">
+       Appointment Details
+      </h5>
+      <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+       <span aria-hidden="true">
+        ×
+       </span>
+      </button>
+     </div>
+     <div class="modal-body">
+      <ul class="info-details">
+       <li>
+        <div class="details-header">
+         <div class="row">
+          <div class="col-md-6">
+           <span class="title">
+            #APT0001
+           </span>
+           <span class="text">
+            21 Oct 2021 10:00 AM
+           </span>
+          </div>
+          <div class="col-md-6">
+           <div class="text-right">
+            <button class="btn bg-success-light btn-sm" id="topup_status" type="button">
+             Completed
+            </button>
+           </div>
+          </div>
+         </div>
+        </div>
+       </li>
+       <li>
+        <span class="title">
+         Status:
+        </span>
+        <span class="text">
+         Completed
+        </span>
+       </li>
+       <li>
+        <span class="title">
+         Confirm Date:
+        </span>
+        <span class="text">
+         29 Jun 2021
+        </span>
+       </li>
+       <li>
+        <span class="title">
+         Paid Amount
+        </span>
+        <span class="text">
+         $450
+        </span>
+       </li>
+      </ul>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script data-cfasync="false" src=" {% static '/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/js/jquery-3.6.0.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/js/bootstrap.bundle.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/plugins/theia-sticky-sidebar/ResizeSensor.js' %} ">
+  </script>
+  <script src=" {% static 'assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %} ">
+  </script>
+  <script src=" {% static 'assets/js/script.js' %} ">
+  </script>
+ </body>
+</html>

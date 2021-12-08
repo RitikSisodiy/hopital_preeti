@@ -1,0 +1,98 @@
+  # phone = request.POST.get('phone')
+    # date = request.POST.get('date')
+    # t1 = t.time1
+    # t2 = t.time2
+    # # t1 = request.POST.get('time1')
+    # # t2 = request.POST.get('time2')
+    # card_name = request.POST.get('cardname')
+    # card_no = request.POST.get('cardno')
+    # exmonth = request.POST.get('exmonth')
+    # exyear = request.POST.get('exyear')
+    # cvv = request.POST.get('cvv')
+    # amount = request.POST.get('amount')
+    # date =( date[8:]+"-"+str(month.get(date[:3]))+"-"+date[5:7]).replace(' ','')
+    # check = checkout(phone=phone, date=date, time1=t1, time2=t2, card_name=card_name, card_no=card_no,
+    #               cvv=cvv, exp_year=exyear, exp_month=exmonth, amount=amount, email=request.user.email,
+    #              dr_name=profile, patient=patient)
+    # check.save()
+    # appoinmentlists=appoinmentlist( date=date, time1=t1, time2=t2, card_name=card_name, card_no=card_no,
+    #               cvv=cvv, exp_year=exyear, exp_month=exmonth, amount=amount,
+    #              doctor=profile, patient=patient)
+    # appoinmentlists.save()
+    # print(appoinmentlists)
+    #
+    # messages.success(request, "Booking confirm successfully.")
+    # checks=appoinmentlist.objects.last()
+
+
+
+
+  #
+# def dlogin(request):
+#     if request.method=='POST':
+#          loginemail = request.POST['email']
+#          username = User.objects.get(email=loginemail).username
+#          pass1 = request.POST['password']
+#          user= authenticate(username=username,password=pass1)
+#          if user is not None:
+#             login(request,user)
+#             if not request.user.is_authenticated:
+#                messages.success(request, 'user none')
+#                return redirect('dlogin')
+#             else:
+#                 messages.success(request, 'successfully logged In ')
+#                 return redirect('home')
+#             # messages.error(request, 'wrong pwd/email ')
+#          messages.error(request, 'Invalid user user not register')
+#          return redirect('dlogin')
+#     return render(request,'login.html')
+# def dlogin(request):
+#     if request.method=='POST':
+#          loginemail = request.POST['email']
+#          username = User.objects.get(email=loginemail).username
+#          pass1 = request.POST['password']
+#          user= authenticate(username=username,password=pass1)
+#          if user is not None:
+#             login(request,user)
+#             if not request.user.is_authenticated:
+#                messages.success(request, 'user none')
+#                return redirect('dlogin')
+#             else:
+#                 messages.success(request, 'successfully logged In ')
+#                 return redirect('home')
+#             # messages.error(request, 'wrong pwd/email ')
+#          messages.error(request, 'Invalid user user not register')
+#          return redirect('dlogin')
+#     return render(request,'login.html')
+# def dlogout(request):
+#     logout(request)
+#     messages.success(request, 'successfully logged Out')
+#     return redirect('home')
+
+
+
+
+
+
+
+  # def like(request):
+#     bid=request.GET.get('@//@/')
+#     next=request.GET.get('next')
+#     prod_list = reView.objects.filter(id=bid)
+    # print(prod_list,'.////')
+#     if len(prod_list) > 0:
+#         ob = prod_list[0]
+#         if ob.YES >= 0:
+#             ob.YES+= 1
+#             ob.save()
+#     return redirect(next)
+# def dislike(request):
+#     bid=request.GET.get('@//@/')
+#     next = request.GET.get('next')
+#     prod_list = reView.objects.filter(id=bid)
+#     if len(prod_list) > 0:
+#         ob = prod_list[0]
+#         if ob.NO >= 0:
+#             ob.NO+= 1
+#             ob.save()
+#     return redirect(next)

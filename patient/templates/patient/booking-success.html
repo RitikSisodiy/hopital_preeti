@@ -1,0 +1,64 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Booking
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Booking
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content success-page-cont">
+   {% if user|length is not 0 %}
+    <div class="container-fluid">
+     <div class="row justify-content-center">
+      <div class="col-lg-6">
+       <div class="success-cont">
+        <img alt="logo" src="{% static 'assets/img/icons/check-circle.png' %}"/>
+        <h3>
+         Appointment booked Successfully!
+        </h3>
+        <p>
+         Appointment booked with
+         <span class="text-info">
+          <strong>
+          {{user.0.doctor.name}}
+          </strong>
+         </span>
+         <br/>
+         on
+         <strong>
+          {{user.0.date}} ( {{user.0.time1}} to  {{user.0.time2}})
+         </strong>
+        </p>
+        <a class="btn btn-primary view-inv-btn" href="{%url 'invoice_view'%}?Did={{user.0.doctor.id}}&Pid={{user.0.patient.id}}&Oid={{user.0.id}}">
+         View Invoice
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+    {% else %}
+    <div class="container-fluid">
+     <div class="row justify-content-center" style="font-size:30px;color:red">
+      Appointment is already Booked. </div></div>
+    {% endif %}
+   </div>
+ {%endblock%}

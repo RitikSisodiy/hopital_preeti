@@ -1,0 +1,175 @@
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+
+<div class="breadcrumb-bar" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-12">
+                <h2 class="breadcrumb-title">
+                    Booking
+                </h2>
+                <nav aria-label="breadcrumb" class="page-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="/">
+                                Home
+                            </a>
+                        </li>
+                        <li aria-current="page" class="breadcrumb-item active">
+                            Booking
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="booking-doc-info">
+                            <a class="booking-doc-img" href="{% url 'Doctor_profile' title.id %}">
+                                <img alt="User Image" src="/media/{{title.img}}"/>
+                            </a>
+                            <div class="booking-info">
+                                <h4>
+                                    <a href="{% url 'Doctor_profile' title.id %}">
+                                        {{title.name}}
+                                    </a>
+                                </h4>
+                                <div class="rating">
+                                    <i class="fas fa-star filled">
+                                    </i>
+                                    <i class="fas fa-star filled">
+                                    </i>
+                                    <i class="fas fa-star filled">
+                                    </i>
+                                    <i class="fas fa-star filled">
+                                    </i>
+                                    <i class="fas fa-star">
+                                    </i>
+                                    <span class="d-inline-block average-rating">
+             35
+            </span>
+                                </div>
+                                <p class="text-muted mb-0">
+                                    <i class="fas fa-map-marker-alt">
+                                    </i>
+                                    {{title.address}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form method="get" action="{% url 'checkout'%}">
+                    <input type="hidden" name="@//@/" value="{{title.id}}">
+
+                    <div class="card booking-schedule schedule-widget">
+                        <div class="schedule-header">
+                            <div class="date-booking">
+                                <div class="row align-items-center">
+                                    <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                                        <h4 class="mb-0">
+                               {% now 'd F Y' %}
+                                        </h4>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-2 col-lg-4 text-sm-center">
+                                        <p class="text-muted mb-0">
+                                    {% now 'l' %}
+                                        </p>
+                                    </div>
+                                    <div class="col-12 col-sm-8 col-md-6 col-lg-4 text-md-right">
+                                        <div class="bookingrange btn btn-white btn-sm">
+                                            <i class="far fa-calendar-alt mr-2" >
+                                            </i>
+                                            <span>
+             </span>
+                                            <i class="fas fa-chevron-down ml-2">
+                                            </i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="schedule-cont">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="day-slot">
+                                        <ul>{% if title.for_booking.all|length is not 0 %}
+                                            {% for i in title.for_booking.all%}
+                                            <li>
+                                                <div class="days">
+               <span>
+               {{i.day}}
+               </span>
+                                                    <span class="slot-date">
+                {{i.date|date:'d'}}
+                <small class="slot-year">
+                {{i.date|date:'MY'}}
+                </small>
+               </span>
+                                                </div>
+                                            </li>
+                                            {%endfor%}{% else %}
+
+                                                <strong style="font-size:30px; color:blue ">Booking date is not available !</strong>
+              {% endif %}
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="time-slot">
+
+
+                                        <ul class="nav nav-tabs nav-tabs-solid"> {% for x in books %}
+
+                                            <li class="nav-item">
+                                                  {% if x.0.times.all|length is not 0 %}
+{% for time in x.0.times.all %}
+
+                <a class="timing"  data-toggle="tab" onclick="$('#date').val('{{x.0.dr.id}}');$('#time').val('{{time.id}}');">
+                    <span>
+                    {{time.time1 }}-{{time.time2}}
+                </span>
+                </a>
+{% endfor%}{% else %}
+                                                <strong style="font-size:15px; color:blue">Timing is not Available !</strong>{% endif %}
+
+                                            </li>
+                                            {%endfor%}
+
+                                        </ul>
+                                    </div>
+                                </div>
+                    <input id="time" name="time1" type="hidden" value="">
+                      <input id="date" name="date" type="hidden" value="">
+                            </div>
+
+                        </div>
+                    </div>
+                    {% if title.for_booking.all|length is not 0 and books|length is not 0 %}
+
+                    <div class="submit-section proceed-btn text-left">
+<!--                        <a class="cards-btns">-->
+<!--                            <input type="submit" value="Proceed to Pay"-->
+<!--                                   class="btn btn-primary submit-btn">-->
+<!--                        </a>-->
+
+<button type="submit" class="btn btn-primary submit-btn">Proceed to Pay</button>
+                    </div>{% endif %}
+<!--                   {% if x.0.times.all|length is not 0 %}   {% endif %}-->
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+{%endblock%}

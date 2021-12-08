@@ -1,0 +1,544 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <section class="section section-search">
+    <div class="container">
+     <div class="row">
+      <div class="col-lg-6">
+       <div class="banner-wrapper">
+        <div class="banner-header">
+         <h1 class="mb-0">
+          Search Doctor,
+         </h1>
+         <h1 class="text-blue">
+          Make an Appointment
+         </h1>
+         <p>
+          Discover the best doctors, clinic &amp; hospital the city nearest to you.
+         </p>
+        </div>
+        <div class="search-box">
+         <form action="search.html">
+          <div class="search-item">
+           <div class="form-group search-location">
+            <input class="form-control" placeholder="Search Location" type="text"/>
+            <span class="form-text">
+             Based on your Location
+            </span>
+           </div>
+           <div class="form-group search-info">
+            <input class="form-control" placeholder="Search Doctors, Clinics, Hospitals, Diseases Etc" type="text"/>
+            <span class="form-text">
+             Ex : Dental or Sugar Check up etc
+            </span>
+           </div>
+          </div>
+          <button class="btn btn-primary search-btn mt-0" type="submit">
+           Make Appointment
+          </button>
+         </form>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-6 banner-img">
+       <img alt="Logo" class="img-fluid" src="{% static 'assets/img/banner.png' %}"/>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="section home-tile-section">
+    <div class="container">
+     <div class="row justify-content-md-center">
+      <div class="col-lg-4 col-md-6">
+       <div class="doctor-book-card">
+        <div class="doctor-book-card-icon">
+         <img alt="" class="img-fluid" src="{% static 'assets/img/icon-04.png' %}"/>
+        </div>
+        <div class="doctor-book-card-content tile-card-content-1">
+         <h3 class="card-title">
+          Visit a Doctor
+         </h3>
+         <p>
+          We hire the best specialists to deliver top-notch diagnostic services for you.
+         </p>
+         <a href="{%url 'search'%}">
+          Book Now
+         </a>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+       <div class="doctor-book-card">
+        <div class="doctor-book-card-icon">
+         <img alt="" class="img-fluid" src="{% static 'assets/img/icon-05.png' %}"/>
+        </div>
+        <div class="doctor-book-card-content tile-card-content-1">
+         <h3 class="card-title">
+          Find a Pharmacy
+         </h3>
+         <p>
+          We provide the a wide range of medical services, so every person could have the opportunity.
+         </p>
+         <a href="/pharmacy-search">
+          Book Now
+         </a>
+        </div>
+       </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+       <div class="doctor-book-card">
+        <div class="doctor-book-card-icon">
+         <img alt="" class="img-fluid" src="{% static 'assets/img/icon-06.png' %}"/>
+        </div>
+        <div class="doctor-book-card-content tile-card-content-1">
+         <h3 class="card-title">
+          Find a Lab
+         </h3>
+         <p>
+          We use the first-class medical equipment for timely diagnostics of various diseases.
+         </p>
+         <a href="/pharmacy-search">
+          Book Now
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+
+   <section class="section section-specialities">
+    <div class="container">
+     <div class="section-header">
+      <h2>
+       Clinic and
+       <span>
+        Specialities
+       </span>
+      </h2>
+     </div>
+     <div class="row">
+      <div class="col-md-12">
+       <ul class="nav nav-tabs nav-tabs-solid">
+         <li class="nav-item">
+         <a class="nav-link show active"  href="{%url 'home'%}">
+          All
+         </a>
+        </li>
+       {%for i in specialty%}
+        <li class="nav-item">
+         <a class="nav-link show active"  href="{%url 'home'%}?special={{i}}">
+          {{i}}
+         </a>
+        </li>{%endfor%}
+       </ul>
+
+
+       <div class="tab-content">
+        <div class="tab-pane show active"  id="all">
+         <div class="doctor-slider slider">
+           <div class="row">
+ {% for i in special%}
+           <div class="col-lg-3 col-md-6">
+          <div class="profile-widget">
+           <div class="doc-img">
+            <a href="{%url 'Doctor_profile' i.id %}">
+             <img alt="User Image" class="img-fluid" src="/media/{{i.img}}"/>
+            </a>
+            <a class="fav-btn" href="javascript:void(0)">
+             <i class="far fa-bookmark">
+             </i>
+            </a>
+           </div>
+           <div class="pro-content">
+            <h3 class="title">
+             <a href="{%url 'Doctor_profile' i.id %}">
+              {{i.name}}
+             </a>
+             <i class="feather-check-circle verified">
+             </i>
+            </h3>
+            <p class="speciality">
+             {{i.qulification }}
+
+            </p>
+            <div class="rating">
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star">
+             </i>
+             <span class="d-inline-block average-rating">
+              4.9 ( 82 )
+             </span>
+            </div>
+            <ul class="available-info">
+             <li>
+              <i class="feather-map-pin">
+              </i>
+              {{i.address}}
+             </li>
+             <li>
+              <i class="far fa-calendar">
+              </i>
+              Available on Fri, 22 Mar
+             </li>
+             <li>
+              <i class="far fa-money-bill-alt">
+              </i>
+
+              ${{i.fees_starting}} - ${{i.fees_end}}
+              <i class="feather-info" data-toggle="tooltip" title="Lorem Ipsum">
+              </i>
+             </li>
+            </ul>
+            <div class="profile-btn-list">
+             <a class="btn btn-primary view-btn" href="{%url 'Doctor_profile' i.id %}">
+              View Profile
+             </a>
+             <a class="btn book-btn" href="{%url 'booking'%}?@//@/={{i.id}}">
+              Book Now
+             </a>
+            </div>
+           </div>
+          </div> </div>{% endfor %}</div>
+         </div>
+
+         <a class="btn btn-secondary see-more" href="{%url 'search'%}">
+          See More
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+
+
+
+
+
+
+
+   <section class="section section-features">
+    <div class="container">
+     <div class="row">
+      <div class="col-lg-5">
+       <div class="section-header">
+        <h2>
+         Available Features in
+         <span>
+          Our Clinic
+         </span>
+        </h2>
+        <p>
+         It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+        </p>
+       </div>
+       <div class="about-content">
+        <img alt="feature" class="img-fluid" src="{% static 'assets/img/feature.png' %}"/>
+       </div>
+      </div>
+      <div class="col-lg-7">
+       <div class="feature-list">
+        <div class="row">
+         <div class="col-md-4 col-sm-6">
+          <div class="feature-box">
+           <div class="feature-img">
+            <a href="{%url 'search'%}">
+             <img alt="Feature Image" class="img-fluid" src="{% static 'assets/img/features/feature-05.jpg' %}"/>
+            </a>
+           </div>
+           <div class="feature-content">
+            <h3>
+             <a href="{%url 'search'%}">
+              Operation
+             </a>
+            </h3>
+           </div>
+          </div>
+         </div>
+         <div class="col-md-4 col-sm-6">
+          <div class="feature-box">
+           <div class="feature-img">
+            <a href="{%url 'search'%}">
+             <img alt="Feature Image" class="img-fluid" src="{% static 'assets/img/features/feature-06.jpg' %}"/>
+            </a>
+           </div>
+           <div class="feature-content">
+            <h3>
+             <a href="{%url 'search'%}">
+              Medical
+             </a>
+            </h3>
+           </div>
+          </div>
+         </div>
+         <div class="col-md-4 col-sm-6">
+          <div class="feature-box">
+           <div class="feature-img">
+            <a href="{%url 'search'%}">
+             <img alt="User Image" class="img-fluid" src="{% static 'assets/img/features/feature-05.jpg' %}"/>
+            </a>
+           </div>
+           <div class="feature-content">
+            <h3>
+             <a href="{%url 'search'%}">
+              Patient Ward
+             </a>
+            </h3>
+           </div>
+          </div>
+         </div>
+         <div class="col-md-4 col-sm-6">
+          <div class="feature-box">
+           <div class="feature-img">
+            <a href="{%url 'search'%}">
+             <img alt="User Image" class="img-fluid" src="{% static 'assets/img/features/feature-02.jpg' %}"/>
+            </a>
+           </div>
+           <div class="feature-content">
+            <h3>
+             <a href="{%url 'search'%}">
+              Test Room
+             </a>
+            </h3>
+           </div>
+          </div>
+         </div>
+         <div class="col-md-4 col-sm-6">
+          <div class="feature-box">
+           <div class="feature-img">
+            <a href="{%url 'search'%}">
+             <img alt="User Image" class="img-fluid" src="{% static 'assets/img/features/feature-03.jpg' %}"/>
+            </a>
+           </div>
+           <div class="feature-content">
+            <h3>
+             <a href="{%url 'search'%}">
+              ICU
+             </a>
+            </h3>
+           </div>
+          </div>
+         </div>
+         <div class="col-md-4 col-sm-6">
+          <div class="feature-box">
+           <div class="feature-img">
+            <a href="{%url 'search'%}">
+             <img alt="User Image" class="img-fluid" src="{% static 'assets/img/features/feature-04.jpg' %}"/>
+            </a>
+           </div>
+           <div class="feature-content">
+            <h3>
+             <a href="{%url 'search'%}">
+              Laboratory
+             </a>
+            </h3>
+           </div>
+          </div>
+         </div>
+         <div class="col-lg-4">
+          <a class="btn btn-primary see-more" href="{%url 'search'%}">
+           See More
+          </a>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="section section-doctor">
+    <div class="container">
+     <div class="row">
+      <div class="col-md-12">
+       <div class="section-header">
+        <h2>
+         Book
+         <span>
+          Our Doctor
+         </span>
+        </h2>
+       </div>
+       <div class="our-doctor">
+        <div class="row">
+
+         {%for jj in title%}
+         <div class="col-lg-3 col-md-6">
+          <div class="profile-widget">
+           <div class="doc-img">
+            <a href="/doctor-profile">
+             <img alt="User Image" class="img-fluid" src="/media/{{jj.img}}"/>
+            </a>
+            <a class="fav-btn" href="javascript:void(0)">
+             <i class="far fa-bookmark">
+             </i>
+            </a>
+           </div>
+           <div class="pro-content">
+            <h3 class="title">
+             <a href="/doctor-profile">
+              {{jj.name}}
+             </a>
+             <i class="feather-check-circle verified">
+             </i>
+            </h3>
+            <p class="speciality">
+             {{jj.qulification}}
+            </p>
+            <div class="rating">
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star">
+             </i>
+             <span class="d-inline-block average-rating">
+              4.9 ( 82 )
+             </span>
+            </div>
+            <ul class="available-info">
+             <li>
+              <i class="feather-map-pin">
+              </i>
+              {{jj.address}}
+             </li>
+             <li>
+              <i class="far fa-calendar">
+              </i>
+              Available on Fri, 22 Mar
+             </li>
+             <li>
+              <i class="far fa-money-bill-alt">
+              </i>
+              ${{jj.fees_starting}} - ${{jj.fees_end}}
+              <i class="feather-info" data-toggle="tooltip" title="Lorem Ipsum">
+              </i>
+             </li>
+            </ul>
+            <div class="profile-btn-list">
+             <a class="btn btn-primary view-btn" href="{% url 'Doctor_profile' jj.id %} ">
+              View Profile
+             </a>
+             <a class="btn book-btn" href="{%url 'booking'%}?@//@/={{jj.id}}">
+              Book Now
+             </a>
+            </div>
+           </div>
+          </div>
+         </div>{%endfor%}
+
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="section section-blogs">
+    <div class="container">
+     <div class="section-header">
+      <h2>
+       Blogs and
+       <span>
+        News
+       </span>
+      </h2>
+      <p>
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+     </div>
+     <div class="row blog-grid-row">{% for i in blog%}
+      <div class="col-md-6 col-lg-3 col-sm-12">
+       <div class="blog grid-blog">
+        <div class="blog-image">
+         <a href="/blog-details?@//@/={{i.id}}&Did={{i.doc.id}}">
+          <img alt="Post Image" class="img-fluid" src="/media/{{i.img}}"/>
+         </a>
+        </div>
+        <div class="blog-content">
+         <h3 class="blog-title">
+          <a href="/blog-details?@//@/={{i.id}}&Did={{i.doc.id}}">
+           {{i.title}}
+          </a>
+         </h3>
+         <p>{{i.doc.Ov_view.about}}
+         </p>
+         <a class="read-link" href="/blog-details?@//@/={{i.id}}&Did={{i.doc.id}}">
+          Read More
+         </a>
+         <ul class="entry-meta meta-item">
+          <li>
+           <div class="post-author">
+            <a href="{% url 'Doctor_profile' i.doc.id %}">
+             <img alt="Post Author" src="/media/{{i.doc.img}} "/>
+             <span>
+              {{i.doc.name}}
+             </span>
+            </a>
+           </div>
+          </li>
+          <li>
+           <i class="far fa-clock">
+           </i>
+           {{i.date}}
+          </li>
+         </ul>
+        </div>
+       </div>
+      </div>{%endfor%}
+
+     </div>
+     <div class="view-all">
+      <a class="btn btn-secondary see-more" href="{%url 'blog_list'%}">
+       View All
+      </a>
+     </div>
+    </div>
+   </section>
+   <section class="section section-newsletter">
+    <div class="container">
+     <div class="row align-items-center">
+      <div class="col-lg-9 col-md-8">
+       <div class="newsletter-detail">
+        <div class="section-header">
+         <h2>
+          <span>
+           Grab Our
+          </span>
+          Newsletter
+         </h2>
+         <p>
+          To receive latest offers and discounts from the shop.
+         </p>
+        </div>
+        <form action="#" method="post">{%csrf_token%}
+         <div class="newsletter">
+          <div class="form-group mail-box">
+           <input class="form-control" name='email1' id='email1' placeholder="Enter Your Email Address" type="email"/>
+          </div>
+          <button class="btn btn-primary subscribe-btn" type="submit">
+           Subscribe
+          </button>
+         </div>
+        </form>
+       </div>
+      </div>
+      <div class="col-lg-3 col-md-4">
+       <img alt="feature" class="img-fluid" src="{% static 'assets/img/newsletter.png' %}"/>
+      </div>
+     </div>
+    </div>
+   </section>
+  {%endblock%}

@@ -1,0 +1,271 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Dashboard
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Dashboard
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+       <div class="profile-sidebar">
+        <div class="widget-profile pro-widget-content">
+         <div class="profile-info-widget">
+          <a class="booking-doc-img" href="{% url 'patient_profile' %}?profile={{request.user.patient_record.id}}">
+           <img alt="User Image" src="/media/{{request.user.patient_record.img}}"/>
+          </a>
+          <div class="profile-det-info">
+           <h3>
+           {{request.user.patient_record.patient}}
+           </h3>
+           <div class="patient-details info-loc">
+            <h5>
+             <i class="feather-gift">
+             </i>
+            {{request.user.patient_record.DOB}}, {{request.user.patient_record.age}}years
+            </h5>
+            <h5 class="mb-0">
+             <i class="feather-map-pin">
+             </i>
+            {{request.user.patient_record.address}}
+            </h5>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="dashboard-widget">
+         <nav class="dashboard-menu">
+          <ul>
+           <li >
+            <a href="{% url 'patient_dashboard'%}?Pid={{request.user.patient_record.id}}">
+             <span>
+              Dashboard
+             </span>
+             <i class="feather-airplay">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'favourites'%}?pa={{request.user.patient_record.id}}">
+             <span>
+              Favourites
+             </span>
+             <i class="feather-bookmark">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="dependent.html">
+             <span>
+              Dependent
+             </span>
+             <i class="feather-users">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="chat.html">
+             <span>
+              Message
+             </span>
+             <i class="feather-message-circle">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="patient-accounts.html">
+             <span>
+              Accounts
+             </span>
+             <i class="fas fa-file-invoice-dollar">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'order_list' %}">
+             <span>
+              Orders
+             </span>
+             <i class="feather-file-text">
+             </i>
+            </a>
+           </li>
+           <li class="active" >
+            <a href="{% url 'add_medical_record' %}">
+             <span>
+              Add Medical Records
+             </span>
+             <i class="feather-paperclip">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="medical-details.html">
+             <span>
+              Medical Details
+             </span>
+             <i class="fas fa-user-injured">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'profile_setting'%}?profile={{request.user.patient_record.id}}">
+             <span>
+              Profile Settings
+             </span>
+             <i class="feather-user">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'change_password'%}">
+             <span>
+              Change Password
+             </span>
+             <i class="feather-lock">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'dlogout'%}">
+             <span>
+              Logout
+             </span>
+             <i class="feather-log-out">
+             </i>
+            </a>
+           </li>
+          </ul>
+         </nav>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-7 col-lg-8 col-xl-9">
+       {% if record|length is not 0 %}
+       <div class="card">
+        <div class="card-header dct-appoinment">
+         <nav class="user-tabs mb-0">
+          <ul class="nav nav-tabs nav-tabs-bottom">
+              <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab">
+             <span class="med-records">
+              Medical Records
+             </span>
+            </a>
+           </li>
+             </ul>
+         </nav>
+        </div>
+        <div class="card-body p-0">
+         <div class="tab-content pt-0">
+          <div class="tab-pane fade show active" id="pat_medical_records">
+           <div class="card-table mb-0">
+            <div class="card-body">
+             <div class="table-responsive">
+              <table class="table table-hover table-center mb-0">
+               <thead>
+                <tr>
+                 <th>
+                  ID
+                 </th>
+                 <th>
+                  Date
+                 </th>
+                 <th>
+                  Description
+                 </th>
+                 <th>
+                  Attachment
+                 </th>
+                 <th>
+                  Created
+                 </th>
+                 <th>
+                  Actions
+                 </th>
+                </tr>
+               </thead>
+               <tbody>{%for i in record%}
+                <tr>
+                 <td>
+                  <a href="javascript:void(0);">
+                   #MR-00{{i.id}}
+                  </a>
+                 </td>
+                 <td>
+                  {{i.date}}
+                 </td>
+                 <td>
+                  {{i.desc}}
+                 </td>
+                 <td>
+                  <a href="#">
+                   {{i.attachment}}
+                  </a>
+                 </td>
+                 <td>
+                  <h2 class="table-avatar">
+                   <a class="avatar avatar-sm mr-2" href="{%url 'Doctor_profile' i.doctor.id %}">
+                    <img alt="User Image" class="avatar-img rounded-circle" src="/media/{{i.doctor.img}}"/>
+                   </a>
+                   <a href="{%url 'Doctor_profile' i.doctor.id %}">
+                 {{i.doctor.name}}
+                    <span>
+                    {{i.doctor.specialization}}
+                    </span>
+                   </a>
+                  </h2>
+                 </td>
+                 <td>
+                  <div class="table-action">
+                   <a class="btn btn-sm bg-info-light" href="javascript:void(0);">
+                    <i class="feather-eye">
+                    </i>
+                   </a>
+                   <a class="btn btn-sm bg-primary-light" href="javascript:void(0);">
+                    <i class="feather-printer">
+                    </i>
+                   </a>
+                  </div>
+                 </td>
+                </tr>
+               {%endfor%}
+               </tbody>
+              </table>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+
+       </div>
+
+      {% else %}
+      <strong style="font-size:25px; color:blue; ">No Record !</strong>{% endif %}
+      </div>
+     </div>
+    </div>
+   </div>
+   {%endblock%}

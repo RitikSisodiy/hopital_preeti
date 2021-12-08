@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Doccure
+  </title>
+  <meta content="width=device-width, initial-scale=1.0, user-scalable=0" name="viewport"/>
+  <link href=" {% static 'assets/img/favicon.png' %} " rel="icon"/>
+  <link href=" {% static 'assets/css/bootstrap.min.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/plugins/fontawesome/css/all.min.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/plugins/fancybox/jquery.fancybox.min.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/css/feather.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/css/style.css' %} " rel="stylesheet"/>
+  <!--[if lt IE 9]>
+
+			<script src=" {% static 'assets/js/html5shiv.min.js' %} "></script>
+
+			<script src=" {% static 'assets/js/respond.min.js' %} "></script>
+
+		<![endif]-->
+ </head>
+ <body>
+  <div class="main-wrapper">
+   <header class="header">
+    <nav class="navbar navbar-expand-lg header-nav">
+     <div class="navbar-header">
+      <a href=" {% static 'javascript:void(0);' %} " id="mobile_btn">
+       <span class="bar-icon">
+        <span>
+        </span>
+        <span>
+        </span>
+        <span>
+        </span>
+       </span>
+      </a>
+      <a class="navbar-brand logo" href=" {% static 'index.html' %} ">
+       <img alt="Logo" class="img-fluid" src=" {% static 'assets/img/logo.png' %} "/>
+      </a>
+     </div>
+     <div class="main-menu-wrapper">
+      <div class="menu-header">
+       <a class="menu-logo" href=" {% static 'index.html' %} ">
+        <img alt="Logo" class="img-fluid" src=" {% static 'assets/img/logo.png' %} "/>
+       </a>
+       <a class="menu-close" href=" {% static 'javascript:void(0);' %} " id="menu_close">
+        <i class="fas fa-times">
+        </i>
+       </a>
+      </div>
+      <ul class="main-nav">
+       <li>
+        <a href=" {% static 'index.html' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Home
+        </a>
+       </li>
+       <li class="has-submenu">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Doctors
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'doctor-dashboard.html' %} ">
+           Doctor Dashboard
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'appointments.html' %} ">
+           Appointments
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'schedule-timings.html' %} ">
+           Schedule Timing
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'my-patients.html' %} ">
+           Patients List
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'patient-profile.html' %} ">
+           Patients Profile
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'chat-doctor.html' %} ">
+           Chat
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'invoices.html' %} ">
+           Invoices
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'doctor-profile-settings.html' %} ">
+           Profile Settings
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'reviews.html' %} ">
+           Reviews
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'doctor-register.html' %} ">
+           Doctor Register
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Patients
+        </a>
+        <ul class="submenu">
+         <li class="has-submenu">
+          <a href="#">
+           Doctors
+          </a>
+          <ul class="submenu">
+           <li>
+            <a href=" {% static 'map-grid.html' %} ">
+             Map Grid
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'map-list.html' %} ">
+             Map List
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href=" {% static 'search.html' %} ">
+           Search Doctor
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'doctor-profile.html' %} ">
+           Doctor Profile
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'booking.html' %} ">
+           Booking
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'checkout.html' %} ">
+           Checkout
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'booking-success.html' %} ">
+           Booking Success
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'patient-dashboard.html' %} ">
+           Patient Dashboard
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'favourites.html' %} ">
+           Favourites
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'chat.html' %} ">
+           Chat
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'profile-settings.html' %} ">
+           Profile Settings
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'change-password.html' %} ">
+           Change Password
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu active">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Pharmacy
+        </a>
+        <ul class="submenu">
+         <li class="active">
+          <a href=" {% static 'pharmacy-details.html' %} ">
+           Pharmacy Details
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'pharmacy-search.html' %} ">
+           Pharmacy Search
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'product-all.html' %} ">
+           Product
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'product-description.html' %} ">
+           Product Description
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'cart.html' %} ">
+           Cart
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'product-checkout.html' %} ">
+           Product Checkout
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'payment-success.html' %} ">
+           Payment Success
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'pharmacy-register.html' %} ">
+           Pharmacy Register
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Pages
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'voice-call.html' %} ">
+           Voice Call
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'video-call.html' %} ">
+           Video Call
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'search.html' %} ">
+           Search Doctors
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'calendar.html' %} ">
+           Calendar
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'components.html' %} ">
+           Components
+          </a>
+         </li>
+         <li class="has-submenu">
+          <a href=" {% static 'invoices.html' %} ">
+           Invoices
+          </a>
+          <ul class="submenu">
+           <li>
+            <a href=" {% static 'invoices.html' %} ">
+             Invoices
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'invoice-view.html' %} ">
+             Invoice View
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href=" {% static 'blank-page.html' %} ">
+           Starter Page
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'login.html' %} ">
+           Login
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'register.html' %} ">
+           Register
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'forgot-password.html' %} ">
+           Forgot Password
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Blog
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'blog-list.html' %} ">
+           Blog List
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'blog-grid.html' %} ">
+           Blog Grid
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'blog-details.html' %} ">
+           Blog Details
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu">
+        <a href="#" target="_blank">
+         <i class="fas fa-plus">
+         </i>
+         Admin
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'admin/index.html' %} " target="_blank">
+           Admin
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'pharmacy/index.html' %} " target="_blank">
+           Pharmacy Admin
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="login-link">
+        <a href=" {% static 'login.html' %} ">
+         Login / Signup
+        </a>
+       </li>
+      </ul>
+     </div>
+     <ul class="nav header-navbar-rht">
+      <li class="nav-item dropdown has-arrow logged-item">
+       <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">
+        <span class="user-img">
+         <img alt="Fred Ortego" class="rounded-circle" src=" {% static 'assets/img/doctors/doctor-thumb-02.jpg' %} " width="31"/>
+        </span>
+       </a>
+       <div class="dropdown-menu dropdown-menu-right">
+        <div class="user-header">
+         <div class="avatar avatar-sm">
+          <img alt="User Image" class="avatar-img rounded-circle" src=" {% static 'assets/img/doctors/doctor-thumb-02.jpg' %} "/>
+         </div>
+         <div class="user-text">
+          <h6>
+           Darren Elder
+          </h6>
+          <p class="text-muted mb-0">
+           Doctor
+          </p>
+         </div>
+        </div>
+        <a class="dropdown-item" href=" {% static 'doctor-dashboard.html' %} ">
+         Dashboard
+        </a>
+        <a class="dropdown-item" href=" {% static 'doctor-profile-settings.html' %} ">
+         Profile Settings
+        </a>
+        <a class="dropdown-item" href=" {% static 'login.html' %} ">
+         Logout
+        </a>
+       </div>
+      </li>
+     </ul>
+    </nav>
+   </header>
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Pharmacy Details
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href=" {% static 'index.html' %} ">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Pharmacy Details
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container">
+     <div class="card">
+      <div class="card-body">
+       <div class="doctor-widget">
+        <div class="doc-info-left">
+         <div class="doctor-img1">
+          <a href=" {% static 'pharmacy-details.html' %} ">
+           <img alt="User Image" class="img-fluid" src=" {% static 'assets/img/medical-img1.jpg' %} "/>
+          </a>
+         </div>
+         <div class="doc-info-cont">
+          <h4 class="doc-name mb-2">
+           <a href=" {% static 'pharmacy-details.html' %} ">
+            Medlife Medical
+           </a>
+          </h4>
+          <div class="clinic-details">
+           <div class="clini-infos pt-3">
+            <p class="doc-location mb-2">
+             <i class="feather-phone mr-1">
+             </i>
+             320-795-8815
+            </p>
+            <p class="doc-location mb-2 text-ellipse">
+             <i class="feather-map-pin mr-1">
+             </i>
+             96 Red Hawk Road Cyrus, MN 56323
+            </p>
+            <p class="doc-location mb-2">
+             <i class="feather-chevrons-right mr-1">
+             </i>
+             Chemists, Surgical Equipment Dealer
+            </p>
+            <p class="doc-location mb-2">
+             <i class="feather-chevrons-right mr-1">
+             </i>
+             Opens at 08.00 AM
+            </p>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="doc-info-right d-flex align-items-center justify-content-center">
+         <div class="clinic-booking">
+          <a class="view-pro-btn" href=" {% static 'chat.html' %} ">
+           Send Message
+          </a>
+          <a class="apt-btn" data-target="#voice_call" data-toggle="modal" href="#">
+           Call Now
+          </a>
+          <a class="view-pro-btn" href=" {% static 'product-all.html' %} ">
+           Browse Products
+          </a>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="card">
+      <div class="card-body">
+       <nav class="user-tabs mb-4">
+        <ul class="nav nav-tabs nav-tabs-bottom">
+         <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href=" {% static '#doc_overview' %} ">
+           Overview
+          </a>
+         </li>
+         <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href=" {% static '#doc_locations' %} ">
+           Locations
+          </a>
+         </li>
+         <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href=" {% static '#doc_reviews' %} ">
+           Reviews
+          </a>
+         </li>
+         <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href=" {% static '#doc_business_hours' %} ">
+           Business Hours
+          </a>
+         </li>
+        </ul>
+       </nav>
+       <div class="tab-content pt-0">
+        <div class="tab-pane fade show active" id="doc_overview" role="tabpanel">
+         <div class="row">
+          <div class="col-md-12">
+           <div class="widget about-widget">
+            <h4 class="widget-title">
+             About Me
+            </h4>
+            <p>
+             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+           </div>
+           <div class="widget awards-widget">
+            <h4 class="widget-title">
+             Awards
+            </h4>
+            <div class="experience-box">
+             <ul class="experience-list">
+              <li>
+               <div class="experience-user">
+                <div class="before-circle">
+                </div>
+               </div>
+               <div class="experience-content">
+                <div class="timeline-content">
+                 <p class="exp-year">
+                  July 2019
+                 </p>
+                 <h4 class="exp-title">
+                  Humanitarian Award
+                 </h4>
+                 <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                 </p>
+                </div>
+               </div>
+              </li>
+              <li>
+               <div class="experience-user">
+                <div class="before-circle">
+                </div>
+               </div>
+               <div class="experience-content">
+                <div class="timeline-content">
+                 <p class="exp-year">
+                  March 2011
+                 </p>
+                 <h4 class="exp-title">
+                  Certificate for International Volunteer Service
+                 </h4>
+                 <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                 </p>
+                </div>
+               </div>
+              </li>
+              <li>
+               <div class="experience-user">
+                <div class="before-circle">
+                </div>
+               </div>
+               <div class="experience-content">
+                <div class="timeline-content">
+                 <p class="exp-year">
+                  May 2008
+                 </p>
+                 <h4 class="exp-title">
+                  The Dental Professional of The Year Award
+                 </h4>
+                 <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                 </p>
+                </div>
+               </div>
+              </li>
+             </ul>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="tab-pane fade" id="doc_locations" role="tabpanel">
+         <div class="location-list">
+          <div class="row">
+           <div class="col-md-6">
+            <div class="clinic-content">
+             <h4 class="clinic-name">
+              <a href="#">
+               Medlife Medical
+              </a>
+             </h4>
+             <div class="rating">
+              <i class="fas fa-star filled">
+              </i>
+              <i class="fas fa-star filled">
+              </i>
+              <i class="fas fa-star filled">
+              </i>
+              <i class="fas fa-star filled">
+              </i>
+              <i class="fas fa-star">
+              </i>
+              <span class="d-inline-block average-rating">
+               (4)
+              </span>
+             </div>
+             <div class="clinic-details mb-0">
+              <h5 class="clinic-direction">
+               <i class="fas fa-map-marker-alt">
+               </i>
+               96 Red Hawk Road Cyrus, MN 56323
+               <br/>
+               <a href=" {% static 'javascript:void(0);' %} ">
+                Get Directions
+               </a>
+              </h5>
+              <ul>
+               <li>
+                <a data-fancybox="gallery2" href=" {% static 'assets/img/features/feature-01.jpg' %} ">
+                 <img alt="Feature Image" src=" {% static 'assets/img/features/feature-01.jpg' %} "/>
+                </a>
+               </li>
+               <li>
+                <a data-fancybox="gallery2" href=" {% static 'assets/img/features/feature-02.jpg' %} ">
+                 <img alt="Feature Image" src=" {% static 'assets/img/features/feature-02.jpg' %} "/>
+                </a>
+               </li>
+               <li>
+                <a data-fancybox="gallery2" href=" {% static 'assets/img/features/feature-03.jpg' %} ">
+                 <img alt="Feature Image" src=" {% static 'assets/img/features/feature-03.jpg' %} "/>
+                </a>
+               </li>
+               <li>
+                <a data-fancybox="gallery2" href=" {% static 'assets/img/features/feature-04.jpg' %} ">
+                 <img alt="Feature Image" src=" {% static 'assets/img/features/feature-04.jpg' %} "/>
+                </a>
+               </li>
+              </ul>
+             </div>
+            </div>
+           </div>
+           <div class="col-md-6">
+            <div class="clinic-timing">
+             <div>
+              <p class="timings-days">
+               <span>
+                Mon - Sat
+               </span>
+              </p>
+              <p class="timings-times">
+               <span>
+                10:00 AM - 2:00 PM
+               </span>
+               <span>
+                4:00 PM - 9:00 PM
+               </span>
+              </p>
+             </div>
+             <div>
+              <p class="timings-days">
+               <span>
+                Sun
+               </span>
+              </p>
+              <p class="timings-times">
+               <span>
+                10:00 AM - 2:00 PM
+               </span>
+              </p>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="location-list">
+          <div class="row">
+           <div class="col-md-6">
+            <div class="clinic-content">
+             <h4 class="clinic-name">
+              <a href="#">
+               Medlife Medical
+              </a>
+             </h4>
+             <div class="rating">
+              <i class="fas fa-star filled">
+              </i>
+              <i class="fas fa-star filled">
+              </i>
+              <i class="fas fa-star filled">
+              </i>
+              <i class="fas fa-star filled">
+              </i>
+              <i class="fas fa-star">
+              </i>
+              <span class="d-inline-block average-rating">
+               (4)
+              </span>
+             </div>
+             <div class="clinic-details mb-0">
+              <p class="clinic-direction">
+               <i class="fas fa-map-marker-alt">
+               </i>
+               310 Cambridge Drive New River, AZ 85020
+               <br/>
+               <a href=" {% static 'javascript:void(0);' %} ">
+                Get Directions
+               </a>
+              </p>
+              <ul>
+               <li>
+                <a data-fancybox="gallery2" href=" {% static 'assets/img/features/feature-01.jpg' %} ">
+                 <img alt="Feature Image" src=" {% static 'assets/img/features/feature-01.jpg' %} "/>
+                </a>
+               </li>
+               <li>
+                <a data-fancybox="gallery2" href=" {% static 'assets/img/features/feature-02.jpg' %} ">
+                 <img alt="Feature Image" src=" {% static 'assets/img/features/feature-02.jpg' %} "/>
+                </a>
+               </li>
+               <li>
+                <a data-fancybox="gallery2" href=" {% static 'assets/img/features/feature-03.jpg' %} ">
+                 <img alt="Feature Image" src=" {% static 'assets/img/features/feature-03.jpg' %} "/>
+                </a>
+               </li>
+               <li>
+                <a data-fancybox="gallery2" href=" {% static 'assets/img/features/feature-04.jpg' %} ">
+                 <img alt="Feature Image" src=" {% static 'assets/img/features/feature-04.jpg' %} "/>
+                </a>
+               </li>
+              </ul>
+             </div>
+            </div>
+           </div>
+           <div class="col-md-6">
+            <div class="clinic-timing">
+             <div>
+              <p class="timings-days">
+               <span>
+                Tue - Fri
+               </span>
+              </p>
+              <p class="timings-times">
+               <span>
+                11:00 AM - 1:00 PM
+               </span>
+               <span>
+                6:00 PM - 11:00 PM
+               </span>
+              </p>
+             </div>
+             <div>
+              <p class="timings-days">
+               <span>
+                Sat - Sun
+               </span>
+              </p>
+              <p class="timings-times">
+               <span>
+                8:00 AM - 10:00 AM
+               </span>
+               <span>
+                3:00 PM - 7:00 PM
+               </span>
+              </p>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="tab-pane fade" id="doc_reviews" role="tabpanel">
+         <div class="widget review-listing">
+          <ul class="comments-list">
+           <li>
+            <div class="comment">
+             <img alt="User Image" class="avatar avatar-sm rounded-circle" src=" {% static 'assets/img/patients/patient.jpg' %} "/>
+             <div class="comment-body">
+              <div class="meta-data">
+               <span class="comment-author">
+                Armando Pack
+               </span>
+               <span class="comment-date">
+                Reviewed 2 Days ago
+               </span>
+               <div class="review-count rating">
+                <i class="fas fa-star filled">
+                </i>
+                <i class="fas fa-star filled">
+                </i>
+                <i class="fas fa-star filled">
+                </i>
+                <i class="fas fa-star filled">
+                </i>
+                <i class="fas fa-star">
+                </i>
+               </div>
+              </div>
+              <p class="recommended">
+               <i class="far fa-thumbs-up">
+               </i>
+               I recommend the doctor
+              </p>
+              <p class="comment-content">
+               Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation.
+Curabitur non nulla sit amet nisl tempus
+              </p>
+              <div class="comment-reply">
+               <a class="comment-btn" href="#">
+                <i class="fas fa-reply">
+                </i>
+                Reply
+               </a>
+               <p class="recommend-btn">
+                <span>
+                 Recommend?
+                </span>
+                <a class="like-btn" href="#">
+                 <i class="far fa-thumbs-up">
+                 </i>
+                 Yes
+                </a>
+                <a class="dislike-btn" href="#">
+                 <i class="far fa-thumbs-down">
+                 </i>
+                 No
+                </a>
+               </p>
+              </div>
+             </div>
+            </div>
+            <ul class="comments-reply">
+             <li>
+              <div class="comment">
+               <img alt="User Image" class="avatar avatar-sm rounded-circle" src=" {% static 'assets/img/patients/patient1.jpg' %} "/>
+               <div class="comment-body">
+                <div class="meta-data">
+                 <span class="comment-author">
+                  Lindsey Kesterson
+                 </span>
+                 <span class="comment-date">
+                  Reviewed 3 Days ago
+                 </span>
+                 <div class="review-count rating">
+                  <i class="fas fa-star filled">
+                  </i>
+                  <i class="fas fa-star filled">
+                  </i>
+                  <i class="fas fa-star filled">
+                  </i>
+                  <i class="fas fa-star filled">
+                  </i>
+                  <i class="fas fa-star">
+                  </i>
+                 </div>
+                </div>
+                <p class="comment-content">
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam.
+Curabitur non nulla sit amet nisl tempus
+                </p>
+                <div class="comment-reply">
+                 <a class="comment-btn" href="#">
+                  <i class="fas fa-reply">
+                  </i>
+                  Reply
+                 </a>
+                 <p class="recommend-btn">
+                  <span>
+                   Recommend?
+                  </span>
+                  <a class="like-btn" href="#">
+                   <i class="far fa-thumbs-up">
+                   </i>
+                   Yes
+                  </a>
+                  <a class="dislike-btn" href="#">
+                   <i class="far fa-thumbs-down">
+                   </i>
+                   No
+                  </a>
+                 </p>
+                </div>
+               </div>
+              </div>
+             </li>
+            </ul>
+           </li>
+           <li>
+            <div class="comment">
+             <img alt="User Image" class="avatar avatar-sm rounded-circle" src=" {% static 'assets/img/patients/patient2.jpg' %} "/>
+             <div class="comment-body">
+              <div class="meta-data">
+               <span class="comment-author">
+                Travis Trimble
+               </span>
+               <span class="comment-date">
+                Reviewed 4 Days ago
+               </span>
+               <div class="review-count rating">
+                <i class="fas fa-star filled">
+                </i>
+                <i class="fas fa-star filled">
+                </i>
+                <i class="fas fa-star filled">
+                </i>
+                <i class="fas fa-star filled">
+                </i>
+                <i class="fas fa-star">
+                </i>
+               </div>
+              </div>
+              <p class="comment-content">
+               Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation.
+Curabitur non nulla sit amet nisl tempus
+              </p>
+              <div class="comment-reply">
+               <a class="comment-btn" href="#">
+                <i class="fas fa-reply">
+                </i>
+                Reply
+               </a>
+               <p class="recommend-btn">
+                <span>
+                 Recommend?
+                </span>
+                <a class="like-btn" href="#">
+                 <i class="far fa-thumbs-up">
+                 </i>
+                 Yes
+                </a>
+                <a class="dislike-btn" href="#">
+                 <i class="far fa-thumbs-down">
+                 </i>
+                 No
+                </a>
+               </p>
+              </div>
+             </div>
+            </div>
+           </li>
+          </ul>
+          <div class="all-feedback load-more mb-0">
+           <a class="btn btn-primary btn-sm" href="#">
+            Show all feedback
+           </a>
+          </div>
+         </div>
+         <div class="write-review">
+          <h4>
+           Write a review for
+           <strong>
+            Medlife Medical
+           </strong>
+          </h4>
+          <form>
+           <div class="form-group">
+            <label>
+             Review
+            </label>
+            <div class="star-rating">
+             <input id="star-5" name="rating" type="radio" value="star-5"/>
+             <label for="star-5" title="5 stars">
+              <i class="active fa fa-star">
+              </i>
+             </label>
+             <input id="star-4" name="rating" type="radio" value="star-4"/>
+             <label for="star-4" title="4 stars">
+              <i class="active fa fa-star">
+              </i>
+             </label>
+             <input id="star-3" name="rating" type="radio" value="star-3"/>
+             <label for="star-3" title="3 stars">
+              <i class="active fa fa-star">
+              </i>
+             </label>
+             <input id="star-2" name="rating" type="radio" value="star-2"/>
+             <label for="star-2" title="2 stars">
+              <i class="active fa fa-star">
+              </i>
+             </label>
+             <input id="star-1" name="rating" type="radio" value="star-1"/>
+             <label for="star-1" title="1 star">
+              <i class="active fa fa-star">
+              </i>
+             </label>
+            </div>
+           </div>
+           <div class="form-group">
+            <label>
+             Title of your review
+            </label>
+            <input class="form-control" placeholder="If you could say it in one sentence, what would you say?" type="text"/>
+           </div>
+           <div class="form-group">
+            <label>
+             Your review
+            </label>
+            <textarea class="form-control" id="review_desc" maxlength="100"></textarea>
+            <div class="d-flex justify-content-between mt-3">
+             <small class="text-muted">
+              <span id="chars">
+               100
+              </span>
+              characters remaining
+             </small>
+            </div>
+           </div>
+           <hr/>
+           <div class="form-group">
+            <div class="terms-accept">
+             <div class="custom-checkbox">
+              <input id="terms_accept" type="checkbox"/>
+              <label for="terms_accept">
+               I have read and accept
+               <a href="#">
+                Terms &amp; Conditions
+               </a>
+              </label>
+             </div>
+            </div>
+           </div>
+           <div class="submit-section">
+            <button class="btn btn-primary submit-btn" type="submit">
+             Add Review
+            </button>
+           </div>
+          </form>
+         </div>
+        </div>
+        <div class="tab-pane fade" id="doc_business_hours" role="tabpanel">
+         <div class="row">
+          <div class="col-md-6 offset-md-3">
+           <div class="widget business-widget">
+            <div class="widget-content">
+             <div class="listing-hours">
+              <div class="card-header">
+               <div class="listing-day current mb-0 pb-0">
+                <div class="day">
+                 Today
+                 <span>
+                  5 Nov 2019
+                 </span>
+                </div>
+                <div class="time-items">
+                 <span class="open-status">
+                  <span class="badge success-status mb-1">
+                   Open Now
+                  </span>
+                 </span>
+                 <span class="time">
+                  07:00 AM - 09:00 PM
+                 </span>
+                </div>
+               </div>
+              </div>
+              <div class="card-body">
+               <div class="listing-day">
+                <div class="day">
+                 Monday
+                </div>
+                <div class="time-items">
+                 <span class="time">
+                  07:00 AM - 09:00 PM
+                 </span>
+                </div>
+               </div>
+               <div class="listing-day">
+                <div class="day">
+                 Tuesday
+                </div>
+                <div class="time-items">
+                 <span class="time">
+                  07:00 AM - 09:00 PM
+                 </span>
+                </div>
+               </div>
+               <div class="listing-day">
+                <div class="day">
+                 Wednesday
+                </div>
+                <div class="time-items">
+                 <span class="time">
+                  07:00 AM - 09:00 PM
+                 </span>
+                </div>
+               </div>
+               <div class="listing-day">
+                <div class="day">
+                 Thursday
+                </div>
+                <div class="time-items">
+                 <span class="time">
+                  07:00 AM - 09:00 PM
+                 </span>
+                </div>
+               </div>
+               <div class="listing-day">
+                <div class="day">
+                 Friday
+                </div>
+                <div class="time-items">
+                 <span class="time">
+                  07:00 AM - 09:00 PM
+                 </span>
+                </div>
+               </div>
+               <div class="listing-day">
+                <div class="day">
+                 Saturday
+                </div>
+                <div class="time-items">
+                 <span class="time">
+                  07:00 AM - 09:00 PM
+                 </span>
+                </div>
+               </div>
+               <div class="listing-day closed">
+                <div class="day">
+                 Sunday
+                </div>
+                <div class="time-items">
+                 <span class="time">
+                  <span class="badge danger-status">
+                   Closed
+                  </span>
+                 </span>
+                </div>
+               </div>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <footer class="footer">
+    <div class="footer-top">
+     <div class="container">
+      <div class="row">
+       <div class="col-lg-3 col-md-6">
+        <div class="footer-widget footer-about">
+         <div class="footer-logo">
+          <img alt="logo" src=" {% static 'assets/img/logo.png' %} "/>
+         </div>
+         <div class="footer-about-content">
+          <p>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <div class="social-icon">
+           <ul>
+            <li>
+             <a href="#" target="_blank">
+              <i class="feather-facebook">
+              </i>
+             </a>
+            </li>
+            <li>
+             <a href="#" target="_blank">
+              <i class="feather-instagram">
+              </i>
+             </a>
+            </li>
+            <li>
+             <a href="#" target="_blank">
+              <i class="feather-linkedin">
+              </i>
+             </a>
+            </li>
+            <li>
+             <a href="#" target="_blank">
+              <i class="feather-twitter">
+              </i>
+             </a>
+            </li>
+           </ul>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6">
+        <div class="footer-widget footer-menu">
+         <h2 class="footer-title">
+          For Patients
+         </h2>
+         <ul>
+          <li>
+           <a href=" {% static 'search.html' %} ">
+            Search for Doctors
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'login.html' %} ">
+            Login
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'register.html' %} ">
+            Register
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'booking.html' %} ">
+            Booking
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'patient-dashboard.html' %} ">
+            Patient Dashboard
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6">
+        <div class="footer-widget footer-menu">
+         <h2 class="footer-title">
+          For Doctors
+         </h2>
+         <ul>
+          <li>
+           <a href=" {% static 'appointments.html' %} ">
+            Appointments
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'chat.html' %} ">
+            Chat
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'login.html' %} ">
+            Login
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'doctor-register.html' %} ">
+            Register
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'doctor-dashboard.html' %} ">
+            Doctor Dashboard
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6">
+        <div class="footer-widget footer-contact">
+         <h2 class="footer-title">
+          Contact Us
+         </h2>
+         <div class="footer-contact-info">
+          <div class="footer-address">
+           <span>
+            <i class="feather-map-pin">
+            </i>
+           </span>
+           <p>
+            3556 Beech Street, San Francisco,
+            <br/>
+            California, CA 94108
+           </p>
+          </div>
+          <p>
+           <i class="feather-phone">
+           </i>
+           +1 315 369 5943
+          </p>
+          <p class="mb-0">
+           <i class="feather-mail">
+           </i>
+           <a class="__cf_email__" data-cfemail="7e1a111d1d0b0c1b3e1b061f130e121b501d1113" href=" {% static '/cdn-cgi/l/email-protection' %} ">
+            [email protected]
+           </a>
+          </p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <div class="container">
+      <div class="copyright">
+       <div class="row">
+        <div class="col-md-6 col-lg-6">
+         <div class="copyright-text">
+          <p class="mb-0">
+           © 2021 Doccure. All rights reserved.
+          </p>
+         </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+         <div class="copyright-menu">
+          <ul class="policy-menu">
+           <li>
+            <a href=" {% static 'term-condition.html' %} ">
+             Terms and Conditions
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'privacy-policy.html' %} ">
+             Policy
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <div class="modal fade call-modal" id="voice_call">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+     <div class="modal-body">
+      <div class="call-box incoming-box">
+       <div class="call-wrapper">
+        <div class="call-inner">
+         <div class="call-user">
+          <img alt="User Image" class="call-avatar" src=" {% static 'assets/img/doctors/doctor-thumb-02.jpg' %} "/>
+          <h4>
+           Dr. Darren Elder
+          </h4>
+          <span>
+           Connecting...
+          </span>
+         </div>
+         <div class="call-items">
+          <a aria-label="Close" class="btn call-item call-end" data-dismiss="modal" href=" {% static 'javascript:void(0);' %} ">
+           <i class="material-icons">
+            call_end
+           </i>
+          </a>
+          <a class="btn call-item call-start" href=" {% static 'voice-call.html' %} ">
+           <i class="material-icons">
+            call
+           </i>
+          </a>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="modal fade call-modal" id="video_call">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+     <div class="modal-body">
+      <div class="call-box incoming-box">
+       <div class="call-wrapper">
+        <div class="call-inner">
+         <div class="call-user">
+          <img alt="User Image" class="call-avatar" src=" {% static 'assets/img/doctors/doctor-thumb-02.jpg' %} "/>
+          <h4>
+           Dr. Darren Elder
+          </h4>
+          <span>
+           Calling ...
+          </span>
+         </div>
+         <div class="call-items">
+          <a aria-label="Close" class="btn call-item call-end" data-dismiss="modal" href=" {% static 'javascript:void(0);' %} ">
+           <i class="material-icons">
+            call_end
+           </i>
+          </a>
+          <a class="btn call-item call-start" href=" {% static 'video-call.html' %} ">
+           <i class="material-icons">
+            videocam
+           </i>
+          </a>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script data-cfasync="false" src=" {% static '/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/js/jquery-3.6.0.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/js/bootstrap.bundle.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/plugins/fancybox/jquery.fancybox.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/js/script.js' %} ">
+  </script>
+ </body>
+</html>

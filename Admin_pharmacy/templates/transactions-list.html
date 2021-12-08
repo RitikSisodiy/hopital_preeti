@@ -1,0 +1,132 @@
+
+{% extends 'basics.html' %}
+{% block body %}
+{% load static %}
+   <div class="page-wrapper">
+    <div class="content container-fluid">
+     <div class="page-header">
+      <div class="row">
+       <div class="col-sm-12">
+        <h3 class="page-title">
+         Transactions
+        </h3>
+        <ul class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="{%url 'indexs'%}">
+           Dashboard
+          </a>
+         </li>
+         <li class="breadcrumb-item active">
+          Transactions
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-sm-12">
+       <div class="card">
+        <div class="card-body">
+         <div class="table-responsive">
+          <table class="datatable table table-hover table-center mb-0">
+           <thead>
+            <tr>
+             <th>
+              Invoice No
+             </th>
+             <th>
+              Product ID
+             </th>
+             <th>
+              Product Name
+             </th>
+             <th>
+              Total Amount
+             </th>
+             <th class="text-center">
+              Status
+             </th>
+             <th class="text-right">
+              Actions
+             </th>
+            </tr>
+           </thead>
+           <tbody>{% for i in product %}
+            <tr>
+             <td>
+              <a href="{% url 'invoice_views' %}?invoice_no={{i.id}}">
+               #IN0-{{i.id}}
+              </a>
+             </td>
+             <td>
+              #0{{i.product_id.id}}
+             </td>
+             <td>
+              <h2 class="table-avatar">
+               <span class="avatar avatar-sm mr-2">
+                <img alt="User Image" class="avatar-img" src="/media/{{i.product_id.img}}"/>
+               </span>
+               {{i.product_id.name}}
+              </h2>
+             </td>
+             <td>
+              ${{i.total}}
+             </td>
+             <td>
+            {% if i.payment_status == 'Unpaid' %}
+              <span class="badge badge-pill bg-warning inv-badge">
+             Unpaid
+              </span>
+              {% elif i.payment_status == 'Pending' %}
+               <span class="badge badge-pill bg-danger inv-badge">
+              Pending
+              </span>{% else %}
+               <span class="badge badge-pill bg-success inv-badge">
+              paid
+              </span>
+            {% endif %}
+             </td>
+             <td class="text-right">
+              <div class="actions">
+               <a class="btn btn-sm bg-danger-light" onclick="$('#ordersid').val('{{i.id}}');" data-toggle="modal" href="#delete_modal">
+                <i class="fe fe-trash">
+                </i>
+                Delete
+               </a>
+              </div>
+             </td>
+            </tr>
+            {%endfor%}
+           </tbody>
+          </table>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div aria-hidden="true" class="modal fade" id="delete_modal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+      <div class="modal-body"><form method="get">
+       <div class="form-content p-2">
+        <h4 class="modal-title">
+         Delete
+        </h4><input name="orderid" id="ordersid" value="{{i.id}}">
+        <p class="mb-4">
+         Are you sure want to delete?
+        </p>
+        <button class="btn btn-primary" type="submit">
+         Save
+        </button>
+        <button class="btn btn-danger" data-dismiss="modal" type="button">
+         Close
+        </button>
+       </div></form>
+      </div>
+     </div>
+    </div>
+   </div>
+
+{% endblock %}

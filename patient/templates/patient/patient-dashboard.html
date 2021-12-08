@@ -1,0 +1,648 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Dashboard
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Dashboard
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+       <div class="profile-sidebar">
+        <div class="widget-profile pro-widget-content">
+         <div class="profile-info-widget">
+          <a class="booking-doc-img" href="{% url 'patient_profile' %}?profile={{request.user.patient_record.id}}">
+           <img alt="User Image" src="/media/{{request.user.patient_record.img}}"/>
+          </a>
+          <div class="profile-det-info">
+           <h3>
+           {{request.user.patient_record.patient}}
+           </h3>
+           <div class="patient-details info-loc">
+            <h5>
+             <i class="feather-gift">
+             </i>
+            {{request.user.patient_record.DOB}}, {{request.user.patient_record.age}}years
+            </h5>
+            <h5 class="mb-0">
+             <i class="feather-map-pin">
+             </i>
+            {{request.user.patient_record.address}}
+            </h5>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="dashboard-widget">
+         <nav class="dashboard-menu">
+          <ul>
+           <li class="active">
+            <a href="{% url 'patient_dashboard'%}?Pid={{request.user.patient_record.id}}">
+             <span>
+              Dashboard
+             </span>
+             <i class="feather-airplay">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'favourites'%}?pa={{request.user.patient_record.id}}">
+             <span>
+              Favourites
+             </span>
+             <i class="feather-bookmark">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="dependent.html">
+             <span>
+              Dependent
+             </span>
+             <i class="feather-users">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="chat.html">
+             <span>
+              Message
+             </span>
+             <i class="feather-message-circle">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="patient-accounts.html">
+             <span>
+              Accounts
+             </span>
+             <i class="fas fa-file-invoice-dollar">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'order_list' %}">
+             <span>
+              Orders
+             </span>
+             <i class="feather-file-text">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'add_medical_record' %}">
+             <span>
+              Add Medical Records
+             </span>
+             <i class="feather-paperclip">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="medical-details.html">
+             <span>
+              Medical Details
+             </span>
+             <i class="fas fa-user-injured">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'profile_setting'%}?profile={{request.user.patient_record.id}}">
+             <span>
+              Profile Settings
+             </span>
+             <i class="feather-user">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'change_password'%}">
+             <span>
+              Change Password
+             </span>
+             <i class="feather-lock">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'dlogout'%}">
+             <span>
+              Logout
+             </span>
+             <i class="feather-log-out">
+             </i>
+            </a>
+           </li>
+          </ul>
+         </nav>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-7 col-lg-8 col-xl-9">
+       <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 patient-dashboard-top">
+         <div class="card">
+          <div class="card-body text-center">
+           <div class="mb-3">
+            <img alt="" src="{% static 'assets/img/specialities/pt-dashboard-01.png' %}" width="55"/>
+           </div>
+           <h5>
+            Heart Rate
+           </h5>
+           <h6>{{pat}}
+            {{request.user.patient_record.patient_dashB.heart_rate}}
+           </h6>
+          </div>
+         </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 patient-dashboard-top">
+         <div class="card">
+          <div class="card-body text-center">
+           <div class="mb-3">
+            <img alt="" src="{% static 'assets/img/specialities/pt-dashboard-02.png' %}" width="55"/>
+           </div>
+           <h5>
+            Body Temperature
+           </h5>
+           <h6>
+            {{request.user.patient_record.patient_dashB.body_temp}} C
+           </h6>
+          </div>
+         </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 patient-dashboard-top">
+         <div class="card">
+          <div class="card-body text-center">
+           <div class="mb-3">
+            <img alt="" src="{% static 'assets/img/specialities/pt-dashboard-03.png' %}" width="55"/>
+           </div>
+           <h5>
+            Glucose Level
+           </h5>
+           <h6>
+    {{request.user.patient_record.patient_dashB.Glucose_Level_up}} - {{request.user.patient_record.patient_dashB.Glucose_Level_to}}
+           </h6>
+          </div>
+         </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 patient-dashboard-top">
+         <div class="card">
+          <div class="card-body text-center">
+           <div class="mb-3">
+            <img alt="" src="{% static 'assets/img/specialities/pt-dashboard-04.png' %}" width="55"/>
+           </div>
+           <h5>
+            Blood Pressure
+           </h5>
+           <h6>
+
+            {{request.user.patient_record.patient_dashB.BP_mg}}/{{request.user.patient_record.patient_dashB.BP_dl}}
+            <sub>
+             mg/dl
+            </sub>
+           </h6>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="row">
+        <div class="col-md-12">
+         <h4 class="sub-heading mb-4">
+          Patient Appoinment
+         </h4>
+        </div>
+       </div>
+       <div class="row patient-graph-col">
+        <div class="col-12">
+         <div class="">
+          <div class="row">
+           <div class="col-12 col-md-6 col-lg-4 col-xl-3 patient-graph-box">
+            <div class="graph-box">
+             <div>
+              <h4>
+               BMI Status
+              </h4>
+             </div>
+             <div class="graph-img">
+              <img alt="" src="{% static 'assets/img/specialities/pt-dashboard-04.png' %}" width="55"/>
+             </div>
+             <div class="graph-status-result">
+              <span class="graph-update-date">
+               Last Update  {{request.user.patient_record.patient_dashB.BMI_Status}}d
+              </span>
+             </div>
+            </div>
+           </div>
+           <div class="col-12 col-md-6 col-lg-4 col-xl-3 patient-graph-box">
+            <div class="graph-box">
+             <div>
+              <h4>
+               Heart Rate Status
+              </h4>
+             </div>
+             <div class="graph-img">
+              <img alt="" src="{% static 'assets/img/specialities/pt-dashboard-01.png' %}" width="55"/>
+             </div>
+             <div class="graph-status-result">
+              <span class="graph-update-date">
+               Last Update  {{request.user.patient_record.patient_dashB.Heart_Rate_Status}}d
+              </span>
+             </div>
+            </div>
+           </div>
+           <div class="col-12 col-md-6 col-lg-4 col-xl-3 patient-graph-box">
+            <div class="graph-box">
+             <div>
+              <h4>
+               FBC Status
+              </h4>
+             </div>
+             <div class="graph-img">
+              <img alt="" src="{% static 'assets/img/specialities/pt-dashboard-06.png' %}" width="55"/>
+             </div>
+             <div class="graph-status-result">
+              <span class="graph-update-date">
+               Last Update  {{request.user.patient_record.patient_dashB.FBC_Status}}d
+              </span>
+             </div>
+            </div>
+           </div>
+           <div class="col-12 col-md-6 col-lg-4 col-xl-3 patient-graph-box">
+            <div class="graph-box">
+             <div>
+              <h4>
+               Weight Status
+              </h4>
+             </div>
+             <div class="graph-img">
+              <img alt="" src="{% static 'assets/img/specialities/pt-dashboard-07.png' %}" width="55"/>
+             </div>
+             <div class="graph-status-result">
+              <span class="graph-update-date">
+               Last Update  {{request.user.patient_record.patient_dashB.Weight_Status}}d
+              </span>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="card">
+        <div class="card-header dct-appoinment">
+         <nav class="user-tabs mb-0">
+          <ul class="nav nav-tabs nav-tabs-bottom">
+           <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#pat_appointments">
+             Appointments
+            </a>
+           </li>
+           <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#pat_prescriptions">
+             Prescriptions
+            </a>
+           </li>
+           <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#pat_medical_records">
+             <span class="med-records">
+              Medical Records
+             </span>
+            </a>
+           </li>
+           <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#pat_billing">
+             Billing
+            </a>
+           </li>
+          </ul>
+         </nav>
+        </div>
+        <div class="card-body p-0">
+         <div class="tab-content pt-0">
+          <div class="tab-pane fade show active" id="pat_appointments">
+           <div class="card-table mb-0">
+            <div class="card-body">
+             <div class="table-responsive">
+              <table class="table table-hover table-center mb-0">
+               <thead>
+                <tr>
+                 <th>
+                  Doctor
+                 </th>
+                 <th>
+                  Appt Date
+                 </th>
+                 <th>
+                  Booking Date
+                 </th>
+                 <th>
+                  Amount
+                 </th>
+                 <th>
+                  Follow Up
+                 </th>
+                 <th>
+                  Status
+                 </th>
+                 <th>
+                  Actions
+                 </th>
+                </tr>
+               </thead>
+               <tbody>{% for i in list%}
+                <tr>
+                 <td>
+                  <h2 class="table-avatar">
+                   <a class="avatar avatar-sm mr-2" href="{% url 'Doctor_profile' i.dr_name.id %}">
+                    <img alt="User Image" class="avatar-img rounded-circle" src="/media/{{i.dr_name.img}}"/>
+                   </a>
+                   <a href="{% url 'Doctor_profile' i.dr_name.id %}">
+                    {{i.dr_name.name}}
+                    <span>
+                     {{i.dr_name.specialization}}
+                    </span>
+                   </a>
+                  </h2>
+                 </td>
+                 <td>
+                  {{i.date}}
+                  <span class="d-block text-info">
+                  {{i.time1}}-{{i.time2}}
+                  </span>
+                 </td>
+                 <td>
+                  12 Nov 2021
+                 </td>
+                 <td>
+                  ${{i.amount}}
+                 </td>
+                 <td>
+                  16 Nov 2021
+                 </td>
+                 <td>
+                  <span class="badge badge-pill success-status">
+                   Confirm
+                  </span>
+                 </td>
+                 <td>
+                  <div class="table-action">
+                   <a class="btn btn-sm bg-primary-light" href="javascript:void(0);">
+                    <i class="feather-printer">
+                    </i>
+                   </a>
+                   <a class="btn btn-sm bg-info-light" href="javascript:void(0);">
+                    <i class="feather-eye">
+                    </i>
+                   </a>
+                  </div>
+                 </td>
+                </tr>{%endfor%}
+
+               </tbody>
+              </table>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="tab-pane fade" id="pat_prescriptions">
+           <div class="card-table mb-0">
+            <div class="card-body">
+             <div class="table-responsive">
+              <table class="table table-hover table-center mb-0">
+               <thead>
+                <tr>
+                 <th>
+                  Date
+                 </th>
+                 <th>
+                  Name
+                 </th>
+                 <th>
+                  Created by
+                 </th>
+                 <th>
+                  Actions
+                 </th>
+                </tr>
+               </thead>
+               <tbody>{%for i in prec%}
+                <tr>
+                 <td>
+                  {{i.date}}
+                 </td>
+                 <td>
+                  Prescription {{i.id}}
+                 </td>
+                 <td>
+                  <h2 class="table-avatar">
+                   <a class="avatar avatar-sm mr-2" href="{% url 'Doctor_profile' i.doctor.id %}">
+                    <img alt="User Image" class="avatar-img rounded-circle" src="/media/{{i.doctor.img}}"/>
+                   </a>
+                   <a href="{% url 'Doctor_profile' i.doctor.id %}">
+                    {{i.doctor.name}}
+                    <span>
+                     {{i.doctor.specialization}}
+                    </span>
+                   </a>
+                  </h2>
+                 </td>
+                 <td>
+                  <div class="table-action">
+                   <a class="btn btn-sm bg-primary-light" href="javascript:void(0);">
+                    <i class="feather-printer">
+                    </i>
+                   </a>
+                   <a class="btn btn-sm bg-info-light" href="javascript:void(0);">
+                    <i class="feather-eye">
+                    </i>
+                   </a>
+                  </div>
+                 </td>
+                </tr>{%endfor%}
+
+               </tbody>
+              </table>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="tab-pane fade" id="pat_medical_records">
+           <div class="card-table mb-0">
+            <div class="card-body">
+             <div class="table-responsive">
+              <table class="table table-hover table-center mb-0">
+               <thead>
+                <tr>
+                 <th>
+                  ID
+                 </th>
+                 <th>
+                  Date
+                 </th>
+                 <th>
+                  Description
+                 </th>
+                 <th>
+                  Attachment
+                 </th>
+                 <th>
+                  Created
+                 </th>
+                 <th>
+                  Actions
+                 </th>
+                </tr>
+               </thead>
+               <tbody>{%for i in medical%}
+                <tr>
+                 <td>
+                  <a href="javascript:void(0);">
+                   #MR-00{{i.id}}
+                  </a>
+                 </td>
+                 <td>
+                  {{i.date}}
+                 </td>
+                 <td>
+                  {{i.desc}}
+                 </td>
+                 <td>
+                  <a href="#">
+                   {{i.attachment}}
+                  </a>
+                 </td>
+                 <td>
+                  <h2 class="table-avatar">
+                   <a class="avatar avatar-sm mr-2" href="{%url 'Doctor_profile' i.doctor.id %}">
+                    <img alt="User Image" class="avatar-img rounded-circle" src="/media/{{i.doctor.img}}"/>
+                   </a>
+                   <a href="{%url 'Doctor_profile' i.doctor.id %}">
+                 {{i.doctor.name}}
+                    <span>
+                    {{i.doctor.specialization}}
+                    </span>
+                   </a>
+                  </h2>
+                 </td>
+                 <td>
+                  <div class="table-action">
+                   <a class="btn btn-sm bg-info-light" href="javascript:void(0);">
+                    <i class="feather-eye">
+                    </i>
+                   </a>
+                   <a class="btn btn-sm bg-primary-light" href="javascript:void(0);">
+                    <i class="feather-printer">
+                    </i>
+                   </a>
+                  </div>
+                 </td>
+                </tr>
+               {%endfor%}
+               </tbody>
+              </table>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="tab-pane fade" id="pat_billing">
+           <div class="card-table mb-0">
+            <div class="card-body">
+             <div class="table-responsive">
+              <table class="table table-hover table-center mb-0">
+               <thead>
+                <tr>
+                 <th>
+                  Invoice No
+                 </th>
+                 <th>
+                  Doctor
+                 </th>
+                 <th>
+                  Amount
+                 </th>
+                 <th>
+                  Paid On
+                 </th>
+                 <th>
+                  Actions
+                 </th>
+                </tr>
+               </thead>
+               <tbody>{%for i in bill%}
+                <tr>
+                 <td>
+                  <a href="{%url 'invoice_view'%}?Pid={{i.patient.id}}&Did={{i.doctor.id}}&Bid={{i.id}}">
+                   #INV-00{{i.id}}
+                  </a>
+                 </td>
+                 <td>
+                  <h2 class="table-avatar">
+                   <a class="avatar avatar-sm mr-2" href="{%url 'Doctor_profile' i.doctor.id %}">
+                    <img alt="User Image" class="avatar-img rounded-circle" src=" /media/{{i.doctor.img}}"/>
+                   </a>
+                   <a href="{%url 'Doctor_profile' i.doctor.id %}">
+                     {{i.doctor.name}}
+                    <span>
+                    {{i.doctor.specialization}}
+                    </span>
+                   </a>
+                  </h2>
+                 </td>
+                 <td>
+                  ${{i.amount}}
+                 </td>
+                 <td>
+                  {{i.paid_on_date}}
+                 </td>
+                 <td>
+                  <div class="table-action">
+                   <a class="btn btn-sm bg-info-light" href="{%url 'invoice_view'%}?Pid={{i.patient.id}}
+                   &Did={{i.doctor.id}}&Bid={{i.id}}">
+                    <i class="feather-eye">
+                    </i>
+                   </a>
+                   <a class="btn btn-sm bg-primary-light" href="javascript:void(0);">
+                    <i class="feather-printer">
+                    </i>
+                   </a>
+                  </div>
+                 </td>
+                </tr>
+               {%endfor%}
+               </tbody>
+              </table>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   {%endblock%}

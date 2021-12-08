@@ -1,0 +1,346 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+<div class="breadcrumb-bar" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Profile Settings
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Profile Settings
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+       <div class="profile-sidebar">
+        <div class="widget-profile pro-widget-content">
+         <div class="profile-info-widget">
+          <a class="booking-doc-img" href="{% url 'Doctor_profile' request.user.Dr.id %}">
+           <img alt="User Image" src="/media/{{request.user.Dr.img}}"/>
+          </a>
+          <div class="profile-det-info">
+           <h3>
+           {{request.user.Dr.user}}
+           </h3>
+           <div class="patient-details">
+            <h5 class="mb-0">
+             {{request.user.Dr.qulification}}
+            </h5>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="dashboard-widget">
+         <nav class="dashboard-menu">
+          <ul>
+           <li>
+            <a href="{%url 'doctor_dashboard'%}?id={{request.user.Dr.id}}">
+             <span>
+              Dashboard
+             </span>
+             <i class="feather-airplay">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'appointments'%}?doctor={{request.user.Dr.id}}">
+             <span>
+              Appointments
+             </span>
+             <i class="feather-calendar">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'my_patient'%}?doctor={{request.user.Dr.id}}">
+             <span>
+              My Patients
+             </span>
+             <i class="fas fa-user-injured">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'schedule'%}">
+             <span>
+              Schedule Timings
+             </span>
+             <i class="far fa-hourglass">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="available-timings.html">
+             <span>
+              Available Timings
+             </span>
+             <i class="feather-clock">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'invoices'%}?invoice={{request.user.Dr.id}}">
+             <span>
+              Invoices
+             </span>
+             <i class="feather-file-text">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="accounts.html">
+             <span>
+              Accounts
+             </span>
+             <i class="fas fa-file-invoice-dollar">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'reviews'%}">
+             <span>
+              Reviews
+             </span>
+             <i class="feather-star">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'chat_doctor'%}">
+             <span>
+              Message
+             </span>
+             <i class="feather-message-circle">
+             </i>
+            </a>
+           </li>
+           <li class="active">
+            <a href="{%url 'doctor_profile_setting'%}?profile={{request.user.id}}">
+             <span>
+              Profile Settings
+             </span>
+             <i class="feather-user">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="social-media.html">
+             <span>
+              Social Media
+             </span>
+             <i class="feather-share-2">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'change_password' %}">
+             <span>
+              Change Password
+             </span>
+             <i class="feather-lock">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'dlogout'%}">
+             <span>
+              Logout
+             </span>
+             <i class="feather-log-out">
+             </i>
+            </a>
+           </li>
+          </ul>
+         </nav>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-7 col-lg-8 col-xl-9 basic-info">
+
+
+ <form method="post" action="{% url 'allpatient'%}?Oid={{time.0.id}}&pa_id={{patient.0.id}}&doctor={{request.user.Dr.id}}" >
+   {% csrf_token %}
+       <h4 class="sub-heading">
+        CheckUp Information
+       </h4>
+ <div class="row form-row">
+          <div class="col-md-3">
+           <div class="form-group">
+            <label>
+            Patient Name
+
+            </label>
+            <input class="form-control" placeholder="{{patient.0.name}}" readonly type="text"/>
+           </div>
+          </div>
+          <div class="col-md-3">
+           <div class="form-group">
+            <label>
+            Patient Email
+
+            </label>
+            <input class="form-control"placeholder="{{patient.0.email}}" readonly type="email"/>
+           </div>
+          </div>
+
+<div class="col-md-3">
+           <div class="form-group">
+            <label>
+           Appoinment Time
+            </label>
+            <input class="form-control" value="{{time.0.time1}}-{{time.0.time2}}" readonly type="text"/>
+           </div>
+          </div><div class="col-md-3">
+           <div class="form-group">
+            <label>
+            Appoeintment Date
+            </label>
+            <input class="form-control" value="{{time.0.date}}" readonly  type="text"/>
+           </div>
+          </div>
+
+          <div class="col-md-1">
+           <div class="form-group">
+            <label>
+            Age
+             </span>
+            </label>
+            <input class="form-control" name="age" id="age"     required type="text"/>
+           </div>
+          </div>
+          <div class="col-md-2">
+           <div class="form-group">
+            <label>
+            Blood Group
+            </label>
+              <select class="form-control select" name="bgroup" required id="bloood">
+              <option>
+              Select
+             </option>
+              <option>
+               A-
+              </option>
+              <option>
+               A+
+              </option>
+              <option>
+               B-
+              </option>
+              <option>
+               B+
+              </option>
+              <option>
+               AB-
+              </option>
+              <option>
+               AB+
+              </option>
+              <option>
+               O-
+              </option>
+              <option>
+               O+
+              </option>
+             </select>
+
+           </div>
+          </div>
+          <div class="col-md-6 col-lg-2">
+           <div class="form-group">
+            <label>
+             Gender
+            </label>
+            <select class="form-control select" name="gender" id="gen" required>
+             <option>
+              Select
+             </option>
+             <option>
+              Male
+             </option>
+             <option>
+              Female
+             </option>
+            </select>
+           </div>
+          </div>
+          <div class="col-md-6 col-lg-2">
+           <div class="form-group">
+            <label>
+             Date of Birth
+            </label>
+            <input class="form-control"  required name="dob" id="dob" type="date"/>
+           </div></div>
+
+         </div>
+
+       <div class="card contact-card">
+        <div class="card-body">
+         <div class="row form-row">
+          <div class="col-md-3">
+           <div class="form-group">
+            <label>
+             Heart Rate
+            </label>
+            <input class="form-control" required   name='HR' id="hb" type="text"/>
+           </div>
+          </div>
+          <div class="col-md-3">
+           <div class="form-group">
+            <label class="control-label">
+           Body Temperature
+            </label>
+            <input class="form-control" required name='BT' id="bt" type="text"/>
+           </div>
+          </div>
+          <div class="col-md-2">
+           <div class="form-group">
+            <label class="control-label">
+            Glucose Level-
+            </label>
+            <input class="form-control" required name="GL" id="gl" type="text"/>
+            Up<input class="form-control" required name="GL1" id="gl1" type="text"/>To
+
+           </div>
+          </div>
+          <div class="col-md-2">
+           <div class="form-group">
+            <label class="control-label">
+             Blood Pressure- mg/dl
+            </label>
+            <input class="form-control"  required name="BP" id="bp"  type="text"/>
+           mg<input class="form-control"  required name="BP1" id="bp1"  type="text"/>dl
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+
+
+       <div class="submit-section">
+        <a href="{% url 'my_patient'%}?id={{patient.0.id}}">
+        <button class="btn btn-primary submit-btn"  type="submit">
+         Save Changes
+        </button></a>
+       </div>
+ </form>
+      </div>
+     </div>
+    </div>
+   </div>{%endblock%}

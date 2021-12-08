@@ -1,0 +1,50 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Payment
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Payment
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content success-page-cont">
+    <div class="container-fluid">
+     <div class="row justify-content-center">
+      <div class="col-lg-6">
+       <div class="success-card">
+        <div class="success-cont">
+         <img alt="logo" src="{% static 'assets/img/icons/check-circle.png' %}"/>
+         <h3>
+          Payment Successfully!
+         </h3>
+         <p>
+          Product ID: {{request.user.username}}({{request.user.id}}) Your Order Placed Successfully.
+         </p>
+         <a class="btn btn-primary view-inv-btn" href="/">
+          Back to Home
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   {%endblock%}

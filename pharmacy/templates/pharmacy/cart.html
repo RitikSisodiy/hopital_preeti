@@ -1,0 +1,194 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Cart
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Cart
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container">
+     <div class="card card-table product-table">
+      <div class="card-body">
+       <div class="table-responsive">
+        <table class="table table-hover table-center mb-0">
+         <thead>
+          <tr>
+           <th>
+            Product
+           </th>
+           <th>
+            SKU
+           </th>
+           <th>
+            Price
+           </th>
+           <th>
+            Quantity
+           </th>
+           <th>
+            Total
+           </th>
+           <th>
+           </th>
+          </tr>
+         </thead>
+         <tbody>
+         {%for prod,all,qty in product%}
+          <tr>
+           <td>
+            <h2 class="table-avatar">
+             <a class="avatar avatar-sm mr-2" href="/product-description?@//@/={{prod.id}}">
+              <img alt="User Image" class="avatar-img" src="/media/{{prod.img}}"/>
+             </a>
+            </h2>
+            <a href="/product-description?@//@/={{prod.id}}">
+             {{prod.name}}
+            </a>
+           </td>
+           <td>
+            {{prod.doc.id}}
+           </td>
+           <td>
+            ${{prod.price}}
+           </td>
+           <td>
+            <div class="custom-increment cart">
+             <div class="input-group1">
+<a href="/minus?quntity={{prod.id}}&next={{prod.doc.name}}" >
+              <button id='minusButton'  class="btn btn-default btn-xs">
+        <i class="fas fa-minus mr-2"></i>
+        </button>
+</a>
+   <input class="input-number" id="quantity1" name="quantity1" type="text" value="{{qty}}"/>
+
+<a href="/plus?quntity={{prod.id}}&next={{prod.doc.name}}" >
+              <button id='plusButton' class="btn btn-default btn-xs">
+        <i class="fas fa-plus ml-2"></i>
+        </button>
+</a>  </div>
+            </div>
+           </td>
+           <td>
+            ${{all}}
+           </td>
+
+           <td class="text-right">
+            <div class="table-action">
+             <a class="btn btn-sm bg-danger-light" href="{% url 'delete'%}?id= {{prod.id}}&next={{prod.doc.name}}">
+              <i class="feather-x-circle">
+              </i>
+             </a>
+            </div>
+           </td>
+          </tr>
+{%endfor%}
+
+         </tbody>
+        </table>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-md-7 col-lg-8">
+      </div>
+      <div class="col-md-5 col-lg-4">
+       <div class="card booking-card">
+        <div class="card-header">
+         <h4 class="card-title">
+          Cart Totals
+         </h4>
+        </div>
+        <div class="card-body">
+         <div class="booking-summary border-0">
+          <div class="booking-item-wrap">
+           <ul class="booking-date">
+            <li>
+             Total
+             <span>
+              ${{total}}.00
+             </span>
+            </li>
+            <li>
+             Shipping
+             <span>
+              $25.00
+              <a href="#">
+               Calculate shipping
+              </a>
+             </span>
+            </li>
+           </ul>
+            <ul class="booking-fee pt-4">
+            <li>
+            sub-total
+             <span>
+              ${{sub}}
+             </span>
+            </li>
+           </ul>
+           <ul class="booking-fee pt-4">
+            <li>
+             Tax
+             <span>
+              $0.00
+             </span>
+            </li>
+           </ul>
+            <ul class="booking-fee pt-4">
+            <li>
+             Discount
+             <span>
+              {{dis}}%
+             </span>
+            </li>
+           </ul>
+          </div>
+         </div>
+        </div>
+        <div class="card-footer">
+         <div class="booking-total">
+          <ul class="booking-total-list">
+           <li>
+            <span>
+          All Total
+            </span>
+            <span class="total-cost">
+             ${{alltotal}}
+            </span>
+           </li>
+           <li>
+            <div class="clinic-booking pt-4">
+             <a class="apt-btn" href="{% url 'product_checkout'%}">
+              Proceed to checkout
+             </a>
+            </div>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+{%endblock%}

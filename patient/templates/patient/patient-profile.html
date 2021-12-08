@@ -1,0 +1,592 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Profile
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Profile
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar dct-dashbd-lft">
+       <div class="card widget-profile pat-widget-profile">
+        <div class="card-body">
+         <div class="pro-widget-content">
+          <div class="profile-info-widget">
+           <a class="booking-doc-img" href="#">
+            <img alt="User Image" src="/media/{{list.0.img}}"/>
+           </a>
+           <div class="profile-det-info">
+            <h3>
+             {{list.0.patient}}
+            </h3>
+            <div class="patient-details">
+             <h5>
+              <b>
+               Patient ID :
+              </b>
+              PT00{{list.0.id}}
+             </h5>
+             <h5 class="mb-0">
+              <i class="fas fa-map-marker-alt">
+              </i>
+               {{list.0.address}}
+             </h5>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="patient-info">
+          <ul>
+           <li>
+            Phone
+            <span>
+             {{list.0.mobile}}
+            </span>
+           </li>
+           <li>
+            Age
+            <span>
+             {{list.0.age}},{{list.0.gender}}
+            </span>
+           </li>
+           <li>
+            Blood Group
+            <span>
+             {{list.0.Blood_group }}
+            </span>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+       <div class="card">
+        <div class="card-header">
+         <h4 class="card-title">
+          Last Booking
+         </h4>
+        </div>
+        <ul class="list-group list-group-flush">
+         <li class="list-group-item">{% if last is not None %}
+          <div class="media align-items-center">
+           <div class="mr-3">
+            <img alt="Image placeholder" class="avatar rounded-circle" src="/media/{{last.doctor.img}}"/>
+           </div>
+           <div class="media-body">
+            <h5 class="d-block mb-0">
+             {{last.doctor.name}}
+            </h5>
+            <span class="d-block text-sm text-muted">
+              {{last.doctor.specialization}}
+            </span>
+            <span class="d-block text-sm text-muted">
+             {{last.date}} ,{{last.time1}}
+            </span>
+           </div>
+          </div>{% else %}
+          No Booking Available{% endif %}
+         </li>
+        </ul>
+       </div>
+      </div>
+      <div class="col-md-7 col-lg-8 col-xl-9 dct-appoinment">
+       <div class="card">
+        <div class="card-header">
+         <div class="user-tabs">
+          <ul class="nav nav-tabs nav-tabs-bottom flex-wrap">
+
+                    {% if request.user.userType.type == '1' %}
+           <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#pat_appointments">
+             Appointments
+            </a>
+           </li>{% endif %}
+           <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#pres">
+             <span>
+              Prescription
+             </span>
+            </a>
+           </li>
+           <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#medical">
+             <span class="med-records">
+              Medical Records
+             </span>
+            </a>
+           </li>
+           <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#billing">
+             <span>
+              Billing
+             </span>
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+        <div class="card-body p-0">
+         <div class="tab-content pt-0">
+
+         {% if request.user.userType.type == '1' %}
+          <div class="tab-pane fade show active" id="pat_appointments">
+           <div class="card-table mb-0">
+            <div class="card-body p-0">
+             <div class="table-responsive">
+              <table class="table table-hover table-center mb-0">
+               <thead>
+                <tr>
+                 <th>
+                  Doctor
+                 </th>
+                 <th>
+                  Appt Date
+                 </th>
+                 <th>
+                  Booking Date
+                 </th>
+                 <th>
+                  Amount
+                 </th>
+                 <th>
+                  Follow Up
+                 </th>
+                 <th>
+                  Status
+                 </th>
+                 <th>
+                 </th>
+                </tr>
+               </thead>
+               <tbody>{%for i in listapp%}
+                <tr>
+                 <td>
+                  <h2 class="table-avatar">
+                   <a class="avatar avatar-sm mr-2" href="{%url 'Doctor_profile' i.dr_name.id %}">
+                    <img alt="User Image" class="avatar-img rounded-circle" src="/media/{{i.dr_name.img}}"/>
+                   </a>
+                   <a href="{%url 'Doctor_profile' i.dr_name.id %}">
+                    {{i.dr_name.name}}
+                    <span>
+                     {{i.dr_name.specialization}}
+                    </span>
+                   </a>
+                  </h2>
+                 </td>
+                 <td>
+                 {{i.date}}
+                  <span class="d-block text-info">
+                    {{i.time1}}-{{i.time2}}
+                  </span>
+                 </td>
+                 <td>
+                  12 Nov 2021
+                 </td>
+                 <td>
+                  $160
+                 </td>
+                 <td>
+                  16 Nov 2021
+                 </td>
+                 <td>
+                  <span class="badge badge-pill success-status">
+                   Confirm
+                  </span>
+                 </td>
+                 <td class="text-right">
+                  <div class="table-action">
+                   <a class="btn btn-sm bg-success-light" href="javascript:void(0);">
+                    <i class="feather-edit">
+                    </i>
+                   </a>
+                  </div>
+                 </td>
+                </tr>
+               {%endfor%}
+               </tbody>
+              </table>
+             </div>
+            </div>
+           </div>
+          </div>{% endif %}
+          <div class="tab-pane fade show active" id="pres">
+           <div class="text-right card-body">
+            <a class="add-new-btn mb-0"   onclick="$('#Dids').val('{{request.user.Dr.id}}');"
+               data-target="#add_prescription" data-toggle="modal" >
+             Add Prescription
+            </a>
+           </div>
+           <div class="border-top card-table mb-0">
+            <div class="card-body">
+             <div class="table-responsive">
+              <table class="table table-hover table-center mb-0">
+               <thead>
+                <tr>
+                 <th>
+                  Date
+                 </th>
+                 <th>
+                  Name
+                 </th>
+                 <th>
+                  Created by
+                 </th>
+                 <th>
+                 </th>
+                </tr>
+               </thead>
+               <tbody>{%for i in prec%}
+                <tr>
+                 <td>
+                  {{i.date}}
+                 </td>
+                 <td>
+                  Prescription {{i.id}}
+                 </td>
+                 <td>
+                  <h2 class="table-avatar">
+                   <a class="avatar avatar-sm mr-2" href="{%url 'Doctor_profile' i.doctor.id %}">
+                    <img alt="User Image" class="avatar-img rounded-circle" src="/media/{{i.doctor.img}}"/>
+                   </a>
+                   <a href="{%url 'Doctor_profile' i.doctor.id %}">
+                    {{i.doctor.name}}
+                    <span>
+                     {{i.doctor.specialization}}
+                    </span>
+                   </a>
+                  </h2>
+                 </td>
+                 <td class="text-right">
+                  <div class="table-action">
+                   <a class="btn btn-sm bg-primary-light" href="javascript:void(0);">
+                    <i class="feather-printer">
+                    </i>
+                   </a>
+                   <a class="btn btn-sm bg-info-light" href="javascript:void(0);">
+                    <i class="feather-eye">
+                    </i>
+                   </a>
+                  </div>
+                 </td>
+                </tr>{%endfor%}
+
+               </tbody>
+              </table>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="tab-pane fade" id="medical">
+           <div class="text-right card-body">
+            <a class="add-new-btn mb-0"  onclick="$('#Did').val('{{request.user.Dr.id}}');"
+               data-target="#add_medical_records" data-toggle="modal" >
+             Add Medical Records
+            </a>
+           </div>
+           <div class="border-top card-table mb-0">
+            <div class="card-body">
+             <div class="table-responsive">
+              <table class="table table-hover table-center mb-0">
+               <thead>
+                <tr>
+                 <th>
+                  ID
+                 </th>
+                 <th>
+                  Date
+                 </th>
+                 <th>
+                  Description
+                 </th>
+                 <th>
+                  Attachment
+                 </th>
+                 <th>
+                  Created
+                 </th>
+                 <th>
+                 </th>
+                </tr>
+               </thead>
+               <tbody>{%for i in medical%}
+                <tr>
+                 <td>
+                  <a href="javascript:void(0);">
+                   #MR-00{{i.id}}
+                  </a>
+                 </td>
+                 <td>
+                  {{i.date}}
+                 </td>
+                 <td>
+                  {{i.desc}}
+                 </td>
+                 <td>
+                  <a href="#">
+                   {{i.attachment}}
+                  </a>
+                 </td>
+                 <td>
+                  <h2 class="table-avatar">
+                   <a class="avatar avatar-sm mr-2" href="{%url 'Doctor_profile' i.doctor.id %}">
+                    <img alt="User Image" class="avatar-img rounded-circle" src="/media/{{i.doctor.img}}"/>
+                   </a>
+                   <a href="{%url 'Doctor_profile' i.doctor.id %}">
+                    {{i.doctor.name}}
+                    <span>
+                     {{i.doctor.specialization}}
+                    </span>
+                   </a>
+                  </h2>
+                 </td>
+                 <td class="text-right">
+                  <div class="table-action">
+                   <a class="btn btn-sm bg-primary-light" href="javascript:void(0);">
+                    <i class="feather-printer">
+                    </i>
+                   </a>
+                   <a class="btn btn-sm bg-info-light" href="javascript:void(0);">
+                    <i class="feather-eye">
+                    </i>
+                   </a>
+                  </div>
+                 </td>
+                </tr>
+               {%endfor%}
+               </tbody>
+              </table>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="tab-pane" id="billing">
+           <div class="text-right card-body">
+            <a class="add-new-btn mb-0"  onclick="$('#Did1').val('{{request.user.Dr.id}}');" data-toggle="modal" data-target="#add_billing">
+             Add Billing
+            </a>
+           </div>
+           <div class="border-top card-table mb-0">
+            <div class="card-body">
+             <div class="table-responsive">
+              <table class="table table-hover table-center mb-0">
+               <thead>
+                <tr>
+                 <th>
+                  Invoice No
+                 </th>
+                 <th>
+                  Doctor
+                 </th>
+                 <th>
+                  Amount
+                 </th>
+                 <th>
+                  Paid On
+                 </th>
+                 <th>
+                 </th>
+                </tr>
+               </thead>
+               <tbody>{%for i in bill%}
+                <tr>
+                 <td>
+   <a href="{%url 'invoice_view'%}?Pid={{i.patient.id}}&Did={{i.doctor.id}}&Bid={{i.id}}">
+                   #INV-00{{i.id}}
+                  </a>
+
+
+                 </td>
+                 <td>
+                  <h2 class="table-avatar">
+                   <a class="avatar avatar-sm mr-2" href="{%url 'Doctor_profile' i.doctor.id %}">
+                    <img alt="User Image" class="avatar-img rounded-circle" src="/media/{{i.doctor.img}}"/>
+                   </a>
+                   <a href="{%url 'Doctor_profile' i.doctor.id %}">
+                    {{i.doctor.name}}
+                    <span>
+                    {{i.doctor.specialization}}
+                    </span>
+                   </a>
+                  </h2>
+                 </td>
+                 <td>
+                  ${{i.amount}}
+                 </td>
+                 <td>
+                  {{i.paid_on_date}}
+                 </td>
+                 <td class="text-right">
+                  <div class="table-action">
+                   <a class="btn btn-sm bg-primary-light" href="javascript:void(0);">
+                    <i class="feather-printer">
+                    </i>
+                   </a>
+                   <a class="btn btn-sm bg-info-light" href="javascript:void(0);">
+                    <i class="feather-eye">
+                    </i>
+                   </a>
+                  </div>
+                 </td>
+                </tr>
+               {%endfor%}
+               </tbody>
+              </table>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   {%endblock%}
+
+{% block body1 %}
+
+  <div class="modal fade custom-modal" id="add_medical_records">
+   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h3 class="modal-title">
+       Medical Records
+      </h3>
+      <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+       <span aria-hidden="true">
+        ×
+       </span>
+      </button>
+     </div>
+     <form method="post">{% csrf_token %}
+      <div class="modal-body"><input name="Did" id="Did" type="hidden">
+       <div class="form-group">
+        <label>
+         Date
+        </label>
+        <input class="form-control datetimepicker" required name="date" id="date" type="date" value=""/>
+       </div>
+       <div class="form-group">
+        <label>
+         Description ( Optional )
+        </label>
+        <textarea class="form-control" name="dese" id="dese"></textarea>
+       </div>
+       <div class="form-group">
+        <label>
+         Upload File
+        </label>
+        <input class="form-control" name="file" required id="file" type="file"/>
+       </div>
+       <div class="submit-section text-center">
+        <button class="btn btn-primary submit-btn" type="submit">
+         Submit
+        </button>
+        <button class="btn btn-secondary submit-btn" data-dismiss="modal" type="button">
+         Cancel
+        </button>
+       </div>
+      </div>
+     </form>
+    </div>
+   </div>
+  </div>
+
+  <div class="modal fade custom-modal" id="add_billing">
+   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h3 class="modal-title">
+       Medical Records
+      </h3>
+      <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+       <span aria-hidden="true">
+        ×
+       </span>
+      </button>
+     </div>
+     <form method="post">{% csrf_token %}
+      <div class="modal-body"><input name="Did1" id="Did1" type="hidden">
+       <div class="form-group">
+        <label>
+       Paid On Date
+        </label>
+        <input class="form-control datetimepicker" name="date"  required id="date1" type="date" value=""/>
+       </div>
+       <div class="form-group">
+        <label>
+         Amount
+        </label>
+        <input class="form-control datetimepicker" name="amount" required  id="amount" type="number" value=""/>
+       </div>
+
+       <div class="submit-section text-center">
+        <button class="btn btn-primary submit-btn" type="submit">
+         Submit
+        </button>
+        <button class="btn btn-secondary submit-btn" data-dismiss="modal" type="button">
+         Cancel
+        </button>
+       </div>
+      </div>
+     </form>
+    </div>
+   </div>
+  </div>
+
+  <div class="modal fade custom-modal" id="add_prescription">
+   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h3 class="modal-title">
+       Medical Records
+      </h3>
+      <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+       <span aria-hidden="true">
+        ×
+       </span>
+      </button>
+     </div>
+     <form method="post">{% csrf_token %}
+      <div class="modal-body"><input name="Dids" id="Dids" type="hidden">
+       <div class="form-group">
+        <label>
+         Date
+        </label>
+        <input class="form-control datetimepicker" name="date" required id="dates" type="date" value=""/>
+       </div>
+       <div class="submit-section text-center">
+        <button class="btn btn-primary submit-btn" type="submit">
+         Submit
+        </button>
+        <button class="btn btn-secondary submit-btn" data-dismiss="modal" type="button">
+         Cancel
+        </button>
+       </div>
+      </div>
+     </form>
+    </div>
+   </div>
+  </div>
+{% endblock body1%}

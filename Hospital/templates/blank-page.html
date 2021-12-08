@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8"/>
+    <title>
+        Doccure
+    </title>
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=0" name="viewport"/>
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon"/>
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/plugins/fontawesome/css/all.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/feather.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"/>
+    <!--[if lt IE 9]>
+
+    <script src="{% static 'assets/js/html5shiv.min.js' %}"></script>
+
+    <script src="{% static 'assets/js/respond.min.js' %}"></script>
+
+    <![endif]-->
+</head>
+<body>
+<div class="main-wrapper">
+    <header class="header">
+        <nav class="navbar navbar-expand-lg header-nav">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" id="mobile_btn">
+       <span class="bar-icon">
+        <span>
+        </span>
+        <span>
+        </span>
+        <span>
+        </span>
+       </span>
+                </a>
+                <a class="navbar-brand logo" href="/">
+                    <img alt="Logo" class="img-fluid" src="{% static 'assets/img/logo.png' %}"/>
+                </a>
+            </div>
+            <div class="main-menu-wrapper">
+                <div class="menu-header">
+                    <a class="menu-logo" href="/">
+                        <img alt="Logo" class="img-fluid" src="{% static 'assets/img/logo.png' %}"/>
+                    </a>
+                    <a class="menu-close" href="javascript:void(0);" id="menu_close">
+                        <i class="fas fa-times">
+                        </i>
+                    </a>
+                </div>
+                <ul class="main-nav">
+                    <li>
+                        <a href="/">
+                            <i class="fas fa-plus">
+                            </i>
+                            Home
+                        </a>
+                    </li>
+                    {% if request.user.userType.type == '2' %}
+                    <li class="has-submenu">
+                        <a href="">
+                            <i class="fas fa-plus">
+                            </i>
+                            Doctors
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="{% url 'doctor_dashboard'%}?id={{request.user.Dr.id}}">
+                                    Doctor Dashboard
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'appointments'%}?doctor={{request.user.Dr.id}}">
+                                    Appointments
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'schedule'%}">
+                                    Schedule Timing
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'my_patient'%}?doctor={{request.user.Dr.id}}">
+                                    Patients List
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'chat_doctor' %}">
+                                    Chat
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'invoices'%}?invoice={{request.user.Dr.id}}">
+                                    Invoices
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{%url 'doctor_profile_setting'%}?profile={{request.user.Dr.id}}">
+                                    Profile Settings
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url 'reviews'%}">
+                                    Reviews
+                                </a>
+                            </li>
+                            <li>
+                        <a href="{% url 'change_password'%}">
+                            Change Password
+                        </a>
+                    </li>
+                        </ul>
+                    </li>
+                    {% endif %}
+
+                    {% if request.user.userType.type == '1' %}
+                    <li class="has-submenu">
+                        <a href="">
+                            <i class="fas fa-plus">
+                            </i>
+                            Patients
+                        </a>
+                        <ul class="submenu">
+                    <li>
+                        <a href="{% url 'search' %}">
+                            Search Doctor
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'patient_dashboard'%}?Pid={{request.user.patient_record.id}}">
+                            Patient Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'favourites'%}?pa={{request.user.id}}">
+                            Favourites
+                        </a>
+                    </li>
+<!--                    <li>-->
+<!--                        <a href="{% url 'chat_doctor' %}">-->
+<!--                            Chat-->
+<!--                        </a>-->
+<!--                    </li>-->
+                    <li>
+                        <a href="{%url 'profile_setting'%}?profile={{request.user.id}}">
+                            Profile Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'change_password'%}">
+                            Change Password
+                        </a>
+                    </li>
+                </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="/pharmacy-search">
+                        <i class="fas fa-plus">
+                        </i>
+                        Pharmacy
+                    </a>
+                </li>
+                {% endif %}
+                <li class="has-submenu">
+                    <a href="{% url 'blog_list'%}">
+                        <i class="fas fa-plus">
+                        </i>
+                        Blogs
+                    </a>
+                </li>
+                    {% if request.user.userType.type == '4' %}
+                <li class="has-submenu">
+                    <a href="{% url 'dashboard'%}">
+                        <i class="fas fa-plus">
+                        </i>
+                        Admin
+                    </a></li>
+                {%endif%}
+                {% if request.user.userType.type == '5' %}
+                <li class="has-submenu">
+                    <a href="{% url 'indexs' %}">
+                        <i class="fas fa-plus">
+                        </i>
+                        Pharmacy Admin
+                    </a>
+                </li>
+                {%endif%}
+                <li class="login-link">
+                    <a href="/login">
+                        Login / Signup
+                    </a>
+                </li>
+                {% if request.user.is_authenticated%}
+                <li class="has-submenu">
+                    <a href="/logout?@/@/={{request.user.id}}">
+                        <i class="fas fa-plus">
+                        </i>logout </a></li>
+                {%else%}
+                <li class="has-submenu">
+                    <a href="/login">
+                        <i class="fas fa-plus">
+                        </i>
+                        login </a></li>
+                <li class="has-submenu">
+                 <a href="{% url 'Doctor_register'%}">
+                        <i class="fas fa-plus">
+                        </i>
+                        signup </a></li>
+                {%endif%}
+                </ul>
+            </div>
+            <ul class="nav header-navbar-rht">
+                {% if request.user.userType.type == '2' %}
+                <li class="nav-item dropdown has-arrow logged-item">
+                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">
+        <span class="user-img">
+         <img alt="Fred Ortego" class="rounded-circle" src="/media/{{request.user.Dr.img}}" width="31"/>
+        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="user-header">
+                            <div class="avatar avatar-sm">
+                                <img alt="User Image" class="avatar-img rounded-circle"
+                                     src="/media/{{request.user.Dr.img}}"/>
+                            </div>
+                            <div class="user-text">
+                                <h6>
+                                    {{request.user.Dr.name}}
+                                </h6>
+                                <p class="text-muted mb-0">
+                                    Doctor
+                                </p>
+                            </div>
+                        </div>
+                        <a class="dropdown-item" href="{% url 'doctor_dashboard'%}?id={{request.user.Dr.id}}">
+                            Dashboard
+                        </a>
+                        <a class="dropdown-item"
+                           href="{% url 'doctor_profile_setting'%}?profile={{request.user.Dr.id}}">
+                            Profile Settings
+                        </a>
+                        <a class="dropdown-item" href="{% url 'dlogout'%}">
+                            Logout
+                        </a>
+                    </div>
+                </li>
+                {% elif request.user.userType.type == '1' %}
+                <li class="nav-item dropdown has-arrow logged-item">
+                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">
+        <span class="user-img">
+         <img alt="Fred Ortego" class="rounded-circle" src="/media/{{request.user.patient_record.img}}" width="31"/>
+        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="user-header">
+                            <div class="avatar avatar-sm">
+                                <img alt="User Image" class="avatar-img rounded-circle"
+                                     src="/media/{{request.user.patient_record.img}}"/>
+                            </div>
+                            <div class="user-text">
+                                <h6>
+                                    {{request.patient.patient_record.name}}
+                                </h6>
+                                <p class="text-muted mb-0">
+                                    Patient
+                                </p>
+                            </div>
+                        </div>
+                        <a class="dropdown-item"
+                           href="{% url 'patient_dashboard'%}?Pid={{request.user.patient_record.id}}">
+                            Dashboard
+                        </a>
+                        <a class="dropdown-item" href="{%url 'profile_setting'%}?profile={{request.user.id}}">
+                            Profile Settings
+                        </a>
+                        <a class="dropdown-item" href="{% url 'dlogout'%}">
+                            Logout
+                        </a>
+                    </div>
+                </li>
+                {% elif request.user.userType.type == '5' %}
+                <li class="nav-item dropdown has-arrow logged-item">
+                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">
+        <span class="user-img">
+         <img alt="Fred Ortego" class="rounded-circle" src='/media/{{request.user.pharmacy_admin_record.img}}'
+              width="31"/>
+        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="user-header">
+                            <div class="avatar avatar-sm">
+                                <img alt="User Image" class="avatar-img rounded-circle"
+                                     src="/media/{{request.user.pharmacy_admin_record.img}}"/>
+                            </div>
+                            <div class="user-text">
+                                <h6>
+                                    {{request.user.pharmacy_admin_record.name}}
+                                </h6>
+                                <p class="text-muted mb-0">
+                                    Pharmacy Admin
+                                </p>
+                            </div>
+                        </div>
+                        <a class="dropdown-item" href="{% url 'profile' %}">
+                            Profile Settings
+                        </a>
+                        <a class="dropdown-item" href="{% url 'dlogout'%}">
+                            Logout
+                        </a>
+                    </div>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+
+
+    </header>
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h5>
+
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-{{message.tags}} alert-success">
+                            <button type="button" class="close" data-dismiss="alert">
+                                ×
+                            </button>
+                            <strong>Message: {{message}}</strong>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% block body %} {% endblock %}
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget footer-about">
+                            <div class="footer-logo">
+                                <img alt="logo" src="{% static 'assets/img/logo.png' %}"/>
+                            </div>
+                            <div class="footer-about-content">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                </p>
+                                <div class="social-icon">
+                                    <ul>
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="feather-facebook">
+                                                </i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="feather-instagram">
+                                                </i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="feather-linkedin">
+                                                </i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" target="_blank">
+                                                <i class="feather-twitter">
+                                                </i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if request.user.userType.type == '1' %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget footer-menu">
+                            <h2 class="footer-title">
+                                For Patients
+                            </h2>
+                            <ul>
+                                <li>
+                                    <a href="{% url 'search' %}">
+                                        Search for Doctors
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/login">
+                                        Login
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'patient_register'%}">
+                                        Register
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'search' %}">
+                                        Booking
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'patient_dashboard'%}">
+                                        Patient Dashboard
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    {% elif request.user.userType.type == '2' %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget footer-menu">
+                            <h2 class="footer-title">
+                                For Doctors
+                            </h2>
+                            <ul>
+                                <li>
+                                    <a href="{% url 'appointments'%}?doctor={{request.user.Dr.id}}">
+                                        Appointments
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="chat.html">
+                                        Chat
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/login">
+                                        Login
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'Doctor_register'%}">
+                                        Register
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'doctor_dashboard'%}">
+                                        Doctor Dashboard
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="col-lg-3 col-md-6">
+                        <div class="footer-widget footer-contact">
+                            <h2 class="footer-title">
+                                Contact Us
+                            </h2>
+                            <div class="footer-contact-info">
+                                <div class="footer-address">
+           <span>
+            <i class="feather-map-pin">
+            </i>
+           </span>
+                                    <p>
+                                        3556 Beech Street, San Francisco,
+                                        <br/>
+                                        California, CA 94108
+                                    </p>
+                                </div>
+                                <p>
+                                    <i class="feather-phone">
+                                    </i>
+                                    +1 315 369 5943
+                                </p>
+                                <p class="mb-0">
+                                    <i class="feather-mail">
+                                    </i>
+                                    <a class="__cf_email__" data-cfemail="0d69626e6e787f684d68756c607d6168236e6260"
+                                       href="/cdn-cgi/l/email-protection">
+                                        [email protected]
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="copyright-text">
+                                <p class="mb-0">
+                                    © 2021 Doccure. All rights reserved.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="copyright-menu">
+                                <ul class="policy-menu">
+                                    <li>
+                                        <a href="term-condition.html">
+                                            Terms and Conditions
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="privacy-policy.html">
+                                            Policy
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+{% block body1 %} {% endblock body1 %}
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+</script>
+<script src="{% static 'assets/js/jquery-3.6.0.min.js' %}">
+</script>
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}">
+</script>
+<script src="{% static 'assets/js/script.js' %}">
+</script>
+</body>
+</html>

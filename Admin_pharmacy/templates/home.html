@@ -1,0 +1,225 @@
+
+{% extends 'basics.html' %}
+{% block body %}
+{% load static %}
+ <div class="page-wrapper" style="min-height:657px;">
+    <div class="content container-fluid">
+
+     <div class="page-header">
+      <div class="row">
+       <div class="col-sm-12">
+        <h3 class="page-title">
+         Welcome Admin!
+        </h3>
+        <ul class="breadcrumb">
+         <li class="breadcrumb-item active">
+          Dashboard
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-xl-3 col-sm-6 col-12">
+       <div class="card">
+        <div class="card-body">
+         <div class="dash-widget-header">
+          <span class="dash-widget-icon text-primary border-primary">
+           <i class="fe fe-money">
+           </i>
+          </span>
+          <div class="dash-count">
+           <h3>
+            $50.00
+           </h3>
+          </div>
+         </div>
+         <div class="dash-widget-info">
+          <h6 class="text-muted">
+           Sales Today
+          </h6>
+          <div class="progress progress-sm">
+           <div class="progress-bar bg-primary w-50">
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+       <div class="card">
+        <div class="card-body">
+         <div class="dash-widget-header">
+          <span class="dash-widget-icon text-success">
+           <i class="fe fe-credit-card">
+           </i>
+          </span>
+          <div class="dash-count">
+           <h3>
+            $5.22
+           </h3>
+          </div>
+         </div>
+         <div class="dash-widget-info">
+          <h6 class="text-muted">
+           Expense Today
+          </h6>
+          <div class="progress progress-sm">
+           <div class="progress-bar bg-success w-50">
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+       <div class="card">
+        <div class="card-body">
+         <div class="dash-widget-header">
+          <span class="dash-widget-icon text-danger border-danger">
+           <i class="fe fe-folder">
+           </i>
+          </span>
+          <div class="dash-count">
+           <h3>
+            {{prod}}
+           </h3>
+          </div>
+         </div>
+         <div class="dash-widget-info">
+          <h6 class="text-muted">
+           Medicine
+          </h6>
+          <div class="progress progress-sm">
+           <div class="progress-bar bg-danger w-50">
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+       <div class="card">
+        <div class="card-body">
+         <div class="dash-widget-header">
+          <span class="dash-widget-icon text-warning border-warning">
+           <i class="fe fe-users">
+           </i>
+          </span>
+          <div class="dash-count">
+           <h3>
+            {{supp}}
+           </h3>
+          </div>
+         </div>
+         <div class="dash-widget-info">
+          <h6 class="text-muted">
+           Staff
+          </h6>
+          <div class="progress progress-sm">
+           <div class="progress-bar bg-warning w-50">
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-md-12 col-lg-6">
+       <div class="card card-chart">
+        <div class="card-header">
+         <h4 class="card-title">
+          Revenue
+         </h4>
+        </div>
+        <div class="card-body">
+         <div id="morrisArea">
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-12 col-lg-6">
+       <div class="card card-chart">
+        <div class="card-header">
+         <h4 class="card-title">
+          Status
+         </h4>
+        </div>
+        <div class="card-body">
+         <div id="morrisLine">
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-md-12">
+       <div class="card card-table">
+        <div class="card-header">
+         <h4 class="card-title">
+          Latest Customers
+         </h4>
+        </div>
+        <div class="card-body">
+         <div class="table-responsive">
+          <table class="table table-hover table-center mb-0">
+           <thead>
+            <tr>
+             <th>
+              #
+             </th>
+             <th>
+              Name
+             </th>
+             <th>
+              Address
+             </th>
+             <th>
+              Telephone
+             </th>
+             <th>
+              Email
+             </th>
+             <th class="text-right">
+              Date added
+             </th>
+            </tr>
+           </thead>
+           <tbody>{% for p in product %}
+            <tr>
+             <td>
+              0{{forloop.counter}}
+             </td>
+             <td>
+              <h2 class="table-avatar">
+<!--               {{i.user.username}} {{i.0.user.username}} -->
+               {{p.0}}
+              </h2>
+             </td>
+             <td>
+              {{p.2}}
+             </td>
+             <td>
+              <h2 class="table-avatar">
+               +{{p.1}}
+              </h2>
+             </td>
+             <td>
+              <a class="__cf_email__" data-cfemail="f0a285928980958282999e97b08991989f9fde9d91999c" href="/cdn-cgi/l/email-protection">
+               [email protected]
+              </a>
+             </td>
+             <td class="text-right">
+              {{date|date:'Y-m-d'}}
+             </td>
+            </tr>
+           {% endfor%}
+           </tbody>
+          </table>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div></div></div>
+   {%endblock%}

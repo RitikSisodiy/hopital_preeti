@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Doccure
+  </title>
+  <meta content="width=device-width, initial-scale=1.0, user-scalable=0" name="viewport"/>
+  <link href=" {% static 'assets/img/favicon.png' %} " rel="icon"/>
+  <link href=" {% static 'assets/css/bootstrap.min.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/plugins/fontawesome/css/fontawesome.min.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/plugins/fontawesome/css/all.min.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/css/bootstrap-datetimepicker.min.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/plugins/select2/css/select2.min.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/plugins/fancybox/jquery.fancybox.min.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/css/feather.css' %} " rel="stylesheet"/>
+  <link href=" {% static 'assets/css/style.css' %} " rel="stylesheet"/>
+  <!--[if lt IE 9]>
+
+			<script src=" {% static 'assets/js/html5shiv.min.js' %} "></script>
+
+			<script src=" {% static 'assets/js/respond.min.js' %} "></script>
+
+		<![endif]-->
+ </head>
+ <body>
+  <div class="main-wrapper">
+   <header class="header">
+    <nav class="navbar navbar-expand-lg header-nav">
+     <div class="navbar-header">
+      <a href=" {% static 'javascript:void(0);' %} " id="mobile_btn">
+       <span class="bar-icon">
+        <span>
+        </span>
+        <span>
+        </span>
+        <span>
+        </span>
+       </span>
+      </a>
+      <a class="navbar-brand logo" href=" {% static 'index.html' %} ">
+       <img alt="Logo" class="img-fluid" src=" {% static 'assets/img/logo.png' %} "/>
+      </a>
+     </div>
+     <div class="main-menu-wrapper">
+      <div class="menu-header">
+       <a class="menu-logo" href=" {% static 'index.html' %} ">
+        <img alt="Logo" class="img-fluid" src=" {% static 'assets/img/logo.png' %} "/>
+       </a>
+       <a class="menu-close" href=" {% static 'javascript:void(0);' %} " id="menu_close">
+        <i class="fas fa-times">
+        </i>
+       </a>
+      </div>
+      <ul class="main-nav">
+       <li>
+        <a href=" {% static 'index.html' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Home
+        </a>
+       </li>
+       <li class="has-submenu">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Doctors
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'doctor-dashboard.html' %} ">
+           Doctor Dashboard
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'appointments.html' %} ">
+           Appointments
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'schedule-timings.html' %} ">
+           Schedule Timing
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'my-patients.html' %} ">
+           Patients List
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'patient-profile.html' %} ">
+           Patients Profile
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'chat-doctor.html' %} ">
+           Chat
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'invoices.html' %} ">
+           Invoices
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'doctor-profile-settings.html' %} ">
+           Profile Settings
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'reviews.html' %} ">
+           Reviews
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'doctor-register.html' %} ">
+           Doctor Register
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Patients
+        </a>
+        <ul class="submenu">
+         <li class="has-submenu">
+          <a href="#">
+           Doctors
+          </a>
+          <ul class="submenu">
+           <li>
+            <a href=" {% static 'map-grid.html' %} ">
+             Map Grid
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'map-list.html' %} ">
+             Map List
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href=" {% static 'search.html' %} ">
+           Search Doctor
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'doctor-profile.html' %} ">
+           Doctor Profile
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'booking.html' %} ">
+           Booking
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'checkout.html' %} ">
+           Checkout
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'booking-success.html' %} ">
+           Booking Success
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'patient-dashboard.html' %} ">
+           Patient Dashboard
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'favourites.html' %} ">
+           Favourites
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'chat.html' %} ">
+           Chat
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'profile-settings.html' %} ">
+           Profile Settings
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'change-password.html' %} ">
+           Change Password
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu active">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Pharmacy
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'pharmacy-details.html' %} ">
+           Pharmacy Details
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'pharmacy-search.html' %} ">
+           Pharmacy Search
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'product-all.html' %} ">
+           Product
+          </a>
+         </li>
+         <li class="active">
+          <a href=" {% static 'product-description.html' %} ">
+           Product Description
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'cart.html' %} ">
+           Cart
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'product-checkout.html' %} ">
+           Product Checkout
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'payment-success.html' %} ">
+           Payment Success
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'pharmacy-register.html' %} ">
+           Pharmacy Register
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Pages
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'voice-call.html' %} ">
+           Voice Call
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'video-call.html' %} ">
+           Video Call
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'search.html' %} ">
+           Search Doctors
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'calendar.html' %} ">
+           Calendar
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'components.html' %} ">
+           Components
+          </a>
+         </li>
+         <li class="has-submenu">
+          <a href=" {% static 'invoices.html' %} ">
+           Invoices
+          </a>
+          <ul class="submenu">
+           <li>
+            <a href=" {% static 'invoices.html' %} ">
+             Invoices
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'invoice-view.html' %} ">
+             Invoice View
+            </a>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <a href=" {% static 'blank-page.html' %} ">
+           Starter Page
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'login.html' %} ">
+           Login
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'register.html' %} ">
+           Register
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'forgot-password.html' %} ">
+           Forgot Password
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu">
+        <a href=" {% static '' %} ">
+         <i class="fas fa-plus">
+         </i>
+         Blog
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'blog-list.html' %} ">
+           Blog List
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'blog-grid.html' %} ">
+           Blog Grid
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'blog-details.html' %} ">
+           Blog Details
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="has-submenu">
+        <a href="#" target="_blank">
+         <i class="fas fa-plus">
+         </i>
+         Admin
+        </a>
+        <ul class="submenu">
+         <li>
+          <a href=" {% static 'admin/index.html' %} " target="_blank">
+           Admin
+          </a>
+         </li>
+         <li>
+          <a href=" {% static 'pharmacy/index.html' %} " target="_blank">
+           Pharmacy Admin
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="login-link">
+        <a href=" {% static 'login.html' %} ">
+         Login / Signup
+        </a>
+       </li>
+      </ul>
+     </div>
+     <ul class="nav header-navbar-rht">
+      <li class="nav-item dropdown has-arrow logged-item">
+       <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#">
+        <span class="user-img">
+         <img alt="Fred Ortego" class="rounded-circle" src=" {% static 'assets/img/doctors/doctor-thumb-02.jpg' %} " width="31"/>
+        </span>
+       </a>
+       <div class="dropdown-menu dropdown-menu-right">
+        <div class="user-header">
+         <div class="avatar avatar-sm">
+          <img alt="User Image" class="avatar-img rounded-circle" src=" {% static 'assets/img/doctors/doctor-thumb-02.jpg' %} "/>
+         </div>
+         <div class="user-text">
+          <h6>
+           Darren Elder
+          </h6>
+          <p class="text-muted mb-0">
+           Doctor
+          </p>
+         </div>
+        </div>
+        <a class="dropdown-item" href=" {% static 'doctor-dashboard.html' %} ">
+         Dashboard
+        </a>
+        <a class="dropdown-item" href=" {% static 'doctor-profile-settings.html' %} ">
+         Profile Settings
+        </a>
+        <a class="dropdown-item" href=" {% static 'login.html' %} ">
+         Logout
+        </a>
+       </div>
+      </li>
+     </ul>
+    </nav>
+   </header>
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Product Description
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href=" {% static 'index.html' %} ">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Product Description
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-5 col-lg-3 col-xl-3 theiaStickySidebar">
+       <div class="card search-filter">
+        <div class="card-body">
+         <div class="clini-infos mt-0">
+          <h2>
+           $19
+           <b class="text-lg strike">
+            $45
+           </b>
+           <span class="text-lg text-success">
+            <b>
+             10% off
+            </b>
+           </span>
+          </h2>
+         </div>
+         <span class="badge success-status">
+          In stock
+         </span>
+         <div class="custom-increment pt-4">
+          <div class="input-group1">
+           <span class="input-group-btn float-left">
+            <button class="quantity-left-minus btn btn-danger btn-number" data-field="" data-type="minus" type="button">
+             <span>
+              <i class="fas fa-minus">
+              </i>
+             </span>
+            </button>
+           </span>
+           <input class="input-number" id="quantity" name="quantity" type="text" value="10"/>
+           <span class="input-group-btn float-right">
+            <button class="quantity-right-plus btn btn-success btn-number" data-field="" data-type="plus" type="button">
+             <span>
+              <i class="fas fa-plus">
+              </i>
+             </span>
+            </button>
+           </span>
+          </div>
+         </div>
+         <div class="clinic-details mt-4">
+          <div class="clinic-booking">
+           <a class="apt-btn" href=" {% static 'cart.html' %} ">
+            Add To Cart
+           </a>
+          </div>
+         </div>
+         <div class="flex-fill mt-4 mb-0">
+          <ul class="list-group clinic-group">
+           <li class="list-group-item">
+            SKU
+            <span class="float-right">
+             201902-0057
+            </span>
+           </li>
+           <li class="list-group-item">
+            Pack Size
+            <span class="float-right">
+             100g
+            </span>
+           </li>
+           <li class="list-group-item">
+            Unit Count
+            <span class="float-right">
+             200ml
+            </span>
+           </li>
+           <li class="list-group-item">
+            Country
+            <span class="float-right">
+             Japan
+            </span>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+       <div class="search-filter">
+        <div class="">
+         <div class="flex-fill mt-0 mb-0">
+          <ul class="list-group benifits-col">
+           <li class="list-group-item d-flex align-items-center">
+            <div>
+             <i class="feather-truck">
+             </i>
+            </div>
+            <div>
+             Free Shipping
+             <br/>
+             <span class="text-sm">
+              For orders from $50
+             </span>
+            </div>
+           </li>
+           <li class="list-group-item d-flex align-items-center">
+            <div>
+             <i class="feather-help-circle">
+             </i>
+            </div>
+            <div>
+             Support 24/7
+             <br/>
+             <span class="text-sm">
+              Call us anytime
+             </span>
+            </div>
+           </li>
+           <li class="list-group-item d-flex align-items-center">
+            <div>
+             <i class="feather-shield">
+             </i>
+            </div>
+            <div>
+             100% Safety
+             <br/>
+             <span class="text-sm">
+              Only secure payments
+             </span>
+            </div>
+           </li>
+           <li class="list-group-item d-flex align-items-center">
+            <div>
+             <i class="feather-tag">
+             </i>
+            </div>
+            <div>
+             Hot Offers
+             <br/>
+             <span class="text-sm">
+              Discounts up to 90%
+             </span>
+            </div>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-7 col-lg-9 col-xl-9">
+       <div class="card">
+        <div class="card-body product-description">
+         <div class="doctor-widget">
+          <div class="doc-info-left">
+           <div class="doctor-img1">
+            <img alt="User Image" class="img-fluid" src=" {% static 'assets/img/products/product.jpg' %} "/>
+           </div>
+           <div class="doc-info-cont">
+            <h4 class="doc-name">
+             Benzaxapine Croplex
+            </h4>
+            <p>
+             <span class="text-muted">
+              Manufactured By
+             </span>
+             Hamdard (Wakf) Laboratories
+            </p>
+            <p>
+             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+            </p>
+            <div class="feature-product">
+             <span>
+              Applied for:
+             </span>
+             <ul>
+              <li>
+               Moisturization &amp; Nourishment
+              </li>
+              <li>
+               Blackhead Removal
+              </li>
+              <li>
+               Anti-acne &amp; Pimples
+              </li>
+              <li>
+               Whitening &amp; Fairness
+              </li>
+             </ul>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="card">
+        <div class="card-body">
+         <h3 class="sub-heading">
+          Product Details
+         </h3>
+         <div class="product-infos">
+          <div class="tab-pane fade show active" id="doc_overview" role="tabpanel">
+           <div class="row">
+            <div class="col-md-12">
+             <div class="widget about-widget">
+              <h4 class="widget-title">
+               Description
+              </h4>
+              <p>
+               Safi syrup is best for purifying the blood. As it contains herbal extracts it can cure indigestion, constipation, nose bleeds and acne boils. It helps in the removal of the toxins from the blood. It improves the complexion and gives you a healthy life
+              </p>
+             </div>
+             <div class="widget awards-widget">
+              <h4 class="widget-title">
+               Highlights
+              </h4>
+              <div class="experience-box">
+               <ul class="experience-list">
+                <li>
+                 <div class="experience-user">
+                  <div class="before-circle">
+                  </div>
+                 </div>
+                 <div class="experience-content">
+                  <div class="timeline-content">
+                   <p>
+                    Safi syrup is known for its best purifying syrup for blood.
+                   </p>
+                  </div>
+                 </div>
+                </li>
+                <li>
+                 <div class="experience-user">
+                  <div class="before-circle">
+                  </div>
+                 </div>
+                 <div class="experience-content">
+                  <div class="timeline-content">
+                   <p>
+                    It helps in eliminating the toxins from the bloodstream.
+                   </p>
+                  </div>
+                 </div>
+                </li>
+                <li>
+                 <div class="experience-user">
+                  <div class="before-circle">
+                  </div>
+                 </div>
+                 <div class="experience-content">
+                  <div class="timeline-content">
+                   <p>
+                    It improves digestion.
+                   </p>
+                  </div>
+                 </div>
+                </li>
+                <li>
+                 <div class="experience-user">
+                  <div class="before-circle">
+                  </div>
+                 </div>
+                 <div class="experience-content">
+                  <div class="timeline-content">
+                   <p>
+                    It also helps in indigestion and constipation.
+                   </p>
+                  </div>
+                 </div>
+                </li>
+               </ul>
+              </div>
+             </div>
+             <div class="widget about-widget">
+              <h4 class="widget-title">
+               Directions for use
+              </h4>
+              <p>
+               Adults: Take 2 tablespoons once a day in a glass full of water.
+              </p>
+             </div>
+             <div class="widget about-widget">
+              <h4 class="widget-title">
+               Storage
+              </h4>
+              <p>
+               Store this syrup at room temperature protected from sunlight, heat, and moisture. Keep away from reaching out of children and pets. Ensure that the unused medicine is disposed of properly.
+              </p>
+             </div>
+             <div class="widget about-widget">
+              <h4 class="widget-title">
+               Administration Instructions
+              </h4>
+              <p>
+               Shake the bottle before its use. This syrup can be taken with or without food. The quantity consumed should not be lesser or greater than the prescribed one.
+              </p>
+             </div>
+             <div class="widget about-widget">
+              <h4 class="widget-title">
+               Warning
+              </h4>
+              <p>
+               This is not recommended for the pregnant women and lactating mothers.
+              </p>
+             </div>
+             <div class="widget about-widget mb-0">
+              <h4 class="widget-title">
+               Precaution
+              </h4>
+              <p class="mb-0">
+               Syrup has to be disposed of properly after 3 years from manufactured date and it is not recommended to use after the date.
+              </p>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <footer class="footer">
+    <div class="footer-top">
+     <div class="container">
+      <div class="row">
+       <div class="col-lg-3 col-md-6">
+        <div class="footer-widget footer-about">
+         <div class="footer-logo">
+          <img alt="logo" src=" {% static 'assets/img/logo.png' %} "/>
+         </div>
+         <div class="footer-about-content">
+          <p>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <div class="social-icon">
+           <ul>
+            <li>
+             <a href="#" target="_blank">
+              <i class="feather-facebook">
+              </i>
+             </a>
+            </li>
+            <li>
+             <a href="#" target="_blank">
+              <i class="feather-instagram">
+              </i>
+             </a>
+            </li>
+            <li>
+             <a href="#" target="_blank">
+              <i class="feather-linkedin">
+              </i>
+             </a>
+            </li>
+            <li>
+             <a href="#" target="_blank">
+              <i class="feather-twitter">
+              </i>
+             </a>
+            </li>
+           </ul>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6">
+        <div class="footer-widget footer-menu">
+         <h2 class="footer-title">
+          For Patients
+         </h2>
+         <ul>
+          <li>
+           <a href=" {% static 'search.html' %} ">
+            Search for Doctors
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'login.html' %} ">
+            Login
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'register.html' %} ">
+            Register
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'booking.html' %} ">
+            Booking
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'patient-dashboard.html' %} ">
+            Patient Dashboard
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6">
+        <div class="footer-widget footer-menu">
+         <h2 class="footer-title">
+          For Doctors
+         </h2>
+         <ul>
+          <li>
+           <a href=" {% static 'appointments.html' %} ">
+            Appointments
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'chat.html' %} ">
+            Chat
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'login.html' %} ">
+            Login
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'doctor-register.html' %} ">
+            Register
+           </a>
+          </li>
+          <li>
+           <a href=" {% static 'doctor-dashboard.html' %} ">
+            Doctor Dashboard
+           </a>
+          </li>
+         </ul>
+        </div>
+       </div>
+       <div class="col-lg-3 col-md-6">
+        <div class="footer-widget footer-contact">
+         <h2 class="footer-title">
+          Contact Us
+         </h2>
+         <div class="footer-contact-info">
+          <div class="footer-address">
+           <span>
+            <i class="feather-map-pin">
+            </i>
+           </span>
+           <p>
+            3556 Beech Street, San Francisco,
+            <br/>
+            California, CA 94108
+           </p>
+          </div>
+          <p>
+           <i class="feather-phone">
+           </i>
+           +1 315 369 5943
+          </p>
+          <p class="mb-0">
+           <i class="feather-mail">
+           </i>
+           <a class="__cf_email__" data-cfemail="e0848f8383959285a08598818d908c85ce838f8d" href=" {% static '/cdn-cgi/l/email-protection' %} ">
+            [email protected]
+           </a>
+          </p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <div class="container">
+      <div class="copyright">
+       <div class="row">
+        <div class="col-md-6 col-lg-6">
+         <div class="copyright-text">
+          <p class="mb-0">
+           © 2021 Doccure. All rights reserved.
+          </p>
+         </div>
+        </div>
+        <div class="col-md-6 col-lg-6">
+         <div class="copyright-menu">
+          <ul class="policy-menu">
+           <li>
+            <a href=" {% static 'term-condition.html' %} ">
+             Terms and Conditions
+            </a>
+           </li>
+           <li>
+            <a href=" {% static 'privacy-policy.html' %} ">
+             Policy
+            </a>
+           </li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <div class="modal fade call-modal" id="voice_call">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+     <div class="modal-body">
+      <div class="call-box incoming-box">
+       <div class="call-wrapper">
+        <div class="call-inner">
+         <div class="call-user">
+          <img alt="User Image" class="call-avatar" src=" {% static 'assets/img/doctors/doctor-thumb-02.jpg' %} "/>
+          <h4>
+           Dr. Darren Elder
+          </h4>
+          <span>
+           Connecting...
+          </span>
+         </div>
+         <div class="call-items">
+          <a aria-label="Close" class="btn call-item call-end" data-dismiss="modal" href=" {% static 'javascript:void(0);' %} ">
+           <i class="material-icons">
+            call_end
+           </i>
+          </a>
+          <a class="btn call-item call-start" href=" {% static 'voice-call.html' %} ">
+           <i class="material-icons">
+            call
+           </i>
+          </a>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="modal fade call-modal" id="video_call">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+     <div class="modal-body">
+      <div class="call-box incoming-box">
+       <div class="call-wrapper">
+        <div class="call-inner">
+         <div class="call-user">
+          <img alt="User Image" class="call-avatar" src=" {% static 'assets/img/doctors/doctor-thumb-02.jpg' %} "/>
+          <h4>
+           Dr. Darren Elder
+          </h4>
+          <span>
+           Calling ...
+          </span>
+         </div>
+         <div class="call-items">
+          <a aria-label="Close" class="btn call-item call-end" data-dismiss="modal" href=" {% static 'javascript:void(0);' %} ">
+           <i class="material-icons">
+            call_end
+           </i>
+          </a>
+          <a class="btn call-item call-start" href=" {% static 'video-call.html' %} ">
+           <i class="material-icons">
+            videocam
+           </i>
+          </a>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script data-cfasync="false" src=" {% static '/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/js/jquery-3.6.0.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/js/bootstrap.bundle.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/plugins/theia-sticky-sidebar/ResizeSensor.js' %} ">
+  </script>
+  <script src=" {% static 'assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js' %} ">
+  </script>
+  <script src=" {% static 'assets/plugins/select2/js/select2.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/js/moment.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/js/bootstrap-datetimepicker.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/plugins/fancybox/jquery.fancybox.min.js' %} ">
+  </script>
+  <script src=" {% static 'assets/js/script.js' %} ">
+  </script>
+ </body>
+</html>

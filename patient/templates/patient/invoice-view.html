@@ -1,0 +1,211 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Invoice View
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Invoice View
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+       <div class="invoice-content">
+        <div class="invoice-item">
+         <div class="row">
+          <div class="col-md-6">
+           <div class="invoice-logo">
+            <img alt="logo" src="{% static 'assets/img/logo.png' %}"/>
+           </div>
+          </div>
+          <div class="col-md-6">
+           <p class="invoice-details">
+            <strong>
+             Order:
+            </strong>
+            #00{{user.0.id}}{{bills.0.id}}
+            <br/>
+            <strong>
+             Issued:
+            </strong>
+            {{user.0.date|date:'d/m/Y'}}{{bills.0.paid_on_date}}
+           </p>
+          </div>
+         </div>
+        </div>
+        <div class="invoice-item">
+         <div class="row">
+          <div class="col-md-6">
+           <div class="invoice-info">
+            <strong class="customer-text">
+             Invoice From
+            </strong>
+            <p class="invoice-details invoice-details-two">
+            {{user.0.doctor.name}}{{bills.0.doctor.name}}
+             <br/>
+            {{user.0.doctor.address}} {{bills.0.doctor.address}}
+             <br/>
+<!--             Newyork, USA-->
+             <br/>
+            </p>
+           </div>
+          </div>
+          <div class="col-md-6">
+           <div class="invoice-info invoice-info2">
+            <strong class="customer-text">
+             Invoice To
+            </strong>
+            <p class="invoice-details">
+             {{user.0.patient.name}}  {{bills.0.patient.name}}
+             <br/> {{user.0.patient.address}}{{bills.0.patient.address}}
+             <br/>
+            </p>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="invoice-item">
+         <div class="row">
+          <div class="col-md-12">
+           <div class="invoice-info">
+            <strong class="customer-text">
+             Payment Method
+            </strong>
+            <p class="invoice-details invoice-details-two">
+             Debit Card
+             <br/>
+            Card No. : {{user.0.card_no}}
+             <br/>
+           Card Name : {{user.0.card_name}} Bank
+             <br/>
+            </p>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="invoice-item invoice-table-wrap">
+         <div class="row">
+          <div class="col-md-12">
+           <div class="table-responsive">
+            <table class="invoice-table table table-bordered">
+             <thead>
+              <tr>
+               <th>
+                Description
+               </th>
+               <th class="text-center">
+                Quantity
+               </th>
+               <th class="text-center">
+                VAT
+               </th>
+               <th class="text-right">
+                Total
+               </th>
+              </tr>
+             </thead>
+             <tbody>
+              <tr>
+               <td>
+                General Consultation
+               </td>
+               <td class="text-center">
+                1
+               </td>
+               <td class="text-center">
+                $0
+               </td>
+               <td class="text-right">
+                ${{user.0.doctor.fees_starting}}{{bills.0.doctor.fees_starting}}
+               </td>
+              </tr>
+              <tr>
+               <td>
+                Video Call Booking
+               </td>
+               <td class="text-center">
+                1
+               </td>
+               <td class="text-center">
+                $0
+               </td>
+               <td class="text-right">
+               $60
+               </td>
+              </tr>
+             </tbody>
+            </table>
+           </div>
+          </div>
+          <div class="col-md-6 col-xl-4 ml-auto">
+           <div class="table-responsive">
+            <table class="invoice-table-two table">
+             <tbody>
+<!--              <tr>-->
+<!--               <th>-->
+<!--                Subtotal:-->
+<!--               </th>-->
+<!--               <td>-->
+<!--                <span>-->
+<!--                 $350-->
+<!--                </span>-->
+<!--               </td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--               <th>-->
+<!--                Discount:-->
+<!--               </th>-->
+<!--               <td>-->
+<!--                <span>-->
+<!--                 -10%-->
+<!--                </span>-->
+<!--               </td>-->
+<!--              </tr>-->
+              <tr>
+               <th>
+                Total Amount:
+               </th>
+               <td>
+                <span>
+                 ${{user.0.amount}}{{bills.0.amount}}
+                </span>
+               </td>
+              </tr>
+             </tbody>
+            </table>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="other-info">
+         <h4>
+          Other information
+         </h4>
+         <p class="mb-0">
+        {{user.0.dr_name.Ov_view.about}} {{bills.0.doctor.Ov_view.about}}  </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   {%endblock%}

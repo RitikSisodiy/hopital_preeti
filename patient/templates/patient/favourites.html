@@ -1,0 +1,242 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Favourites
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Favourites
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+       <div class="profile-sidebar">
+        <div class="widget-profile pro-widget-content">
+         <div class="profile-info-widget">
+          <a class="booking-doc-img" href="{%url 'patient_profile'%}?profile={{request.user.patient_record.id}}">
+           <img alt="User Image" src="/media/{{request.user.patient_record.img}}"/>
+          </a>
+          <div class="profile-det-info">
+           <h3>
+           {{request.user.username}}
+           </h3>
+           <div class="patient-details info-loc">
+            <h5>
+             <i class="feather-gift">
+             </i>
+             {{request.user.patient_record.DOB}}, {{request.user.patient_record.age}} years
+            </h5>
+            <h5 class="mb-0">
+             <i class="feather-map-pin">
+             </i>
+              {{request.user.patient_record.address}}
+            </h5>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="dashboard-widget">
+         <nav class="dashboard-menu">
+          <ul>
+           <li>
+            <a href="{% url 'patient_dashboard'%}?Pid={{request.user.patient_record.id}}">
+             <span>
+              Dashboard
+             </span>
+             <i class="feather-airplay">
+             </i>
+            </a>
+           </li>
+           <li class="active">
+            <a href="{% url 'favourites'%}?pa={{request.user.patient_record.id}}">
+             <span>
+              Favourites
+             </span>
+             <i class="feather-bookmark">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="dependent.html">
+             <span>
+              Dependent
+             </span>
+             <i class="feather-users">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="chat.html">
+             <span>
+              Message
+             </span>
+             <i class="feather-message-circle">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="patient-accounts.html">
+             <span>
+              Accounts
+             </span>
+             <i class="fas fa-file-invoice-dollar">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'order_list' %}">
+             <span>
+              Orders
+             </span>
+             <i class="feather-file-text">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'add_medical_record' %}">
+             <span>
+              Add Medical Records
+             </span>
+             <i class="feather-paperclip">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="medical-details.html">
+             <span>
+              Medical Details
+             </span>
+             <i class="fas fa-user-injured">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'profile_setting'%}?profile={{request.user.patient_record.id}}">
+             <span>
+              Profile Settings
+             </span>
+             <i class="feather-user">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'change_password'%}">
+             <span>
+              Change Password
+             </span>
+             <i class="feather-lock">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'dlogout'%}">
+             <span>
+              Logout
+             </span>
+             <i class="feather-log-out">
+             </i>
+            </a>
+           </li>
+          </ul>
+         </nav>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-7 col-lg-8 col-xl-9">
+       <div class="row row-grid">{% if fav|length is not 0 %}
+        {% for i in fav%}
+        <div class="col-md-6 col-lg-4 col-xl-3">
+         <div class="profile-widget">
+          <div class="doc-img">
+           <a href="{% url 'Doctor_profile' i.dr_name.id %}">
+            <img alt="User Image" class="img-fluid" src="/media/{{i.dr_name.img}}"/>
+           </a>
+           <a class="fav-btn" href="javascript:void(0)">
+            <i class="far fa-bookmark">
+            </i>
+           </a>
+          </div>
+          <div class="pro-content">
+           <h3 class="title">
+            <a href="{% url 'Doctor_profile' i.dr_name.id %}">
+             {{i.dr_name.name}}
+            </a>
+            <i class="fas fa-check-circle verified">
+            </i>
+           </h3>
+           <p class="speciality">
+             {{i.dr_name.qulification}}
+           </p>
+           <div class="rating">
+            <i class="fas fa-star filled">
+            </i>
+            <i class="fas fa-star filled">
+            </i>
+            <i class="fas fa-star filled">
+            </i>
+            <i class="fas fa-star filled">
+            </i>
+            <i class="fas fa-star filled">
+            </i>
+            <span class="d-inline-block average-rating">
+             (17)
+            </span>
+           </div>
+           <ul class="available-info">
+            <li>
+             <i class="fas fa-map-marker-alt">
+             </i>
+             {{i.dr_name.address}}
+            </li>
+            <li>
+             <i class="far fa-clock">
+             </i>
+             Available on {{i.dr_name.0.buss.0.dates}}
+            </li>
+            <li>
+             <i class="far fa-money-bill-alt">
+             </i>
+             ${{i.dr_name.fees_starting}} - ${{i.dr_name.fees_end}}
+             <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum">
+             </i>
+            </li>
+           </ul>
+           <div class="profile-btn-list">
+            <a class="btn btn-primary view-btn" href="{% url 'Doctor_profile' i.dr_name.id %}">
+             View Profile
+            </a>
+            <a class="btn book-btn" href="{% url 'booking'%}?@//@/={{i.dr_name.id}}">
+             Book Now
+            </a>
+           </div>
+          </div>
+         </div>
+        </div>
+
+        {%endfor%} {% else %}<strong class="text-center my-4" style="font-size:30px; color:blue"> No Favourite !</strong>{% endif %}
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+
+{% endblock %}

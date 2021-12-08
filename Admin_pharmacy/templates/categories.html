@@ -1,0 +1,222 @@
+
+{% extends 'basics.html' %}
+{% block body %}
+{% load static %}
+<div class="page-wrapper" xmlns="http://www.w3.org/1999/html">
+    <div class="content container-fluid">
+     <div class="page-header">
+      <div class="row">
+       <div class="col-sm-7 col-auto">
+        <h3 class="page-title">
+         Categories
+        </h3>
+        <ul class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="{% url 'indexs'%}">
+           Dashboard
+          </a>
+         </li>
+         <li class="breadcrumb-item active">
+          Categories
+         </li>
+        </ul>
+       </div>
+       <div class="col-sm-5 col">
+        <a class="btn btn-primary float-right mt-2" data-toggle="modal" href="#Add_Specialities_details">
+         Add
+        </a>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-sm-12">
+       <div class="card">
+        <div class="card-body">
+         <div class="table-responsive">
+          <table class="datatable table table-hover table-center mb-0">
+           <thead>
+            <tr>
+             <th>
+              #
+             </th>
+             <th>
+              Name
+             </th>
+             <th>
+              Created date
+             </th>
+             <th class="text-right">
+              Actions
+             </th>
+            </tr>
+           </thead>
+           <tbody>{% for i in product %}
+            <tr>
+             <td>
+              {{forloop.counter}}
+             </td>
+             <td>
+              <h2 class="table-avatar">
+             {{i.cate}}‎
+              </h2>
+             </td>
+             <td>
+<!--              01-May-2020-12:00-->
+              {{i.date_created}}
+             </td>
+             <td class="text-right">
+              <div class="actions">
+               <a class="btn btn-sm bg-success-light" onclick="$('#catid').val('{{i.id}}');$('#catname').val('{{i.categorie}}');"   data-toggle="modal" href="#edit_specialities_details">
+
+
+                <i class="fe fe-pencil">
+                </i>
+                Edit
+                </a>
+               <a class="btn btn-sm bg-danger-light" data-toggle="modal" onclick="$('#catids').val('{{i.id}}');" href="#delete_modal">
+                <i class="fe fe-trash">
+                </i>
+                Delete
+               </a>
+              </div>
+             </td>
+            </tr>
+            {% endfor %}
+           </tbody>
+          </table>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>{%endblock%}
+{% block body1 %}
+   <div aria-hidden="true" class="modal fade" id="Add_Specialities_details" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+      <div class="modal-header">
+       <h5 class="modal-title">
+        Add Category
+       </h5>
+       <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+        <span aria-hidden="true">
+         ×
+        </span>
+       </button>
+      </div>
+      <div class="modal-body">
+       <form method="post" > {% csrf_token %}
+        <div class="row form-row">
+         <div class="col-12">
+          <div class="form-group">
+           <label>
+            Category
+           </label>
+<!--           <input class="form-control" name="catename" id="cat1" type="text"/>-->
+               <select class="form-control select" name="catename" id='cates' required="">
+               <option value="Phytopathology">
+                Phytopathology
+               </option>
+               <option selected="selected" value="Family Care">
+                Family Care
+               </option>
+               <option value="Cancer">
+                Cancer
+               </option>
+               <option value="Fitness &amp; Wellness">
+                Fitness &amp; Wellness
+               </option>
+               <option value="Hair care">
+                Hair care
+               </option>
+               <option value="Skin care">
+                Skin care
+               </option>
+               <option value="Neoplasms">
+                Neoplasms
+               </option>
+               <option value="Women's Care">
+                Women's Care
+               </option>
+               <option value="Sleep disorders">
+                Sleep disorders
+               </option>
+               <option value="Baby care">
+                Baby care
+               </option>
+              </select>
+
+          </div>
+         </div>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">
+         Save Changes
+        </button>
+       </form>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div aria-hidden="true" class="modal fade" id="edit_specialities_details" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+      <div class="modal-header">
+       <h5 class="modal-title">
+        Edit Category
+       </h5>
+       <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+        <span aria-hidden="true">
+         ×
+        </span>
+       </button>
+      </div>
+      <div class="modal-body">
+       <form method="post">{% csrf_token %}
+        <div class="row form-row">
+         <div class="col-12">
+          <div class="form-group">
+           <label>
+            Category
+           </label>
+           <input class="form-control" id="catid" name="catid" type="hidden" value=""/>
+
+           <input class="form-control" name="catname" id="cate" value="{{i.cate}}" type="text"/>
+
+
+          </div>
+         </div>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">
+         Save Changes
+        </button>
+       </form>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div aria-hidden="true" class="modal fade" id="delete_modal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+      <div class="modal-body">
+       <form method="get">
+       <div class="form-content p-2">
+        <input class="form-control" id="catids" name="catids" type="hidden" value=""/>
+        <h4 class="modal-title">
+         Delete
+        </h4>
+        <p class="mb-4">
+         Are you sure want to delete?
+        </p>
+        <button class="btn btn-primary" type="submit">
+         Save
+        </button>
+        <button class="btn btn-danger" data-dismiss="modal" type="button">
+         Close
+        </button>
+       </div></form>
+      </div>
+     </div>
+    </div>
+   </div>
+   {% endblock body1 %}

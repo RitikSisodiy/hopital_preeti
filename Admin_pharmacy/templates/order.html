@@ -1,0 +1,129 @@
+
+{% extends 'basics.html' %}
+{% block body %}
+{% load static %}
+<div class="page-wrapper">
+    <div class="content container-fluid">
+     <div class="page-header">
+      <div class="row">
+       <div class="col-12">
+        <h3 class="page-title">
+         Order
+        </h3>
+        <ul class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="{% url 'indexs' %}">
+           Dashboard
+          </a>
+         </li>
+         <li class="breadcrumb-item active">
+          Order
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-md-12">
+       <div class="card">
+        <div class="card-body">
+         <div class="table-responsive">
+          <table class="datatable table table-hover table-center mb-0">
+           <thead>
+            <tr>
+             <th>
+              #
+             </th>
+             <th>
+              Supplier ID
+             </th>
+             <th>
+              Supplier Name
+             </th>
+             <th>
+              Order by
+             </th>
+             <th>
+              Add order
+             </th>
+             <th>
+              Order list
+             </th>
+             <th>
+              Action
+             </th>
+            </tr>
+           </thead>
+           <tbody>{% for i in product%}
+            <tr>
+             <td>
+              {{forloop.counter}}
+             </td>
+             <td>
+              0{{i.id}}
+             </td>
+             <td>
+              {{i.supply}}
+             </td>
+             <td>
+              {{i.username}}
+             </td>
+             <td>
+              {{i.time|date:'d-m-Y'}}
+             </td>
+             <td>
+<!--              Dolofin Antigripal(Dolo)  3-->
+              {{i.product_name}}
+             </td>
+             <td>
+              <div class="actions">
+               <a class="btn btn-sm bg-danger-light" onclick="$('#suppid').val('{{i.id}}');" data-target="#deleteConfirmModal" data-toggle="modal" href="javascript:void(0);">
+                <i class="fe fe-trash">
+                </i>
+                Delete
+               </a>
+              </div>
+             </td>
+            </tr>
+            {%endfor %}
+           </tbody>
+          </table>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   {% endblock %}{% block body1 %}
+  <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="deleteConfirmModal" role="dialog" tabindex="-1">
+   <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h5 class="modal-title" id="acc_title">
+       Delete
+      </h5>
+      <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+       <span aria-hidden="true">
+        ×
+       </span>
+      </button>
+     </div>
+     <div class="modal-body">
+      <p id="acc_msg">
+       are you sure you want to delete?
+      </p>
+     </div><form method="get">
+     <input name="suppid" id="suppid" type="hidden">
+     <div class="modal-footer">
+      <button class="btn btn-success si_accept_confirm" type="submit">
+       Yes
+      </button>
+      <button class="btn btn-danger si_accept_cancel" data-dismiss="modal" type="button">
+       Cancel
+      </button>
+     </div></form>
+    </div>
+   </div>
+  </div>
+ {% endblock body1 %}

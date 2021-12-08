@@ -1,0 +1,85 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-8 offset-md-2">
+       <div class="account-content">
+        <div class="row align-items-center justify-content-center">
+         <div class="col-md-7 col-lg-6 login-left">
+          <img alt="Login Banner" class="img-fluid" src="{%static 'assets/img/login-banner.png'%}"/>
+         </div>
+         <div class="col-md-12 col-lg-6 login-right">
+          <div class="login-header">
+           <h3>
+            Doctor Register
+            <a href="{%url 'patient_register'%}">
+             Not a Doctor?
+            </a>
+           </h3>
+          </div>
+          <form  method="post">{%csrf_token%}
+           <div class="form-group">
+            <label class="focus-label">
+             Name
+            </label>
+            <input class="form-control"  required name='name' id='name' type="text"/>
+           </div>
+           <div class="form-group">
+            <label class="focus-label">
+            Email
+            </label>
+            <input class="form-control" required type="email" name="email" id="email"/>
+           </div>
+           <div class="form-group">
+            <label class="focus-label">
+             Create Password
+            </label>
+            <input class="form-control" name="password" required id="pass" type="password"/>
+           </div> <div class="form-group">
+            <label class="focus-label">
+             Confirm Password
+            </label>
+            <input class="form-control" name="confirm" required id="pass1" type="password"/>
+           </div>
+           <div class="text-left">
+            <a class="forgot-link" href="/login">
+             Already have an account?
+            </a>
+           </div>
+           <button class="btn btn-primary btn-block btn-lg login-btn" type="submit">
+            Sign up
+           </button>
+           <div class="login-or">
+            <span class="or-line">
+            </span>
+            <span class="span-or">
+             or
+            </span>
+           </div>
+           <div class="row form-row social-login">
+            <div class="col-6">
+             <a class="btn btn-facebook btn-block" href="#">
+              <img alt="fb" class="img-fluid" src="{% static 'assets/img/fb.png' %}"/>
+              Login
+             </a>
+            </div>
+            <div class="col-6">
+             <a class="btn btn-google btn-block" href="#">
+              <img alt="Logo" class="img-fluid" src="{% static 'assets/img/google.png' %}"/>
+              Login
+             </a>
+            </div>
+           </div>
+          </form>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+
+      {%endblock%}

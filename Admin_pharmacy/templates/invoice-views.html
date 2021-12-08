@@ -1,0 +1,203 @@
+
+{% extends 'basics.html' %}
+{% block body %}
+{% load static %}
+<div class="page-wrapper" xmlns="http://www.w3.org/1999/html">
+    <div class="content container-fluid">
+     <div class="page-header">
+      <div class="row">
+       <div class="col-sm-7 col-auto">
+        <h3 class="page-title">
+        Invoice View
+        </h3>
+        <ul class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="{% url 'indexs'%}">
+           Dashboard
+          </a>
+         </li>
+         <li class="breadcrumb-item ">
+         Invoice
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-sm-12">
+       <div class="card">
+       <div class="invoice-content">
+        <div class="invoice-item">
+         <div class="row">
+          <div class="col-md-6">
+           <div class="invoice-logo mx-4 my-3">
+            <img alt="logo" src="{% static 'assets/img/favicon.png' %}"/>
+           </div>
+          </div>
+          <div class="text-align-center  col-md-6 my-2 ">
+           <p class="invoice-details ">
+            <strong>
+             Order Id:
+            </strong>
+            #0{{prod.0.invoice}}
+
+            <strong>
+             Issued:
+            </strong>
+            {{prod.0.time|date:'d/M/Y'}}
+           </p>
+          </div>
+         </div>
+        </div>
+          <table class="invoice-table table table-bordered">
+             <thead>
+              <tr>
+               <th class="text-center">
+               Invoice From
+               </th>
+               <th class="text-center">
+               Invoice To
+               </th>
+               <th class="text-center">
+                Payment Method
+               </th>
+              </tr>
+             </thead>
+             <tbody>
+              <tr>
+               <td class="text-center">
+                {{prod.0.pharmacys.user}}
+             <br/>
+             {{prod.0.pharmacys.address}},
+             <br/>
+            +{{prod.0.pharmacys.contact}}
+             <br/>
+               </td>
+               <td class="text-center">
+                  {{prod.0.username}}
+             <br/>
+                {{prod.0.address}},
+             <br/>
+             +{{prod.0.phone}}
+             <br/>
+               </td>
+
+               <td class="text-center">
+                {{prod.0.card_name}}
+             <br/>
+                {{prod.0.card_no}}
+             <br/>
+                {{prod.0.}}
+               </td>
+              </tr>
+
+             </tbody>
+            </table>
+        <div class="invoice-item invoice-table-wrap">
+         <div class="row">
+          <div class="col-md-12">
+           <div class="table-responsive">
+            <table class="invoice-table table table-bordered">
+             <thead>
+              <tr>
+               <th>
+               Product Name
+               </th>
+               <th class="text-center">
+                Quantity
+               </th>
+               <th class="text-center">
+               Price
+               </th>
+               <th class="text-right">
+                Total
+               </th>
+              </tr>
+             </thead>
+             <tbody>
+              <tr>
+               <td>
+                {{prod.0.product_name}}
+               </td>
+               <td class="text-center">
+                {{prod.0.quntitys}}
+               </td>
+               <td class="text-center">
+                ${{prod.0.price}}
+               </td>
+               <td class="text-right">
+                ${{subtotal}}
+               </td>
+              </tr>
+
+             </tbody>
+            </table>
+           </div>
+          </div>
+          <div class="col-md-4 col-xl-3  col-mx-2 ml-auto">
+           <div class="table-responsive">
+            <table class="invoice-table-two table">
+             <tbody>
+              <tr>
+               <th>
+                Shipping
+               </th>
+               <td>
+                <span>
+                $25
+                </span>
+               </td>
+              </tr>
+              <tr>
+               <th>
+                Subtotal:
+               </th>
+               <td id="t1">
+                <span>
+                 ${{subtotal|add:'25'}}
+                </span>
+               </td>
+              </tr>
+
+
+              <tr>
+               <th>
+                Discount:
+               </th>
+               <td>
+                <span>
+                 {{prod.0.product_id.discount}}%
+                </span>
+               </td>
+              </tr>
+              <tr>
+               <th>
+                Total Amount:
+               </th>
+               <td>
+                <span>
+                 ${{all}}
+                </span>
+               </td>
+              </tr>
+             </tbody>
+            </table>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="other-info mx-3">
+         <h4>
+          Other information
+         </h4>
+         <p class="mb-5 mx-2">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed dictum ligula, cursus blandit risus. Maecenas eget metus non tellus dignissim aliquam ut a ex. Maecenas sed vehicula dui, ac suscipit lacus. Sed finibus leo vitae lorem interdum, eu scelerisque tellus fermentum. Curabitur sit amet lacinia lorem. Nullam finibus pellentesque libero.
+         </p>
+        </div>
+       </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  {% endblock %}

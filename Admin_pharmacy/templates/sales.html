@@ -1,0 +1,161 @@
+
+{% extends 'basics.html' %}
+{% block body %}
+{% load static %}
+   <div class="page-wrapper">
+    <div class="content container-fluid">
+     <div class="page-header">
+      <div class="row">
+       <div class="col-12">
+        <h3 class="page-title">
+         Sales
+        </h3>
+        <ul class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="{%url 'indexs'%}">
+           Dashboard
+          </a>
+         </li>
+         <li class="breadcrumb-item active">
+          Sales
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-md-12">
+       <div class="card">
+        <div class="card-body">
+         <div class="table-responsive">
+          <table class="datatable table table-hover table-center mb-0">
+           <thead>
+            <tr>
+             <th>
+              Invoice No
+             </th>
+             <th>
+              Medicine Name
+             </th>
+             <th>
+              Total Price
+             </th>
+             <th>
+              Date
+             </th>
+             <th class="text-right">
+              Action
+             </th>
+            </tr>
+           </thead>
+           <tbody>{% for i in product%}
+            <tr>
+             <td>
+               #IN0-{{i.id}}
+             </td>
+             <td>
+              {{i.product_name}}
+             </td>
+             <td>
+              ${{i.total}}
+             </td>
+             <td>
+              {{i.time|date:'Y/m/d'}}
+             </td>
+             <td class="text-right">
+              <div class="actions">
+               <a class="btn btn-sm bg-success-light" onclick="$('#productid').val('{{i.id}}')" data-toggle="modal" href="#edit_invoice_report">
+                <i class="fe fe-pencil">
+                </i>
+                Edit
+               </a>
+               <a class="btn btn-sm bg-default-light" href="{% url 'invoice_views' %}?invoice_no={{i.id}}">
+
+                <i class="fas fa-file-alt">
+                </i>
+                Invoice
+               </a>
+               <a class="btn btn-sm bg-danger-light" onclick="$('#productids').val('{{i.id}}')" data-target="#deleteConfirmModal" data-toggle="modal" href="javascript:void(0);">
+                <i class="fe fe-trash">
+                </i>
+                Delete
+               </a>
+              </div>
+             </td>
+            </tr>{%endfor%}
+
+           </tbody>
+          </table>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+
+
+  <div aria-hidden="true" class="modal fade" id="edit_invoice_report" role="dialog">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h5 class="modal-title">
+       Edit Invoice Report
+      </h5>
+      <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+       <span aria-hidden="true">
+        ×
+       </span>
+      </button>
+     </div>
+     <div class="modal-body">
+      <form method="get">
+       <div class="row form-row">
+        <div class="col-12 col-sm-6">
+         <div class="form-group">
+          <label><input name="productid" id="productid" type="hidden" >
+           Invoice Number
+          </label>
+          <input class="form-control" name="invoice" id="invoice" type="text" value=""/>
+         </div>
+        </div>
+
+       <button class="btn btn-primary btn-block" type="submit">
+        Save Changes
+       </button>
+       </div>  </form>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="deleteConfirmModal" role="dialog" tabindex="-1">
+   <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h5 class="modal-title" id="acc_title">
+       Delete
+      </h5>
+      <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+       <span aria-hidden="true">
+        ×
+       </span>
+      </button>
+     </div>
+     <div class="modal-body">
+      <p id="acc_msg">
+       are you sure you want to delete?
+      </p>
+     </div><form method="get">
+     <div class="modal-footer"><input name="product" id="productids" type="hidden" >
+     <button class="btn btn-success" type="submit">
+        Yes
+     </button>
+      <button class="btn btn-danger si_accept_cancel" data-dismiss="modal" type="button">
+       Cancel
+      </button>
+     </div></form>
+    </div>
+   </div>
+  </div>
+
+  {% endblock %}

@@ -1,0 +1,203 @@
+
+{% extends 'basics.html' %}
+{% block body %}
+{% load static %}
+   <div class="page-wrapper">
+    <div class="content container-fluid">
+     <div class="page-header">
+      <div class="row">
+       <div class="col-sm-12">
+        <h3 class="page-title">
+         Outstock
+        </h3>
+        <ul class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="{% url 'indexs' %}">
+          Dashboard
+          </a>
+         </li>
+         <li class="breadcrumb-item active">
+          Outstock
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-md-12">
+       <div class="card">
+        <div class="card-body">
+         <div class="table-responsive">
+          <table class="table table-hover table-center mb-0">
+           <thead>
+            <tr>
+             <th>
+              #
+             </th>
+             <th>
+              Brand Name
+             </th>
+             <th>
+              Genetic Name
+             </th>
+             <th>
+              Category
+             </th>
+             <th>
+              Price
+             </th>
+             <th>
+              Quantity
+             </th>
+             <th>
+              Discount
+             </th>
+             <th>
+              Expire
+             </th>
+             <th>
+              Action
+             </th>
+            </tr>
+           </thead>
+           <tbody>{% for i in list.0.pha_product.all %}{% if i.quntity <= 5%}
+            <tr>
+             <td>
+              {{forloop.counter}}
+             </td>
+             <td>
+              <h2 class="table-avatar">
+               <span class="avatar avatar-sm mr-2">
+                <img alt="product image" class="avatar-img" src="/media/{{i.img}}"/>
+               </span>
+               {{i.name}}
+              </h2>
+             </td>
+             <td>
+              {{i.genatic_name}}
+             </td>
+             <td>
+              {{i.categorie}}‎
+             </td>
+             <td>
+              ${{i.price}}
+
+             </td>
+             <td>
+              <span class="btn btn-sm bg-danger-light">
+               {% if i.quntity <= 0%}
+               THERE ONLY (0){% else %}
+           THERE ONLY ({{i.quntity}}){% endif %}
+              </span>
+             </td>
+             <td>
+              0%
+             </td>
+             <td>
+              <span class="btn btn-sm bg-danger-light">
+              {{i.expiry_date|date:'d/M/Y'}}
+              </span>
+             </td>
+             <td>
+              <div class="actions">
+               <a class="btn btn-sm bg-success-light" onclick="$('#prod_id').val('{{i.id}}');" data-target="#edit_specialities_details" data-toggle="modal" href="javascript:void(0);">
+                <i class="fe fe-pencil">
+                </i>
+                Edit
+               </a>
+               <a class="btn btn-sm bg-danger-light" onclick="$('#prodid').val('{{i.id}}');" data-target="#deleteConfirmModal" data-toggle="modal" href="javascript:void(0);">
+                <i class="fe fe-trash">
+                </i>
+                Delete
+               </a>
+              </div>
+             </td>
+            </tr>{% endif %}{% endfor %}
+           </tbody>
+          </table>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>{% endblock %}
+  {% block body1 %}
+  <div aria-hidden="true" class="modal fade" id="deleteConfirmModal" role="dialog" tabindex="-1">
+   <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h5 class="modal-title" id="acc_title">
+       Delete
+      </h5>
+      <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+       <span aria-hidden="true">
+        ×
+       </span>
+      </button>
+     </div><form method="get" >
+     <div class="modal-body">
+      <p id="acc_msg">
+       are you sure you want to delete?
+      </p>
+     </div><input value="" name="prod" type="hidden" id="prodid">
+     <input value="{{request.user.userType.id}}" name="phar" type="hidden" id="prodi">
+     <div class="modal-footer">
+<!--      <a class="btn btn-success si_accept_confirm" href="javascript:;">-->
+       <button class="btn btn-success si_accept_confirm" type="submit" >
+       Yes
+      </button>
+<!--      </a>-->
+      <button class="btn btn-danger si_accept_cancel" data-dismiss="modal" type="button">
+       Cancel
+      </button>
+     </div></form>
+    </div>
+   </div>
+  </div>
+
+<div aria-hidden="true" class="modal fade" id="edit_specialities_details" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+      <div class="modal-header">
+       <h5 class="modal-title">
+        Edit Category
+       </h5>
+       <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+        <span aria-hidden="true">
+         ×
+        </span>
+       </button>
+      </div>
+      <div class="modal-body">
+       <form method="post">{% csrf_token %}
+        <div class="row form-row">
+
+<input class="form-control" id="prod_id" name="phar_ids" type="hidden" value=""/>
+
+          <div class="col-12 col-sm-6">
+          <div class="form-group">
+           <label>
+           Genetic Name
+           </label>
+           <input class="form-control" name="gen_name" id="gen_name" type="text"/>
+          </div>
+         </div>
+          <div class="col-12 col-sm-6">
+          <div class="form-group">
+           <label>
+           Quntity
+           </label>
+           <input class="form-control" name="quntity" id="qunt" type="text"/>
+          </div>
+         </div><button class="btn btn-primary btn-block" type="submit">
+         Save Changes
+        </button>
+          </div> </form>
+      </div>
+     </div>
+    </div>
+   </div>
+
+
+{% endblock body1 %}

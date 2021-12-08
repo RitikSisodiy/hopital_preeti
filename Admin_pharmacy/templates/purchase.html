@@ -1,0 +1,205 @@
+
+{% extends 'basics.html' %}
+{% block body %}
+{% load static %}
+   <div class="page-wrapper">
+    <div class="content container-fluid">
+     <div class="page-header">
+      <div class="row">
+       <div class="col-sm-7 col-auto">
+        <h3 class="page-title">
+         Purchase
+        </h3>
+        <ul class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="{% url 'indexs'%}">
+           Dashboard
+          </a>
+         </li>
+         <li class="breadcrumb-item active">
+          Purchase
+         </li>
+        </ul>
+       </div>
+       <div class="col-sm-5 col">
+        <a class="btn btn-primary float-right mt-2" href="{% url 'add_purchase' %}">
+         Add New
+        </a>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-md-12">
+       <div class="card">
+        <div class="card-body">
+         <div class="table-responsive">
+          <table class="datatable table table-hover table-center mb-0">
+           <thead>
+            <tr>
+             <th>
+              Purchase Date
+             </th>
+             <th>
+              Medicine Name
+             </th>
+             <th>
+              Medicine Category
+             </th>
+             <th>
+              Purchase Price
+             </th>
+             <th>
+              Quantity
+             </th>
+             <th>
+              Supplier
+             </th>
+             <th>
+              Expire Date
+             </th>
+             <th>
+              Action
+             </th>
+            </tr>
+           </thead>
+           <tbody>{% for i in product %}
+            <tr>
+             <td>
+              {{i.created_date}}
+             </td>
+             <td>
+              <h2 class="table-avatar">
+               <span class="avatar avatar-sm mr-2">
+                <img alt="product image" class="avatar-img" src="/media/{{i.img}}"/>
+               </span>
+               {{i.med_name}}
+              </h2>
+             </td>
+             <td>
+              {{i.category}}
+             </td>
+             <td>
+              ${{i.price}}
+             </td>
+             <td>
+              {{i.quntity}}
+             </td>
+             <td>
+                 {{i.supplir}}
+             </td>
+             <td>
+              {{i.ex_date}}
+             </td>
+             <td>
+              <div class="actions">
+               <a class="btn btn-sm bg-success-light" onclick="$('#prodsid').val('{{i.id}}');" data-toggle="modal"  data-target="#edit_specialities_details">
+                <i class="fe fe-pencil">
+                </i>
+                Edit
+               </a>
+               <a class="btn btn-sm bg-danger-light" onclick="$('#prodid').val('{{i.id}}');" data-target="#deleteConfirmModal" data-toggle="modal" href="javascript:void(0);">
+                <i class="fe fe-trash">
+                </i>
+                Delete
+               </a>
+              </div>
+             </td>
+            </tr>
+            {% endfor %}
+           </tbody>
+          </table>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   {% endblock %} {% block body1 %}
+  <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="deleteConfirmModal" role="dialog" tabindex="-1">
+   <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h5 class="modal-title" id="acc_title">
+       Delete
+      </h5>
+      <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+       <span aria-hidden="true">
+        ×
+       </span>
+      </button>
+     </div>
+     <div class="modal-body">
+      <p id="acc_msg">
+       are you sure you want to delete?
+      </p>
+     </div>
+        <form method="get">
+     <input name="suppid" id="prodid" type="hidden">
+     <div class="modal-footer">
+      <button class="btn btn-success si_accept_confirm" type="submit">
+       Yes
+      </button>
+      <button class="btn btn-danger si_accept_cancel" data-dismiss="modal" type="button">
+       Cancel
+      </button>
+     </div></form>
+    </div>
+   </div>
+  </div>
+
+ <div aria-hidden="true" class="modal fade" id="edit_specialities_details" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+      <div class="modal-header">
+       <h5 class="modal-title">
+        Edit Category
+       </h5>
+       <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+        <span aria-hidden="true">
+         ×
+        </span>
+       </button>
+      </div>
+      <div class="modal-body">
+       <form method="post">{% csrf_token %}
+        <div class="row form-row">
+
+           <input class="form-control" id="prodsid" name="prod" type="hidden" value=""/>
+
+
+
+  <div class="col-12 col-sm-6">
+          <div class="form-group">
+           <label>
+          supplier name
+            <span class="text-danger">
+             *
+            </span>
+           </label>
+           <select class="form-control select" name="supp" required="">
+           {% for i in supp %}
+            <option selected="selected"  value="{{i.name}}">
+            {{i.name}}
+            </option>
+            {% endfor %}
+           </select>
+          </div>
+         </div>
+
+
+
+
+
+
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">
+         Save Changes
+        </button>
+       </form>
+      </div>
+     </div>
+    </div>
+   </div>
+
+   {% endblock body1 %}

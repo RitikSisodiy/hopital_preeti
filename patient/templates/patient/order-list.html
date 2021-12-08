@@ -1,0 +1,250 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Dashboard
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Dashboard
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+       <div class="profile-sidebar">
+        <div class="widget-profile pro-widget-content">
+         <div class="profile-info-widget">
+          <a class="booking-doc-img" href="{% url 'patient_profile' %}?profile={{request.user.patient_record.id}}">
+           <img alt="User Image" src="/media/{{request.user.patient_record.img}}"/>
+          </a>
+          <div class="profile-det-info">
+           <h3>
+           {{request.user.patient_record.patient}}
+           </h3>
+           <div class="patient-details info-loc">
+            <h5>
+             <i class="feather-gift">
+             </i>
+            {{request.user.patient_record.DOB}}, {{request.user.patient_record.age}}years
+            </h5>
+            <h5 class="mb-0">
+             <i class="feather-map-pin">
+             </i>
+            {{request.user.patient_record.address}}
+            </h5>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="dashboard-widget">
+         <nav class="dashboard-menu">
+          <ul>
+           <li class="active">
+            <a href="{% url 'patient_dashboard'%}?Pid={{request.user.patient_record.id}}">
+             <span>
+              Dashboard
+             </span>
+             <i class="feather-airplay">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'favourites'%}?pa={{request.user.patient_record.id}}">
+             <span>
+              Favourites
+             </span>
+             <i class="feather-bookmark">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="dependent.html">
+             <span>
+              Dependent
+             </span>
+             <i class="feather-users">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="chat.html">
+             <span>
+              Message
+             </span>
+             <i class="feather-message-circle">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="patient-accounts.html">
+             <span>
+              Accounts
+             </span>
+             <i class="fas fa-file-invoice-dollar">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'order_list' %}">
+             <span>
+              Orders
+             </span>
+             <i class="feather-file-text">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'add_medical_record' %}">
+             <span>
+              Add Medical Records
+             </span>
+             <i class="feather-paperclip">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="medical-details.html">
+             <span>
+              Medical Details
+             </span>
+             <i class="fas fa-user-injured">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'profile_setting'%}?profile={{request.user.patient_record.id}}">
+             <span>
+              Profile Settings
+             </span>
+             <i class="feather-user">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'change_password'%}">
+             <span>
+              Change Password
+             </span>
+             <i class="feather-lock">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'dlogout'%}">
+             <span>
+              Logout
+             </span>
+             <i class="feather-log-out">
+             </i>
+            </a>
+           </li>
+          </ul>
+         </nav>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-10 col-lg-8 col-xl-9 ">
+       {% if list|length is not 0%}
+       <div class="card">
+        <div class="card-header dct-appoinment">
+         <nav class="user-tabs">
+          <ul class="nav nav-tabs nav-tabs-bottom">
+           <li class="nav-item">
+            <a class="nav-link active" >
+           Medicine Order List
+            </a>
+           </li>
+
+          </ul>
+         </nav>
+        </div>
+        <div class="card-body p-0">
+         <div class="tab-content pt-0">
+          <div class="tab-pane fade show active" id="pat_appointments">
+           <div class="card-table mb-0">
+            <div class="card-body">
+             <div class="table-responsive">
+              <table class="table table-hover table-center mb-0">
+               <thead>
+                <tr>
+                 <th>
+                 Order Id
+                 </th>
+                 <th>
+                  Medicine Name
+                 </th>
+                 <th>
+                  Booking Date
+                 </th>
+                 <th>
+                  Amount
+                 </th>
+
+                 <th>
+                  Actions
+                 </th>
+                </tr>
+               </thead>
+               <tbody>{% for i in list%}
+                <tr>
+                 <td>
+                  <h2 class="table-avatar">
+                  #{{i.id}}
+                  </h2>
+                 </td>
+                 <td>
+                  {{i.product_id.name}}
+                 </td>
+                 <td>
+                  {{i.time|date}}
+                 </td>
+                 <td>
+                  $ {{i.total}}
+                 </td>
+
+                 <td>
+                  <div class="table-action">
+                  <a class="btn btn-sm bg-danger-light" href="{% url 'order_list'%}?id={{i.id}}&&next={{request.get_full_path}}">
+                 <i class="feather-x-circle">
+                 </i>
+                </a>
+                  </div>
+                 </td>
+                </tr>{%endfor%}
+
+               </tbody>
+              </table>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+
+
+      {% else %}
+      <strong style="font-size:25px; color:blue; ">No Order !</strong>{% endif %}
+      </div>
+     </div>
+    </div>
+   </div>
+   {%endblock%}

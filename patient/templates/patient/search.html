@@ -1,0 +1,258 @@
+
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+<div class="breadcrumb-bar" xmlns="http://www.w3.org/1999/html">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-8 col-12">
+       <h2 class="breadcrumb-title">
+        Search
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Search
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row align-items-center mb-3">
+      <div class="col-md-8 col-12">
+       <h2 class="sub-heading mb-0">
+        {{count}} matches found for :{% for i in list %} {{i}}, {% endfor %}In Bangalore
+       </h2>
+      </div>
+      <div class="col-md-4 col-12 d-md-block d-none">
+       <div class="sort-by">
+        <span class="sort-title">
+         Sort by
+        </span>
+        <span class="sortby-fliter">
+         <select class="select">
+          <option>
+           Select
+          </option>
+          <option class="sorting">
+           Rating
+          </option>
+          <option class="sorting">
+           Popular
+          </option>
+          <option class="sorting">
+           Latest
+          </option>
+          <option class="sorting">
+           Free
+          </option>
+         </select>
+        </span>
+       </div>
+      </div>
+     </div>
+
+     <div class="row">
+      <div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
+         <form method="post">{%csrf_token%}
+       <div class="card search-filter">
+        <div class="card-header">
+         <h4 class="card-title mb-0">
+          Search Filter
+         </h4>
+        </div>
+        <div class="card-body">
+         <div class="filter-widget">
+          <div class="cal-icon">
+           <input class="form-control datetimepicker" placeholder="Select Date" type="text"/>
+          </div>
+         </div>
+         <div class="filter-widget">
+          <h4>
+           Gender
+          </h4>
+         {% for datas in gender %}
+          <div>
+           <label class="form-check">
+            <input  name='datas' id='datas' value="{{datas}}"
+                    type="checkbox"/>
+
+<!--                    {% if datas in request.POST.datas %}checked{% endif %}-->
+            <span class="checkmark">
+            </span>
+            {{datas}}
+           </label>
+          </div>{%endfor%}
+         </div>
+
+         <div class="filter-widget">
+          <h4>
+           Select Specialist
+          </h4>
+
+          {% for data in speciality %}
+          <div>
+           <label class="form-check">
+            <input   name='data' value="{{data}}" id='data'
+                      type="checkbox"/>
+<!--              {% if datas in request.POST.datas %}checked{% endif %}-->
+            <span class="checkmark">
+            </span>
+            {{data}}
+           </label>
+          </div>
+{% endfor %}
+         </div>
+         <div class="btn-search">
+          <button class="btn btn-block" type="submit">
+           Search
+          </button>
+         </div>
+        </div>
+       </div></form>
+      </div>
+
+      <div class="col-md-12 col-lg-8 col-xl-9">
+
+
+        {%for data in li %}
+        {%for i in data %}
+       <div class="card">
+        <div class="card-body">
+         <div class="doctor-widget">
+          <div class="doc-info-left">
+           <div class="doctor-img">
+            <a href="{%url 'Doctor_profile' i.id %}">
+             <img alt="User Image" class="img-fluid" src="/media/{{i.img}}"/>
+            </a>
+           </div>
+           <div class="doc-info-cont">
+            <h4 class="doc-name">
+             <a href="{%url 'Doctor_profile' i.id %}">
+              {{i.name}}</a>
+  <a class="" href="{%url 'favt'%}?dr={{i.id}}&pa={{request.user.id}}">
+           {% if  i.id  in  favt %}
+            <i class="fas fa-check-circle verified">
+            </i>{% else %}
+              <i class="feather-check-circle verified ml-2">
+              </i>{% endif %}
+
+
+  </a>
+
+<!--              <a class="feather-check-circle verified ml-2" href="{%url 'favt'%}?dr={{i.id}}&pa={{request.user.id}}">-->
+<!--            <i  class="fas fa-circle verified">-->
+<!--            </i>-->
+<!--           </a>-->
+            </h4>
+            <p class="doc-speciality">
+          {{i.qulification }}
+            </p>
+            <div class="rating">
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star">
+             </i>
+             <span class="d-inline-block average-rating">
+              4.9 ( 82 )
+             </span>
+            </div>
+            <h5 class="doc-department">
+             <img alt="Speciality" class="img-fluid" src="{%static 'assets/img/specialities/specialities-05.png' %}"/>
+           {{i.specialization}}
+            </h5>
+            <div class="clinic-details">
+             <ul class="clinic-gallery">
+              <li>
+               <a data-fancybox="gallery" href="{%static 'assets/img/features/feature-06.jpg'%}">
+                <img alt="Feature" src="{%static 'assets/img/features/feature-06.jpg'%}"/>
+               </a>
+              </li>
+              <li>
+               <a data-fancybox="gallery" href="{%static 'assets/img/features/feature-02.jpg'%}">
+                <img alt="Feature" src="{%static 'assets/img/features/feature-02.jpg'%}"/>
+               </a>
+              </li>
+              <li>
+               <a data-fancybox="gallery" href="{%static 'assets/img/features/feature-03.jpg'%}">
+                <img alt="Feature" src="{%static 'assets/img/features/feature-03.jpg'%}"/>
+               </a>
+              </li>
+              <li>
+               <a data-fancybox="gallery" href="{%static 'assets/img/features/feature-04.jpg'%}">
+                <img alt="Feature" src="{%static 'assets/img/features/feature-04.jpg'%}"/>
+               </a>
+              </li>
+             </ul>
+            </div>
+            <div class="clinic-services">
+             <span>
+              Dental Fillings
+             </span>
+             <span>
+              Whitneing
+             </span>
+            </div>
+           </div>
+          </div>
+          <div class="doc-info-right">
+           <div class="clini-infos">
+            <ul>
+             <li>
+              <i class="feather-calendar">
+              </i>
+              Available on Fri, 20 Mar
+             </li>
+             <li>
+              <i class="feather-map-pin">
+              </i>
+             {{i.address}}
+             </li>
+             <li>
+              <i class="far fa-money-bill-alt">
+              </i>
+               ${{i.fees_starting}} - ${{i.fees_end}}
+              <i class="feather-info" data-toggle="tooltip" title="Lorem Ipsum">
+              </i>
+             </li>
+            </ul>
+           </div>
+           <div class="clinic-booking">
+            <a class="view-pro-btn" href="{%url 'Doctor_profile' i.id %}">
+             View Profile
+            </a>
+            <a class="apt-btn" href="{%url 'booking'%}?@//@/={{i.id}}">
+             Book Now
+            </a>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div> {%endfor%}{%endfor%}
+
+       <div class="load-more">
+        <a class="btn btn-primary btn-sm" href="javascript:void(0);">
+         Load More
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+{%endblock%}

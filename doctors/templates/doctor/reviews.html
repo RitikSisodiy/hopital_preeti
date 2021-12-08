@@ -1,0 +1,273 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Reviews
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Reviews
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+       <div class="profile-sidebar">
+        <div class="widget-profile pro-widget-content">
+         <div class="profile-info-widget">
+          <a class="booking-doc-img" href="{% url 'Doctor_profile' request.user.Dr.id  %}">
+           <img alt="User Image" src=" /media/{{request.user.Dr.img}}"/>
+          </a>
+          <div class="profile-det-info">
+           <h3>
+             {{request.user.Dr.user}}
+           </h3>
+           <div class="patient-details">
+            <h5 class="mb-0">
+             {{request.user.Dr.qulification}}
+            </h5>
+           </div>
+          </div>
+         </div>
+        </div>
+        <div class="dashboard-widget">
+         <nav class="dashboard-menu">
+          <ul>
+           <li>
+            <a href="{%url 'doctor_dashboard'%}?id={{request.user.Dr.id}}">
+             <span>
+              Dashboard
+             </span>
+             <i class="feather-airplay">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'appointments'%}?doctor={{request.user.Dr.id}}">
+             <span>
+              Appointments
+             </span>
+             <i class="feather-calendar">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'my_patient'%}?doctor={{request.user.Dr.id}}">
+             <span>
+              My Patients
+             </span>
+             <i class="fas fa-user-injured">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'schedule'%}">
+             <span>
+              Schedule Timings
+             </span>
+             <i class="far fa-hourglass">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="available-timings.html">
+             <span>
+              Available Timings
+             </span>
+             <i class="feather-clock">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'invoices'%}?invoice={{request.user.Dr.id}}">
+             <span>
+              Invoices
+             </span>
+             <i class="feather-file-text">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="accounts.html">
+             <span>
+              Accounts
+             </span>
+             <i class="fas fa-file-invoice-dollar">
+             </i>
+            </a>
+           </li>
+           <li class="active">
+            <a href="{%url 'reviews'%}">
+             <span>
+              Reviews
+             </span>
+             <i class="feather-star">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="chat-doctor.html">
+             <span>
+              Message
+             </span>
+             <i class="feather-message-circle">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'doctor_profile_setting'%}?profile={{request.user.id}}">
+             <span>
+              Profile Settings
+             </span>
+             <i class="feather-user">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="social-media.html">
+             <span>
+              Social Media
+             </span>
+             <i class="feather-share-2">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{% url 'change_password' %}">
+             <span>
+              Change Password
+             </span>
+             <i class="feather-lock">
+             </i>
+            </a>
+           </li>
+           <li>
+            <a href="{%url 'dlogout'%}">
+             <span>
+              Logout
+             </span>
+             <i class="feather-log-out">
+             </i>
+            </a>
+           </li>
+          </ul>
+         </nav>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-7 col-lg-8 col-xl-9">
+       <div class="doc-review review-listing">
+        <ul class="comments-list">{% for i in review%}
+         <li>
+          <div class="comment">
+           <img alt="User Image" class="avatar rounded-circle" src="{% static 'assets/img/patients/patient.jpg' %}"/>
+           <div class="comment-body">
+            <div class="meta-data">
+             <span class="comment-author">
+             {{i.name}}
+             </span>
+             <span class="comment-date">
+              Reviewed 2 Days ago
+             </span>
+             <div class="review-count rating">
+              <i class="fas fa-star filled">
+              </i>
+              <i class="fas fa-star filled">
+              </i>
+              <i class="fas fa-star filled">
+              </i>
+              <i class="fas fa-star filled">
+              </i>
+              <i class="fas fa-star">
+              </i>
+             </div>
+            </div>
+            <p class="recommended">
+             <i class="far fa-thumbs-up">
+             </i>
+             I recommend the doctor
+            </p>
+            <p class="comment-content">
+             {{i.review}}
+            </p>
+            <div class="comment-reply">
+             <a class="comment-btn" href="#">
+              <i class="fas fa-reply">
+              </i>
+              Reply
+             </a>
+             <p class="recommend-btn">
+              <span>
+               Recommend?
+              </span>
+              <a class="like-btn" href="/like?@//@/={{i.id}}&next={{request.get_full_path}}">
+               <i class="far fa-thumbs-up">
+               </i>
+               {{i.YES}}
+              </a>
+              <a class="dislike-btn" href="/dislike?@//@/={{i.id}}&next={{request.get_full_path}}">
+               <i class="far fa-thumbs-down">
+               </i>
+               {{i.NO}}
+              </a>
+             </p>
+            </div>
+           </div>
+          </div>
+<!--          <ul class="comments-reply">-->
+<!--           <li>-->
+<!--            <div class="comment">-->
+<!--             <img alt="User Image" class="avatar rounded-circle" src="assets/img/doctors/doctor-thumb-02.jpg"/>-->
+<!--             <div class="comment-body">-->
+<!--              <div class="meta-data">-->
+<!--               <span class="comment-author">-->
+<!--                Dr. Darren Elder-->
+<!--               </span>-->
+<!--               <span class="comment-date">-->
+<!--                Reviewed 3 Days ago-->
+<!--               </span>-->
+<!--              </div>-->
+<!--              <p class="comment-content">-->
+<!--               Lorem ipsum dolor sit amet, consectetur adipisicing elit,-->
+<!--sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.-->
+<!--Ut enim ad minim veniam.-->
+<!--Curabitur non nulla sit amet nisl tempus-->
+<!--              </p>-->
+<!--              <div class="comment-reply">-->
+<!--               <a class="comment-btn" href="#">-->
+<!--                <i class="fas fa-reply">-->
+<!--                </i>-->
+<!--                Reply-->
+<!--               </a>-->
+<!--              </div>-->
+<!--             </div>-->
+<!--            </div>-->
+<!--           </li>-->
+<!--          </ul>-->
+         </li>
+{%endfor%}
+
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+{%endblock%}

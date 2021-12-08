@@ -1,0 +1,202 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-12 col-12">
+       <h2 class="breadcrumb-title">
+        Products
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Pain Relif
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-5 col-lg-3 col-xl-3 theiaStickySidebar">
+       <div class="card search-filter">
+        <div class="card-header">
+         <h4 class="card-title mb-0">
+          Filter
+         </h4>
+        </div><form method="POST" >{%csrf_token%}
+        <div class="card-body">
+         <div class="filter-widget">
+          <h4>
+           Categories
+          </h4>{%  for i in cat.cat %}
+          <div>
+           <label class="custom_check">
+            <input  name="cat1" id="cat1" value="{{i}}" type="checkbox"/>
+            <span class="checkmark">
+            </span>
+            {{i}}
+           </label>
+          </div>{% endfor %}
+<!--          <div>-->
+<!--           <label class="custom_check">-->
+<!--            <input name="cat2" id="cat2"  type="checkbox"/>-->
+<!--            <span class="checkmark">-->
+<!--            </span>-->
+<!--            Skin Care-->
+<!--           </label>-->
+<!--          </div>-->
+<!--          <div>-->
+<!--           <label class="custom_check">-->
+<!--            <input name="cat3" id="cat3"  type="checkbox"/>-->
+<!--            <span class="checkmark">-->
+<!--            </span>-->
+<!--            Hair Care-->
+<!--           </label>-->
+<!--          </div>-->
+<!--          <div>-->
+<!--           <label class="custom_check">-->
+<!--            <input name="cat4" id="cat4"  type="checkbox"/>-->
+<!--            <span class="checkmark">-->
+<!--            </span>-->
+<!--            Lip Care-->
+<!--           </label>-->
+<!--          </div>-->
+<!--          <div>-->
+<!--           <label class="custom_check">-->
+<!--            <input name="cat5" id="cat5"  type="checkbox"/>-->
+<!--            <span class="checkmark">-->
+<!--            </span>-->
+<!--            Men's Care-->
+<!--           </label>-->
+<!--          </div>-->
+<!--          <div>-->
+<!--           <label class="custom_check">-->
+<!--            <input name="cat6" id="cat6" type="checkbox"/>-->
+<!--            <span class="checkmark">-->
+<!--            </span>-->
+<!--            Women's Care-->
+<!--           </label>-->
+<!--          </div>-->
+<!--          <div>-->
+<!--           <label class="custom_check">-->
+<!--            <input name="cat7" id="cat7"  type="checkbox"/>-->
+<!--            <span class="checkmark">-->
+<!--            </span>-->
+<!--            Baby care-->
+<!--           </label>-->
+<!--          </div>-->
+         </div>
+         <div class="btn-search">
+          <button class="btn btn-block" type="submit">
+           Search
+          </button>
+         </div>
+        </div></form>
+       </div>
+      </div>
+      <div class="col-md-7 col-lg-9 col-xl-9">
+       <div class="row align-items-center pb-3">
+        <div class="col-md-5 col-12 d-md-block d-none custom-short-by">
+         <h3 class="title pharmacy-title text-info">
+<!--          Pain Relif-->
+          Total {{total}} Products
+         </h3>
+         <p class="doc-location mb-2 text-ellipse pharmacy-location">
+          <i class="feather-map-pin mr-1">
+          </i>
+          {% for t in title %}{{t.0.doc.address}}{% endfor %}
+         </p>
+         <span class="sort-title">
+          Showing {{count}} of {{total}} products
+
+         </span>
+        </div>
+        <div class="col-md-7 col-12 d-md-block d-none custom-short-by">
+         <div class="sort-by pb-3">
+          <span class="sort-title">
+           Sort by
+          </span>
+          <span class="sortby-fliter">
+           <select class="select">
+            <option>
+             Select
+            </option>
+            <option class="sorting">
+             Rating
+            </option>
+            <option class="sorting">
+             Popular
+            </option>
+            <option class="sorting">
+             Latest
+            </option>
+            <option class="sorting">
+             Free
+            </option>
+           </select>
+          </span>
+         </div>
+        </div>
+       </div>
+       <div class="row">
+        {% for t in title%}
+        {% for i in t%}
+        <div class="col-md-12 col-lg-6 col-xl-4 product-custom">
+         <div class="profile-widget">
+          <div class="doc-img">
+           <a href="/product-description?@//@/={{i.id}}" tabindex="-1">
+            <img alt="Product image" class="img-fluid" src="/media/{{i.img}}"/>
+           </a>
+           <a class="fav-btn" href="javascript:void(0)" tabindex="-1">
+            <i class="far fa-bookmark">
+            </i>
+           </a>
+          </div>
+          <div class="pro-content">
+           <h3 class="title">
+            <a href="/product-description?@//@/={{i.id}}" tabindex="-1">
+             {{i.name}}
+            </a>
+           </h3>
+           <div class="row align-items-center">
+            <div class="col-8">
+             <span class="price">
+              ${{i.price}}.00
+             </span>
+             <span class="price-strike">
+              $45.00
+             </span>
+            </div>
+            <div class="col-4 text-right">
+             <a class="cart-icon" href="/addcart?@//@/={{i.id}}&next={{i.doc.id}}">
+              <i class="feather-shopping-cart">
+              </i>
+             </a>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>{%endfor%}{%endfor%}
+
+        <div class="col-md-12 load-more">
+         <a class="btn btn-primary mb-4" href="#">
+          Load More
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+{%endblock%}

@@ -1,0 +1,169 @@
+
+{% extends 'basics.html' %}
+{% block body %}
+{% load static %}
+   <div class="page-wrapper">
+    <div class="content container-fluid">
+     <div class="page-header">
+      <div class="row">
+       <div class="col-sm-12">
+        <h3 class="page-title">
+         Add Purchase
+        </h3>
+        <ul class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="{% url 'indexs' %}">
+           Dashboard
+          </a>
+         </li>
+         <li class="breadcrumb-item active">
+          Add Purchase
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-sm-12">
+       <div class="card">
+        <div class="card-body custom-edit-service">
+         <form action="" autocomplete="off" enctype="multipart/form-data" id="update_service" method="post">
+       {% csrf_token %}   <input name="csrf_token_name" type="hidden" value="0146f123a4c7ae94253b39bca6bd5a5e"/>
+          <div class="service-fields mb-3">
+           <div class="row">
+            <div class="col-lg-6">
+             <div class="form-group">
+              <label>
+               Medicine Name
+               <span class="text-danger">
+                *
+               </span>
+              </label>
+              <input id="brand_names" name="brand_name" type="hidden" value="18"/>
+              <input class="form-control" id="brand_name" name="med_name" required="" type="text" value=""/>
+             </div>
+            </div>
+            <div class="col-lg-6">
+             <div class="form-group">
+              <label>
+               Category
+               <span class="text-danger">
+                *
+               </span>
+              </label>
+              <select class="form-control select" name="cate" required="">
+               <option value="Phytopathology">
+                Phytopathology
+               </option>
+               <option selected="selected" value="Injuries">
+                Injuries
+               </option>
+               <option value="Cancer">
+                Cancer
+               </option>
+               <option value="Animal diseases">
+                Animal diseases
+               </option>
+               <option value="Growth disorders">
+                Growth disorders
+               </option>
+               <option value="Rare diseases">
+                Rare diseases
+               </option>
+               <option value=" Neoplasms">
+                Neoplasms
+               </option>
+               <option value="Inflammations">
+                Inflammations
+               </option>
+               <option value="Sleep disorders">
+                Sleep disorders
+               </option>
+               <option value="Infectious diseases">
+                Infectious diseases
+               </option>
+              </select>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="service-fields mb-3">
+           <div class="row">
+            <div class="col-lg-6">
+             <div class="form-group">
+              <label>
+               Price
+               <span class="text-danger">
+                *
+               </span>
+              </label>
+              <input id="Prices" name="Price" type="hidden" value="18"/>
+              <input class="form-control" id="Price" name="price" required="" type="text" value=""/>
+             </div>
+            </div>
+            <div class="col-lg-6">
+             <div class="form-group">
+              <label>
+               Quantity
+               <span class="text-danger">
+                *
+               </span>
+              </label>
+              <input id="quantitys" name="quantity" type="hidden" value="18"/>
+              <input class="form-control" id="quantity" name="qunt" required="" type="text" value=""/>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="service-fields mb-3">
+           <div class="row">
+            <div class="col-lg-6">
+             <div class="form-group">
+              <label>
+               Expire Date
+               <span class="text-danger">
+                *
+               </span>
+              </label>
+              <input class="form-control datetimepicker" name="exdate" type="date" did="date"/>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="service-fields mb-3">
+           <div class="row">
+            <div class="col-lg-12">
+             <div class="service-upload">
+              <i class="fas fa-cloud-upload-alt">
+              </i>
+              <span>
+               Upload Product Images *
+              </span>
+              <input accept="image/jpeg, image/png, image/gif," id="images" multiple="" name="img" type="file"/>
+             </div>
+             <div id="uploadPreview">
+              <ul class="upload-wrap">
+               <li>
+                <div class="upload-images">
+                 <img alt="Blog Image" src="{% static 'assets/img/product/product1.jpg' %}"/>
+                </div>
+               </li>
+              </ul>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="submit-section">
+           <button class="btn btn-primary submit-btn" name="form_submit" type="submit" value="submit">
+            Submit
+           </button>
+          </div>
+         </form>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+
+  {% endblock %}

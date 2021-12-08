@@ -1,0 +1,220 @@
+
+{% extends 'basics.html' %}
+{% block body %}
+{% load static %}
+   <div class="page-wrapper">
+    <div class="content container-fluid">
+     <div class="page-header">
+      <div class="row">
+       <div class="col-sm-7 col-auto">
+        <h3 class="page-title">
+         Supplier
+        </h3>
+        <ul class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="{% url 'indexs '}">
+           Dashboard
+          </a>
+         </li>
+         <li class="breadcrumb-item active">
+          Supplier
+         </li>
+        </ul>
+       </div>
+       <div class="col-sm-5 col">
+        <a class="btn btn-primary float-right mt-2" href="{% url 'add_supplier' %}">
+         Add New
+        </a>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-md-12">
+       <div class="card">
+        <div class="card-body">
+         <div class="table-responsive">
+          <table class="datatable table table-hover table-center mb-0">
+           <thead>
+            <tr>
+             <th>
+              ID
+             </th>
+             <th>
+              Product
+             </th>
+             <th>
+              Name
+             </th>
+             <th>
+              Phone
+             </th>
+             <th>
+              Email
+             </th>
+             <th>
+              Address
+             </th>
+             <th>
+              Company
+             </th>
+             <th>
+              Action
+             </th>
+            </tr>
+           </thead>
+           <tbody>{% for i in supply%}
+            <tr>
+             <td>
+              {{forloop.counter}}
+             </td>
+             <td>
+              <h2 class="table-avatar">
+               <span class="avatar avatar-sm mr-2">
+                <img alt="product image" class="avatar-img" src="/media/{{i.product.img}}"/>
+               </span>
+               {{i.product.name}}
+              </h2>
+             </td>
+             <td>  <h2 class="table-avatar">
+                  <span class="avatar avatar-sm mr-2">
+                <img alt="product image" class="avatar-img" src="/media/{{i.img}}"/>
+               </span>
+                 {{i.name}}</h2>
+             </td>
+             <td>
+              +{{i.mobile}}
+             </td>
+             <td>
+              <a class="__cf_email__" data-cfemail="01456872626073726041666c60686d2f626e6c" href="/cdn-cgi/l/email-protection">
+               [email protected]
+              </a>
+             </td>
+             <td>
+              {{i.address}}
+             </td>
+             <td>
+
+  {{i.company}}
+             </td>
+             <td>
+              <div class="actions">
+               <a class="btn btn-sm bg-success-light"  onclick="$('#suppids').val('{{i.id}}');" data-target="#edit_specialities_details" data-toggle="modal" >
+                <i class="fe fe-pencil">
+                </i>
+                Edit
+               </a>
+               <a class="btn btn-sm bg-danger-light" onclick="$('#suppid').val('{{i.id}}');" data-target="#deleteConfirmModal" data-toggle="modal" href="javascript:void(0);">
+                <i class="fe fe-trash">
+                </i>
+                Delete
+               </a>
+              </div>
+             </td>
+            </tr>
+            {% endfor %}
+           </tbody>
+          </table>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+{% endblock %}{% block body1 %}
+  <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="deleteConfirmModal" role="dialog" tabindex="-1">
+   <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+     <div class="modal-header">
+      <h5 class="modal-title" id="acc_title">
+       Delete
+      </h5>
+      <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+       <span aria-hidden="true">
+        ×
+       </span>
+      </button>
+     </div>
+     <div class="modal-body">
+      <p id="acc_msg">
+       are you sure you want to delete?
+      </p>
+     </div><form method="get">
+     <input name="suppid" id="suppid">
+     <div class="modal-footer">
+     <button  class="btn btn-success" type="submit">
+        Yes
+     </button>
+      <button class="btn btn-danger si_accept_cancel" data-dismiss="modal" type="button">
+       Cancel
+      </button>
+     </div></form>
+    </div>
+   </div>
+  </div>
+
+
+   <div aria-hidden="true" class="modal fade" id="edit_specialities_details" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+      <div class="modal-header">
+       <h5 class="modal-title">
+        Edit Category
+       </h5>
+       <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+        <span aria-hidden="true">
+         ×
+        </span>
+       </button>
+      </div>
+      <div class="modal-body">
+       <form method="post">{% csrf_token %}
+        <div class="row form-row">
+         <div class="col-12">
+          <div class="form-group">
+           <label>
+           company Name
+                <span class="text-danger">
+             *
+            </span>
+           </label>
+           <input class="form-control" id="suppids" name="supply" type="hidden" value=""/>
+           <input class="form-control" id="catname" name="company" type="text" required="" value=""/>
+          </div>
+         </div>
+
+
+  <div class="col-12 col-sm-6">
+          <div class="form-group">
+           <label>
+           product name
+            <span class="text-danger">
+             *
+            </span>
+           </label>
+           <select class="form-control select" name="prod_name" required="">
+
+            {% for i in prod %}
+            <option selected="selected"  value="{{i.name}}">
+             {{i.name}}
+            </option>
+            {% endfor %}
+           </select>
+          </div>
+         </div>
+
+
+
+
+
+
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">
+         Save Changes
+        </button>
+       </form>
+      </div>
+     </div>
+    </div>
+   </div>
+ {% endblock body1 %}

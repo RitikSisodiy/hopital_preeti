@@ -1,0 +1,220 @@
+
+{% extends 'blank-page.html' %}
+{% block body %}
+{% load static %}
+   <div class="breadcrumb-bar">
+    <div class="container-fluid">
+     <div class="row align-items-center">
+      <div class="col-md-8 col-12">
+       <h2 class="breadcrumb-title">
+        Search
+       </h2>
+       <nav aria-label="breadcrumb" class="page-breadcrumb">
+        <ol class="breadcrumb">
+         <li class="breadcrumb-item">
+          <a href="/">
+           Home
+          </a>
+         </li>
+         <li aria-current="page" class="breadcrumb-item active">
+          Search
+         </li>
+        </ol>
+       </nav>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row align-items-center mb-3">
+      <div class="col-md-8 col-12">
+       <h2 class="sub-heading mb-0">
+        {{title|length}} matches found for : Pharmacy In United States
+       </h2>
+      </div>
+      <div class="col-md-4 col-12 d-md-block d-none">
+       <div class="sort-by">
+        <span class="sort-title">
+         Sort by
+        </span>
+        <span class="sortby-fliter">
+         <select class="select">
+          <option>
+           Select
+          </option>
+          <option class="sorting">
+           Rating
+          </option>
+          <option class="sorting">
+           Popular
+          </option>
+          <option class="sorting">
+           Latest
+          </option>
+          <option class="sorting">
+           Free
+          </option>
+         </select>
+        </span>
+       </div>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-md-12 col-lg-4 col-xl-3 theiaStickySidebar">
+       <div class="card search-filter">
+        <div class="card-header">
+         <h4 class="card-title mb-0">
+          Search Filter
+         </h4>
+        </div>
+        <div class="card-body">
+         <div class="filter-widget">
+          <label>
+           Location
+          </label>
+          <input class="form-control" placeholder="Select Location" type="text"/>
+         </div>
+         <div class="filter-widget mb-0">
+          <h4>
+           Categories
+          </h4>
+          <div>
+           <label class="custom_check">
+            <input name="gender_type" type="checkbox"/>
+            <span class="checkmark">
+            </span>
+            Popular
+           </label>
+          </div>
+          <div>
+           <label class="custom_check">
+            <input name="gender_type" type="checkbox"/>
+            <span class="checkmark">
+            </span>
+            Latest
+           </label>
+          </div>
+          <div>
+           <label class="custom_check">
+            <input name="gender_type" type="checkbox"/>
+            <span class="checkmark">
+            </span>
+            Ratings
+           </label>
+          </div>
+          <div>
+           <label class="custom_check">
+            <input name="gender_type" type="checkbox"/>
+            <span class="checkmark">
+            </span>
+            Availability
+           </label>
+          </div>
+          <div>
+           <label class="custom_check">
+            <input checked="" name="gender_type" type="checkbox"/>
+            <span class="checkmark">
+            </span>
+            Open 24 Hrs
+           </label>
+          </div>
+          <div>
+           <label class="custom_check">
+            <input name="gender_type" type="checkbox"/>
+            <span class="checkmark">
+            </span>
+            Home Delivery
+           </label>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="btn-search mb-4">
+        <button class="btn btn-block" type="button">
+         Search
+        </button>
+       </div>
+      </div>
+      <div class="col-md-12 col-lg-8 col-xl-9">{%for i in title%}
+       <div class="card">
+        <div class="card-body">
+         <div class="doctor-widget">
+          <div class="doc-info-left">
+           <div class="doctor-img1">
+            <a href="/pharmacy-details?@//@/={{i.id}}">
+             <img alt="User Image" class="img-fluid" src="/media/{{i.img}}"/>
+            </a>
+           </div>
+           <div class="doc-info-cont">
+            <h4 class="doc-name mb-2">
+             <a href="/pharmacy-details?@//@/={{i.id}}">
+              {{i.user}}
+             </a>
+            </h4>
+            <div class="rating mb-2">
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star filled">
+             </i>
+             <i class="fas fa-star">
+             </i>
+             <span class="d-inline-block average-rating">
+              4.9 ( 82 )
+             </span>
+            </div>
+            <div class="clinic-details">
+             <div class="clini-infos pt-3">
+              <p class="doc-location mb-2">
+               <i class="feather-phone mr-1">
+               </i>
+               {{i.contact}}
+              </p>
+              <p class="doc-location mb-2 text-ellipse">
+               <i class="feather-map-pin mr-1">
+               </i>
+               {{i.address}}
+              </p>
+              <p class="doc-location mb-2">
+               <i class="feather-chevrons-right mr-1">
+               </i>
+               {{i.degree}}
+              </p>
+              <p class="doc-location mb-2">
+               <i class="feather-chevrons-right mr-1">
+               </i>
+              Opens at - {{i.opentime}}
+              </p>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="doc-info-right">
+           <div class="clinic-booking">
+            <a class="apt-btn" href="/pharmacy-details?@//@/={{i.id}}">
+             View Details
+            </a>
+            <a class="view-pro-btn" href="/product-all?@//@/={{i.id}}">
+             Browse Products
+            </a>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       {%endfor%}
+
+       <div class="load-more">
+        <a class="btn btn-primary submit-btn" href="javascript:void(0);">
+         Load More
+        </a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  {%endblock%}
