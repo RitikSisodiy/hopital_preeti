@@ -233,18 +233,18 @@
                             <span>
                               Time Slots
                             </span>
-                            <a class="edit-link" data-toggle="modal" href="#edit_time_slot">
+                            <a class="edit-link" data-toggle="modal" href="#edit_time_slot{{forloop.counter}}">
                               <i class="fa fa-edit">
                               </i>
                             </a>
                           </h4>
                           <div class="doc-times">
-                          {% for time in day.book_times.times.all %}
-                            <div class="doc-slot-list">
-                              {{time.time1}}-{{time.time2}}
-                              <a class="delete_schedule" href="javascript:void(0)">
-                                <i class="fa fa-times">
-                                </i>
+                          {% for j in day.book_times.times.all %}
+                              <div class="doc-slot-list">
+                              {{j.time1}}-{{j.time2}}
+                              <a class="delete_schedule" href="{%url 'schedule'%}?timeid={{j.id}}&dayid={{i.id}}">
+                              <i class="fa fa-times">
+                              </i>
                               </a>
                             </div>
                           {% endfor %}
@@ -353,7 +353,8 @@
     </div>
   </div>
 </div>
-<div class="modal fade custom-modal" id="edit_time_slot">
+{%for day in time%}
+<div class="modal fade custom-modal" id="edit_time_slot{{forloop.counter}}">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -369,6 +370,7 @@
       <div class="modal-body">
         <form>
           <div class="hours-info"><input name="day" id="day" value="">
+            {% for j in day.book_times.times.all %}
             <div class="row form-row hours-cont">
               <div class="col-12 col-md-10">
                 <div class="row form-row">
@@ -423,130 +425,8 @@
                 </div>
               </div>
             </div>
-            <div class="row form-row hours-cont">
-              <div class="col-12 col-md-10">
-                <div class="row form-row">
-                  <div class="col-12 col-md-6">
-                    <div class="form-group">
-                      <label>
-                        Start Time
-                      </label>
-                      <select class="form-control">
-                        <option>
-                          -
-                        </option>
-                        <option>
-                          12.00 am
-                        </option>
-                        <option selected="">
-                          12.30 am
-                        </option>
-                        <option>
-                          1.00 am
-                        </option>
-                        <option>
-                          1.30 am
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="form-group">
-                      <label>
-                        End Time
-                      </label>
-                      <select class="form-control">
-                        <option>
-                          -
-                        </option>
-                        <option>
-                          12.00 am
-                        </option>
-                        <option>
-                          12.30 am
-                        </option>
-                        <option selected="">
-                          1.00 am
-                        </option>
-                        <option>
-                          1.30 am
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-2">
-                <label class="d-md-block d-sm-none d-none">
-                </label>
-                <a class="btn btn-danger trash" href="#">
-                  <i class="far fa-trash-alt">
-                  </i>
-                </a>
-              </div>
-            </div>
-            <div class="row form-row hours-cont">
-              <div class="col-12 col-md-10">
-                <div class="row form-row">
-                  <div class="col-12 col-md-6">
-                    <div class="form-group">
-                      <label>
-                        Start Time
-                      </label>
-                      <select class="form-control">
-                        <option>
-                          -
-                        </option>
-                        <option>
-                          12.00 am
-                        </option>
-                        <option>
-                          12.30 am
-                        </option>
-                        <option selected="">
-                          1.00 am
-                        </option>
-                        <option>
-                          1.30 am
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-12 col-md-6">
-                    <div class="form-group">
-                      <label>
-                        End Time
-                      </label>
-                      <select class="form-control">
-                        <option>
-                          -
-                        </option>
-                        <option>
-                          12.00 am
-                        </option>
-                        <option>
-                          12.30 am
-                        </option>
-                        <option>
-                          1.00 am
-                        </option>
-                        <option selected="">
-                          1.30 am
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-2">
-                <label class="d-md-block d-sm-none d-none">
-                </label>
-                <a class="btn btn-danger trash" href="#">
-                  <i class="far fa-trash-alt">
-                  </i>
-                </a>
-              </div>
-            </div>
+         {% endfor %}
+                          
           </div>
           <div class="add-more mb-3">
             <a class="add-hours" href="javascript:void(0);">
@@ -565,4 +445,5 @@
     </div>
   </div>
 </div>
+{% endfor %}
 {% endblock body1 %}
