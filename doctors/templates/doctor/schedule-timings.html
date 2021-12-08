@@ -1,578 +1,568 @@
-
 {% extends 'blank-page.html' %}
 {% block body %}
 {% load static %}
-   <div class="breadcrumb-bar">
-    <div class="container-fluid">
-     <div class="row align-items-center">
+<div class="breadcrumb-bar">
+  <div class="container-fluid">
+    <div class="row align-items-center">
       <div class="col-md-12 col-12">
-       <h2 class="breadcrumb-title">
-        Schedule Timings
-       </h2>
-       <nav aria-label="breadcrumb" class="page-breadcrumb">
-        <ol class="breadcrumb">
-         <li class="breadcrumb-item">
-          <a href="/">
-           Home
-          </a>
-         </li>
-         <li aria-current="page" class="breadcrumb-item active">
+        <h2 class="breadcrumb-title">
           Schedule Timings
-         </li>
-        </ol>
-       </nav>
-      </div>
-     </div>
-    </div>
-   </div>
-   <div class="content">
-    <div class="container-fluid">
-     <div class="row">
-      <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
-       <div class="profile-sidebar">
-        <div class="widget-profile pro-widget-content">
-         <div class="profile-info-widget">
-          <a class="booking-doc-img" href="{%url 'Doctor_profile' request.user.Dr.id %}">
-           <img alt="User Image" src=" /media/{{request.user.Dr.img}}"/>
-          </a>
-          <div class="profile-det-info">
-           <h3>
-            {{request.user.username}}
-           </h3>
-           <div class="patient-details">
-            <h5 class="mb-0">
-             {{request.user.Dr.qulification}}
-            </h5>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="dashboard-widget">
-         <nav class="dashboard-menu">
-          <ul>
-           <li>
-            <a href="{%url 'doctor_dashboard'%}?id={{request.user.Dr.id}}">
-             <span>
-              Dashboard
-             </span>
-             <i class="feather-airplay">
-             </i>
-            </a>
-           </li>
-           <li>
-            <a href="{%url 'appointments'%}?doctor={{request.user.Dr.id}}">
-             <span>
-              Appointments
-             </span>
-             <i class="feather-calendar">
-             </i>
-            </a>
-           </li>
-           <li>
-            <a href="{%url 'my_patient'%}?doctor={{request.user.Dr.id}}">
-             <span>
-              My Patients
-             </span>
-             <i class="fas fa-user-injured">
-             </i>
-            </a>
-           </li>
-           <li class="active">
-            <a href="{% url 'schedule'%}">
-             <span>
+        </h2>
+        <nav aria-label="breadcrumb" class="page-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/">
+                Home
+              </a>
+            </li>
+            <li aria-current="page" class="breadcrumb-item active">
               Schedule Timings
-             </span>
-             <i class="far fa-hourglass">
-             </i>
-            </a>
-           </li>
-           <li>
-            <a href="available-timings.html">
-             <span>
-              Available Timings
-             </span>
-             <i class="feather-clock">
-             </i>
-            </a>
-           </li>
-           <li>
-            <a href="{% url 'invoices'%}?invoice={{request.user.Dr.id}}">
-             <span>
-              Invoices
-             </span>
-             <i class="feather-file-text">
-             </i>
-            </a>
-           </li>
-           <li>
-            <a href="accounts.html">
-             <span>
-              Accounts
-             </span>
-             <i class="fas fa-file-invoice-dollar">
-             </i>
-            </a>
-           </li>
-           <li>
-            <a href="{% url 'reviews'%}">
-             <span>
-              Reviews
-             </span>
-             <i class="feather-star">
-             </i>
-            </a>
-           </li>
-           <li>
-            <a href="chat-doctor.html">
-             <span>
-              Message
-             </span>
-             <i class="feather-message-circle">
-             </i>
-            </a>
-           </li>
-           <li>
-            <a href="{%url 'doctor_profile_setting'%}?profile={{request.user.id}}">
-             <span>
-              Profile Settings
-             </span>
-             <i class="feather-user">
-             </i>
-            </a>
-           </li>
-           <li>
-            <a href="social-media.html">
-             <span>
-              Social Media
-             </span>
-             <i class="feather-share-2">
-             </i>
-            </a>
-           </li>
-           <li>
-            <a href="{% url 'change_password' %}">
-             <span>
-              Change Password
-             </span>
-             <i class="feather-lock">
-             </i>
-            </a>
-           </li>
-           <li>
-            <a href="{% url 'dlogout'%}">
-             <span>
-              Logout
-             </span>
-             <i class="feather-log-out">
-             </i>
-            </a>
-           </li>
-          </ul>
-         </nav>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-5 col-lg-4 col-xl-3 theiaStickySidebar">
+        <div class="profile-sidebar">
+          <div class="widget-profile pro-widget-content">
+            <div class="profile-info-widget">
+              <a class="booking-doc-img" href="{%url 'Doctor_profile' request.user.Dr.id %}">
+                <img alt="User Image" src=" /media/{{request.user.Dr.img}}" />
+              </a>
+              <div class="profile-det-info">
+                <h3>
+                  {{request.user.username}}
+                </h3>
+                <div class="patient-details">
+                  <h5 class="mb-0">
+                    {{request.user.Dr.qulification}}
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-widget">
+            <nav class="dashboard-menu">
+              <ul>
+                <li>
+                  <a href="{%url 'doctor_dashboard'%}?id={{request.user.Dr.id}}">
+                    <span>
+                      Dashboard
+                    </span>
+                    <i class="feather-airplay">
+                    </i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{%url 'appointments'%}?doctor={{request.user.Dr.id}}">
+                    <span>
+                      Appointments
+                    </span>
+                    <i class="feather-calendar">
+                    </i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{%url 'my_patient'%}?doctor={{request.user.Dr.id}}">
+                    <span>
+                      My Patients
+                    </span>
+                    <i class="fas fa-user-injured">
+                    </i>
+                  </a>
+                </li>
+                <li class="active">
+                  <a href="{% url 'schedule'%}">
+                    <span>
+                      Schedule Timings
+                    </span>
+                    <i class="far fa-hourglass">
+                    </i>
+                  </a>
+                </li>
+                <li>
+                  <a href="available-timings.html">
+                    <span>
+                      Available Timings
+                    </span>
+                    <i class="feather-clock">
+                    </i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'invoices'%}?invoice={{request.user.Dr.id}}">
+                    <span>
+                      Invoices
+                    </span>
+                    <i class="feather-file-text">
+                    </i>
+                  </a>
+                </li>
+                <li>
+                  <a href="accounts.html">
+                    <span>
+                      Accounts
+                    </span>
+                    <i class="fas fa-file-invoice-dollar">
+                    </i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'reviews'%}">
+                    <span>
+                      Reviews
+                    </span>
+                    <i class="feather-star">
+                    </i>
+                  </a>
+                </li>
+                <li>
+                  <a href="chat-doctor.html">
+                    <span>
+                      Message
+                    </span>
+                    <i class="feather-message-circle">
+                    </i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{%url 'doctor_profile_setting'%}?profile={{request.user.id}}">
+                    <span>
+                      Profile Settings
+                    </span>
+                    <i class="feather-user">
+                    </i>
+                  </a>
+                </li>
+                <li>
+                  <a href="social-media.html">
+                    <span>
+                      Social Media
+                    </span>
+                    <i class="feather-share-2">
+                    </i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'change_password' %}">
+                    <span>
+                      Change Password
+                    </span>
+                    <i class="feather-lock">
+                    </i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'dlogout'%}">
+                    <span>
+                      Logout
+                    </span>
+                    <i class="feather-log-out">
+                    </i>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
-       </div>
       </div>
       <div class="col-md-7 col-lg-8 col-xl-9">
-       <div class="row">
-        <div class="col-sm-12">
-         <h4 class="sub-heading">
-          Schedule Timings
-         </h4>
-         <div class="card">
-          <div class="card-header">
-           <div class="row">
-            <div class="col-lg-6">
-             <div class="form-group duration-slot">
-              <label>
-               Timing Slot Duration
-              </label>
-              <select class="select form-control mb-0">
-               <option>
-                -
-               </option>
-               <option>
-                15 mins
-               </option>
-               <option selected="selected">
-                30 mins
-               </option>
-               <option>
-                45 mins
-               </option>
-               <option>
-                1 Hour
-               </option>
-              </select>
-             </div>
-            </div>
-           </div>
-          </div>
-          <div class="card-body">
-           <div class="row">
-            <div class="col-md-12">
-             <div class="card schedule-widget mb-0">
-              <div class="schedule-header">
-               <div class="schedule-nav">
-                <ul class="nav nav-tabs nav-justified">
-                 {%for day in time%}
-                 <li class="nav-item">
-                  <a class="nav-link"   href="{%url 'schedule'%}?dayy={{day.id}}">
-                   {{day.day}}
-                  </a>
-                 </li>{%endfor%}
-                </ul>
-               </div>
-              </div>
-              <div class="tab-content schedule-cont">
-               <div class="tab-pane fade" id="slot_sunday">
-                <h4 class="card-title d-flex justify-content-between">
-                 <span>
-                  Time Slots
-                 </span>
-                 <a class="edit-link" data-toggle="modal" href="#add_time_slot">
-                  <i class="fa fa-plus-circle">
-                  </i>
-                  Add Slot
-                 </a>
-                </h4>
-                <p class="text-muted mb-0">
-                 Not Available
-                </p>
-               </div>
-               <div class="tab-pane fade show active" id="slot_monday">
-                 <h4 class="card-title d-flex justify-content-between align-items-center">
-                 <span>
-                  Time Slots
-                 </span>
-                 <a class="edit-link" data-toggle="modal" onclick="$('#day').val('{{total}}');" href="#edit_time_slot">
-                  <i class="fa fa-edit">
-                  </i>
-                 </a>
-                </h4>
-                <div class="doc-times">
-                 {%for i in x%}{% for j in i.times.all%}
-                 <div class="doc-slot-list">
-                  {{j.time1}}-{{j.time2}}
-                  <a class="delete_schedule" href="{%url 'schedule'%}?timeid={{j.id}}&dayid={{i.id}}">
-                   <i class="fa fa-times">
-                   </i>
-                  </a>
-                 </div>
-                 {%endfor%}{%endfor%}
+        <div class="row">
+          <div class="col-sm-12">
+            <h4 class="sub-heading">
+              Schedule Timings
+            </h4>
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="form-group duration-slot">
+                      <label>
+                        Timing Slot Duration
+                      </label>
+                      <select class="select form-control mb-0">
+                        <option>
+                          -
+                        </option>
+                        <option>
+                          15 mins
+                        </option>
+                        <option selected="selected">
+                          30 mins
+                        </option>
+                        <option>
+                          45 mins
+                        </option>
+                        <option>
+                          1 Hour
+                        </option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
-               </div>
               </div>
-             </div>
+              
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card schedule-widget mb-0">
+                      <div class="schedule-header">
+                        <div class="schedule-nav">
+                          <ul class="nav nav-tabs nav-justified">
+                            
+                            {%for day in time%}
+                            <li class="nav-item">
+                              <a class="nav-link {% if forloop.counter == 1 %}show active{% endif %}" data-toggle="tab" href="#dayy{{day.id}}">
+                                {{day.day}}
+                              </a>
+                            </li>
+                            {%endfor%}
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="tab-content schedule-cont">
+                         {%for day in time%}
+                        <div class="tab-pane fade {% if forloop.counter == 1 %}show active{% endif %}"
+                          id="dayy{{day.id}}">
+                          <h4 class="card-title d-flex justify-content-between align-items-center">
+                            <span>
+                              Time Slots
+                            </span>
+                            <a class="edit-link" data-toggle="modal" href="#edit_time_slot">
+                              <i class="fa fa-edit">
+                              </i>
+                            </a>
+                          </h4>
+                          <div class="doc-times">
+                          {% for time in day.book_times.times.all %}
+                            <div class="doc-slot-list">
+                              {{time.time1}}-{{time.time2}}
+                              <a class="delete_schedule" href="javascript:void(0)">
+                                <i class="fa fa-times">
+                                </i>
+                              </a>
+                            </div>
+                          {% endfor %}
+                          </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-           </div>
           </div>
-         </div>
         </div>
-       </div>
       </div>
-     </div>
     </div>
-   </div>
-   {%endblock%}
+  </div>
+</div>
+{%endblock%}
 {% block body1 %}
-  <div class="modal fade custom-modal" id="add_time_slot">
-   <div class="modal-dialog modal-dialog-centered">
+<div class="modal fade custom-modal" id="add_time_slot">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-     <div class="modal-header">
-      <h5 class="modal-title">
-       Add Time Slots
-      </h5>
-      <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-       <span aria-hidden="true">
-        ×
-       </span>
-      </button>
-     </div>
-     <div class="modal-body">
-      <form>
-       <div class="hours-info">
-        <div class="row form-row hours-cont">
-         <div class="col-12 col-md-10">
-          <div class="row form-row">
-           <div class="col-12 col-md-6">
-            <div class="form-group">
-             <label>
-              Start Time
-             </label>
-             <select class="form-control">
-              <option>
-               -
-              </option>
-              <option>
-               12.00 am
-              </option>
-              <option>
-               12.30 am
-              </option>
-              <option>
-               1.00 am
-              </option>
-              <option>
-               1.30 am
-              </option>
-             </select>
-            </div>
-           </div>
-           <div class="col-12 col-md-6">
-            <div class="form-group">
-             <label>
-              End Time
-             </label>
-             <select class="form-control">
-              <option>
-               -
-              </option>
-              <option>
-               12.00 am
-              </option>
-              <option>
-               12.30 am
-              </option>
-              <option>
-               1.00 am
-              </option>
-              <option>
-               1.30 am
-              </option>
-             </select>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-       </div>
-       <div class="add-more mb-3">
-        <a class="add-hours" href="javascript:void(0);">
-         <i class="fa fa-plus-circle mr-1">
-         </i>
-         Add More
-        </a>
-       </div>
-       <div class="submit-section text-center">
-        <button class="btn btn-primary submit-btn" type="submit">
-         Save Changes
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Add Time Slots
+        </h5>
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+          <span aria-hidden="true">
+            ×
+          </span>
         </button>
-       </div>
-      </form>
-     </div>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="hours-info">
+            <div class="row form-row hours-cont">
+              <div class="col-12 col-md-10">
+                <div class="row form-row">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label>
+                        Start Time
+                      </label>
+                      <select class="form-control">
+                        <option>
+                          -
+                        </option>
+                        <option>
+                          12.00 am
+                        </option>
+                        <option>
+                          12.30 am
+                        </option>
+                        <option>
+                          1.00 am
+                        </option>
+                        <option>
+                          1.30 am
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label>
+                        End Time
+                      </label>
+                      <select class="form-control">
+                        <option>
+                          -
+                        </option>
+                        <option>
+                          12.00 am
+                        </option>
+                        <option>
+                          12.30 am
+                        </option>
+                        <option>
+                          1.00 am
+                        </option>
+                        <option>
+                          1.30 am
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="add-more mb-3">
+            <a class="add-hours" href="javascript:void(0);">
+              <i class="fa fa-plus-circle mr-1">
+              </i>
+              Add More
+            </a>
+          </div>
+          <div class="submit-section text-center">
+            <button class="btn btn-primary submit-btn" type="submit">
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-   </div>
   </div>
-  <div class="modal fade custom-modal" id="edit_time_slot">
-   <div class="modal-dialog modal-dialog-centered">
+</div>
+<div class="modal fade custom-modal" id="edit_time_slot">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-     <div class="modal-header">
-      <h5 class="modal-title">
-       Edit Time Slots
-      </h5>
-      <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-       <span aria-hidden="true">
-        ×
-       </span>
-      </button>
-     </div>
-     <div class="modal-body">
-      <form>
-       <div class="hours-info"><input name="day" id="day" value="">
-        <div class="row form-row hours-cont">
-         <div class="col-12 col-md-10">
-          <div class="row form-row">
-           <div class="col-12 col-md-6">
-            <div class="form-group">
-             <label>
-              Start Time
-             </label>
-             <select class="form-control">
-              <option>
-               -
-              </option>
-              <option selected="">
-               12.00 am
-              </option>
-              <option>
-               12.30 am
-              </option>
-              <option>
-               1.00 am
-              </option>
-              <option>
-               1.30 am
-              </option>
-             </select>
-            </div>
-           </div>
-           <div class="col-12 col-md-6">
-            <div class="form-group">
-             <label>
-              End Time
-             </label>
-             <select class="form-control">
-              <option>
-               -
-              </option>
-              <option>
-               12.00 am
-              </option>
-              <option selected="">
-               12.30 am
-              </option>
-              <option>
-               1.00 am
-              </option>
-              <option>
-               1.30 am
-              </option>
-             </select>
-            </div>
-           </div>
-          </div>
-         </div>
-        </div>
-        <div class="row form-row hours-cont">
-         <div class="col-12 col-md-10">
-          <div class="row form-row">
-           <div class="col-12 col-md-6">
-            <div class="form-group">
-             <label>
-              Start Time
-             </label>
-             <select class="form-control">
-              <option>
-               -
-              </option>
-              <option>
-               12.00 am
-              </option>
-              <option selected="">
-               12.30 am
-              </option>
-              <option>
-               1.00 am
-              </option>
-              <option>
-               1.30 am
-              </option>
-             </select>
-            </div>
-           </div>
-           <div class="col-12 col-md-6">
-            <div class="form-group">
-             <label>
-              End Time
-             </label>
-             <select class="form-control">
-              <option>
-               -
-              </option>
-              <option>
-               12.00 am
-              </option>
-              <option>
-               12.30 am
-              </option>
-              <option selected="">
-               1.00 am
-              </option>
-              <option>
-               1.30 am
-              </option>
-             </select>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="col-12 col-md-2">
-          <label class="d-md-block d-sm-none d-none">
-          </label>
-          <a class="btn btn-danger trash" href="#">
-           <i class="far fa-trash-alt">
-           </i>
-          </a>
-         </div>
-        </div>
-        <div class="row form-row hours-cont">
-         <div class="col-12 col-md-10">
-          <div class="row form-row">
-           <div class="col-12 col-md-6">
-            <div class="form-group">
-             <label>
-              Start Time
-             </label>
-             <select class="form-control">
-              <option>
-               -
-              </option>
-              <option>
-               12.00 am
-              </option>
-              <option>
-               12.30 am
-              </option>
-              <option selected="">
-               1.00 am
-              </option>
-              <option>
-               1.30 am
-              </option>
-             </select>
-            </div>
-           </div>
-           <div class="col-12 col-md-6">
-            <div class="form-group">
-             <label>
-              End Time
-             </label>
-             <select class="form-control">
-              <option>
-               -
-              </option>
-              <option>
-               12.00 am
-              </option>
-              <option>
-               12.30 am
-              </option>
-              <option>
-               1.00 am
-              </option>
-              <option selected="">
-               1.30 am
-              </option>
-             </select>
-            </div>
-           </div>
-          </div>
-         </div>
-         <div class="col-12 col-md-2">
-          <label class="d-md-block d-sm-none d-none">
-          </label>
-          <a class="btn btn-danger trash" href="#">
-           <i class="far fa-trash-alt">
-           </i>
-          </a>
-         </div>
-        </div>
-       </div>
-       <div class="add-more mb-3">
-        <a class="add-hours" href="javascript:void(0);">
-         <i class="fa fa-plus-circle mr-1">
-         </i>
-         Add More
-        </a>
-       </div>
-       <div class="submit-section text-center">
-        <button class="btn btn-primary submit-btn" type="submit">
-         Save Changes
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Edit Time Slots
+        </h5>
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+          <span aria-hidden="true">
+            ×
+          </span>
         </button>
-       </div>
-      </form>
-     </div>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="hours-info"><input name="day" id="day" value="">
+            <div class="row form-row hours-cont">
+              <div class="col-12 col-md-10">
+                <div class="row form-row">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label>
+                        Start Time
+                      </label>
+                      <select class="form-control">
+                        <option>
+                          -
+                        </option>
+                        <option selected="">
+                          12.00 am
+                        </option>
+                        <option>
+                          12.30 am
+                        </option>
+                        <option>
+                          1.00 am
+                        </option>
+                        <option>
+                          1.30 am
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label>
+                        End Time
+                      </label>
+                      <select class="form-control">
+                        <option>
+                          -
+                        </option>
+                        <option>
+                          12.00 am
+                        </option>
+                        <option selected="">
+                          12.30 am
+                        </option>
+                        <option>
+                          1.00 am
+                        </option>
+                        <option>
+                          1.30 am
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row form-row hours-cont">
+              <div class="col-12 col-md-10">
+                <div class="row form-row">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label>
+                        Start Time
+                      </label>
+                      <select class="form-control">
+                        <option>
+                          -
+                        </option>
+                        <option>
+                          12.00 am
+                        </option>
+                        <option selected="">
+                          12.30 am
+                        </option>
+                        <option>
+                          1.00 am
+                        </option>
+                        <option>
+                          1.30 am
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label>
+                        End Time
+                      </label>
+                      <select class="form-control">
+                        <option>
+                          -
+                        </option>
+                        <option>
+                          12.00 am
+                        </option>
+                        <option>
+                          12.30 am
+                        </option>
+                        <option selected="">
+                          1.00 am
+                        </option>
+                        <option>
+                          1.30 am
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-2">
+                <label class="d-md-block d-sm-none d-none">
+                </label>
+                <a class="btn btn-danger trash" href="#">
+                  <i class="far fa-trash-alt">
+                  </i>
+                </a>
+              </div>
+            </div>
+            <div class="row form-row hours-cont">
+              <div class="col-12 col-md-10">
+                <div class="row form-row">
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label>
+                        Start Time
+                      </label>
+                      <select class="form-control">
+                        <option>
+                          -
+                        </option>
+                        <option>
+                          12.00 am
+                        </option>
+                        <option>
+                          12.30 am
+                        </option>
+                        <option selected="">
+                          1.00 am
+                        </option>
+                        <option>
+                          1.30 am
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <div class="form-group">
+                      <label>
+                        End Time
+                      </label>
+                      <select class="form-control">
+                        <option>
+                          -
+                        </option>
+                        <option>
+                          12.00 am
+                        </option>
+                        <option>
+                          12.30 am
+                        </option>
+                        <option>
+                          1.00 am
+                        </option>
+                        <option selected="">
+                          1.30 am
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-2">
+                <label class="d-md-block d-sm-none d-none">
+                </label>
+                <a class="btn btn-danger trash" href="#">
+                  <i class="far fa-trash-alt">
+                  </i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="add-more mb-3">
+            <a class="add-hours" href="javascript:void(0);">
+              <i class="fa fa-plus-circle mr-1">
+              </i>
+              Add More
+            </a>
+          </div>
+          <div class="submit-section text-center">
+            <button class="btn btn-primary submit-btn" type="submit">
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-   </div>
   </div>
+</div>
 {% endblock body1 %}
